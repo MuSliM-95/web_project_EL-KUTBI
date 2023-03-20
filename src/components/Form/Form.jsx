@@ -24,6 +24,9 @@ const Form = () => {
         }
     })
 
+    const stopForm = (e) => {
+        e.preventDefault()
+    }
     const onChangeName = (e) => {
         setName({ name: e.target.value })
     }
@@ -47,7 +50,7 @@ const Form = () => {
     }
 
     return (
-        <form onClick={(e) => e.preventDefault()} className={style.form} >
+        <form onClick={stopForm} className={style.form} >
             <div className={style.elKutbi}>EL-KUTBI</div>
             <div className={style.formText}>Форма для оформления заказа</div>
             <input
