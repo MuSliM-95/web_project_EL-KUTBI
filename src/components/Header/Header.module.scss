@@ -49,6 +49,7 @@
             div {
                 display: flex;
                 justify-content: space-between;
+                width: 12%;
                 margin-top: 2%;
                 color: white;
                 cursor: pointer;
@@ -59,6 +60,7 @@
                 }
                 b {
                     font-size: 0.8vw;
+                    margin-top: -2%;
                 }
             }
 
@@ -89,6 +91,7 @@
                     border-radius: 20px;
                     margin-top: -1%;
                     margin-left: -2%;
+                    padding: 1.1%;
                 }
 
                 div {
@@ -98,7 +101,7 @@
                         height: 30%;
                     }
                     b {
-                        // font-size: 1vw;
+                       
                     }
                 }
 
