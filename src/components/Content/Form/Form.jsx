@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useTelegram } from "../../hooks/useTelegram";
+import { useTelegram } from "../../../hooks/useTelegram";
 import Button from "./Button/Button";
-import style from './Form.module.scss'
+import style from "./Form.module.scss"
+ 
 
-
-const Form = () => {
+const Form = () => { 
     const { tg, user } = useTelegram()
-    const [name, setName] = useState({ name: '', surname: '', patronymic: '' })
-    const [address, setAddress] = useState({ city: '', subject: '', postcode: '', contact: '' })
+    const [name, setName] = useState({ name: "", surname: "", patronymic: "" })
+    const [address, setAddress] = useState({ city: "", subject: "", postcode: "", contact: "" })
 
     useEffect(() => {
         tg.MainButton?.setParams({
-            text: 'Отправить данные '
+            text: "Отправить данные "
 
         })
     })

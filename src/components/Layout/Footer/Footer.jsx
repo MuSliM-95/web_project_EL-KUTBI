@@ -1,0 +1,37 @@
+import React from "react";
+import styles from "./Footer.module.scss"
+import whatsapp from "../../../logo/whatsapp.png"
+import telegram from "../../../logo/telegram.png"
+import instagram from "../../../logo/instagram.png"
+
+const Footer = () => {
+    return (
+        <footer className={styles.footer}>
+            <div className={styles.footerBlock}>
+                <h3>Книжный интернет магазин</h3>
+                <h2>‹‹EL-KUTBI››</h2>
+                <div className={styles.messengers}>
+                    <a href="#/"><img src={whatsapp} alt="whatsapp_logo" /></a>
+                    <a href="#/"><img src={telegram} alt="telegram_logo" /></a>
+                    <a href="#/"><img src={instagram} alt="instagram_logo" /></a>
+                </div>
+            </div>
+            <div className={styles.aboutus}>
+                <div>
+                    <a href="#/">О компании</a>
+                    <a href="#/">Наши партнеры</a>
+                    <a href="#/">Вопросы и ответы</a>
+                </div>
+                <div>
+                    <a href="#/">Доставка и оплата</a>
+                    <a href="#/">Бонусная программа</a>
+                    <a href="#/">Обратная связь</a>
+                </div>
+            </div>
+            <hr />
+            <div className={styles.date}>© 2023, EL-KUTBI </div>
+        </footer>
+    )
+}
+
+export default Footer
