@@ -1,4 +1,3 @@
-import React, { useEffect } from "react"
 import ProductList from "../ProductList/ProductList"
 import styles from "./Main.module.scss"
 

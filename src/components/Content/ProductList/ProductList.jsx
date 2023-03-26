@@ -11,7 +11,7 @@ const ProductList = () => {
  console.log(products);
     useEffect(() => {
         dispatch(getProducts())
-    }, products)
+    })
 
     return (
         <div className={styles.productListСontainer}>
