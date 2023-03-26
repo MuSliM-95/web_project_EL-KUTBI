@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "./ProductButton/ProductButton";
 import styles from "./ProductList.module.scss"
 
 const ProductList = () => {
+     const [state, setState] = useState("")
 
     const dispatch = useDispatch()
     const products = useSelector((state) => state.productsReducer.products)
- console.log(products);
+ 
     useEffect(() => {
         dispatch(getProducts())
-    })
+    }, [state])
 
     return (
         <div className={styles.productListСontainer}>
