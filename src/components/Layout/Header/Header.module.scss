@@ -1,177 +1,169 @@
 .header {
-    width: 100%;
-    background-color: #164f48;
+  width: 100%;
+  background-color: #164f48;
 
-    .headerBloc1 {
+  .upper_header_block {
+    display: none;
+  }
+
+  .lower_header_block {
+    display: flex;
+    padding-bottom: 1%;
+
+    .header_functional_elements {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1%;
+
+      .menuImg {
+        display: none;
+      }
+
+      .storeName {
+        font-size: 2.8vw;
+        cursor: pointer;
+
+        .name_link {
+          text-decoration: none;
+          color: white;
+        }
+      }
+
+      form {
+        width: 50%;
+        border: solid 1px;
+        border-radius: 5px;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+
+        .search_button {
+          background-color: white;
+          border: none;
+          .search {
+            width: 40%;
+          }
+        }
+
+        .input {
+          display: flex;
+          padding: 2%;
+          border: none;
+          outline: none;
+        }
+      }
+      .login_basket_container {
+        display: flex;
+        width: 15%;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 1.2vw;
         align-items: center;
 
-        .basket {
-            width: 6%;
-            height: 4%;
-            margin-right: 2%;
-            cursor: pointer;
-        }
+        .login_basket {
+          display: none;
 
-        .El_kutbiImg {
-            display: none;
-        }
+          .login_basket_image {
+            width: 10%;
+          }
 
-        .menuImg {
-            width: 15%;
-            height: 7%;
-            cursor: pointer;
-        }
-
-        .storeName {
-            font-size: 7vw;
+          &:hover {
             color: white;
-        }
-    }
-
-
-    .headerBloc2 {
-        width: 100%;
-        margin-left: -2%;
-
-
-        div {
-            width: 100%;
-            height: 80%;
-            display: flex;
-            justify-content: flex-end;
-
-            .catalog {
-                display: none;
-            }
-
-            form {
-                width: 70%;
-                display: flex;
-                align-items: center;
-                background-color: white;
-                margin-bottom: 1%;
-
-                .input {
-                    width: 90%;
-                    height: 80%;
-                    border: none;
-                    margin: 1%;
-                    outline: none;
-
-                }
-
-                .search_button {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 9%;
-                    border-radius: 3px;
-                    border: none;
-                    background-color: white;
-                    cursor: pointer;
-
-                    .search {
-                        width: 70%;
-                        height: 70%;
-                    }
-                }
-            }
+          }
         }
 
+        .address_block {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
+          .address_image {
+            width: 15%;
+          }
+          &:hover {
+            color: white;
+          }
+        }
+      }
     }
-
-
+  }
 }
 
-
-@media screen and (min-width: 500px) {
-    .header {
-        .headerBloc1 {
-            width: 100%;
-
-            .menuImg {
-                display: none;
-            }
-
-            .El_kutbiImg {
-                display: flex;
-                width: 9%;
-                height: 8%;
-            }
-
-            .storeName {
-                font-size: 5vw;
-            }
-
-            .basket {
-                width: 4%;
-                height: 3%;
-                margin-right: 2%;
-                cursor: pointer;
-            }
-
+@media screen and (min-width: 800px) {
+  .header {
+    .upper_header_block {
+      display: flex;
+      .header_store_logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .store_logo {
+          display: flex;
+          width: 8%;
         }
-
-        .headerBloc2 {
-
-            div {
-                justify-content: center;
-
-                .catalog {
-                    display: flex;
-                    align-items: center;
-                    width: 6.3%;
-                    margin-bottom: 1%;
-                    background-color: blue;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-
-                    img {
-                        width: 35%;
-                        height: 90%;
-                    }
-
-                    p {
-                        font-size: 1vw;
-                    }
-                }
-
-                form {
-                    display: flex;
-                    width: 30%;
-                    margin-left: 1%;
-                    border: solid 1px;
-                    height: 5%;
-
-
-                    .search_button {
-
-                        .search {
-                            width: 60%;
-                            height: 60%;
-
-                        }
-
-                    }
-
-                    .input {
-                        width: 100%;
-                        padding: 2%;
-
-                    }
-
-                }
-
-            }
-
-        }
-
+      }
     }
 
+    .lower_header_block {
+      .header_functional_elements {
+        justify-content: space-around;
+        margin: 0 0 1% 0;
 
+        .menuImg {
+          display: flex;
+          width: 4%;
+          border: solid 1px #ffffff66;
+          padding: 0.1%;
+          border-radius: 8px;
+          cursor: pointer;
+          &:hover {
+            border-color: white;
+          }
+        }
+        .storeName {
 
+          .name_link {
+
+          }
+        }
+
+        form {
+          width: 40%;
+          padding: 5px;
+
+          .search_button {
+            width: 10%;
+            .search {
+              width: 45%;
+            }
+          }
+
+          .input {
+           
+            width: 100%;
+          }
+        }
+
+        .login_basket_container {
+
+          .login_basket {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .login_basket_image {
+              width: 30%;
+            }
+          }
+          .address_block {
+
+            .address_image {
+              width: 30%;
+            }
+          }
+        }
+      }
+    }
+  }
 }

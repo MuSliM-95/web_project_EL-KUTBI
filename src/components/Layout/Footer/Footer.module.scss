@@ -2,7 +2,7 @@
     background-color: #164f48;
     display: flex;
     flex-direction: column;
-    height: 17%;
+
 
 
     .footerBlock {
@@ -31,7 +31,7 @@
 
     .aboutus {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
 
         div {
             display: flex;
@@ -58,7 +58,7 @@
 
     .date {
         text-align: center;
-        font-size: 2.5vw;
+        font-size: 2vw;
         margin-top: 2%;
     }
 }
@@ -66,11 +66,10 @@
 @media screen and (min-width: 500px) {
 
     .footer {
-        height: 25%;
         justify-content: center;
 
         .footerBlock {
-            height: 40%;
+            font-size: 3vw;
             justify-content: space-evenly;
 
 
@@ -79,7 +78,12 @@
 
 
         hr {
-            margin-top: 2%;
+            margin-top: 1%;
+        }
+        .date {
+            text-align: center;
+            font-size: 2vw;
+            margin-top: 1%;
         }
 
     }
@@ -89,15 +93,40 @@
 @media screen and (min-width: 1000px) {
 
     .footer {
-        height: 37%;
 
         .footerBlock {
-            margin-top: 0px;
+            font-size: 2vw;
+
+            .messengers {
+                width: 15%;
+            }
+
+        }
+
+        .aboutus {
+            div {
+                margin-top: 2%;
+
+                a {
+                    font-size: 2vw;
+
+                }
+            }
+        }
+
+        hr {
+            display: flex;
+            align-self: center;
+            margin-top: 0.5%;
+            width: 80%;
 
 
         }
 
-
+        .date {
+            font-size: 2vw;
+            margin-top: 1%;
+        }
     }
 
 }
