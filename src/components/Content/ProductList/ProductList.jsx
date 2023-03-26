@@ -5,14 +5,13 @@ import ProductButton from "./ProductButton/ProductButton";
 import styles from "./ProductList.module.scss"
 
 const ProductList = () => {
-     const [state, setState] = useState("")
 
     const dispatch = useDispatch()
     const products = useSelector((state) => state.productsReducer.products)
  
     useEffect(() => {
         dispatch(getProducts())
-    }, [state])
+    })
 
     return (
         <div className={styles.productListСontainer}>
