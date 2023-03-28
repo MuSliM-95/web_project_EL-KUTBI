@@ -1,9 +1,32 @@
 .productButton {
-    padding: 6px;
-    font-size: 0.7vw;
+    padding: 5px;
+    font-size: 2vw;
     cursor: pointer;
-    background-color: #26a9e0;
+    background-color: #164f48;
     border-radius: 2px;
     border: none;
     color: white;
+    
+}
+
+@media screen and (min-width: 500px) {
+  .productButton {
+    font-size: 1.6vw;
+  }
+}
+@media screen and (min-width: 800px) {
+  .productButton {
+    font-size: 1.3vw;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .productButton {
+    font-size: 1vw;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .productButton {
+    padding: 5px;
+    font-size: 0.9vw;
+  }
 }

@@ -18,12 +18,17 @@ const ProductList = () => {
             {products?.map(el => {
                 return (
                     <div className={styles.productList}>
+                        <div className={styles.productImageContainer}>
                         <img className={styles.productImage} src={`http://localhost:6001/${el.imageSrc}`} alt="books" />
+                        <button className={styles.favorites_book_button}></button>
+                        </div>
                         <div className={styles.productInfo}>
                         <strong>{el.price} р</strong>
                         <p>{el.name}</p>
                         <p className={styles.booksAuthor}>{el.Author}</p>
+                        <div className={styles.productButtonContainer}>
                         <ProductButton/>
+                        </div>
                         </div>
                     </div>
                 )
