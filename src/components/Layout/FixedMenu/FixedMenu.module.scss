@@ -1,0 +1,107 @@
+.FixedMenuContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  padding: 10px;
+
+
+  .menuActive {
+    display: block;
+    left: 0;
+    position: fixed;
+    transform: translate(0%);
+    transition: 0.5s;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    top:0;
+    z-index: 3;
+
+  }
+  .menuNone {
+    display: block;
+    left: 0;
+    position: fixed;
+    overflow-x: hidden;
+    height: 100%;
+    transform: translate(-100%);
+    transition: 0.5s;
+  }
+
+  .FixedMenuLinkHome {
+    position: relative;
+    z-index: 4;
+    &::before {
+      content: "";
+      background-image: url("../../../logo/pngwing.com (1).png");
+      background-repeat: no-repeat;
+      background-size: 20px, 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .FixedMenuButtonMenu {
+    position: relative;
+    z-index: 4;
+    background-color: #fff;
+    border: none;
+    &::before {
+      content: "";
+      background-image: url("../../../logo/menu (3).png");
+      background-repeat: no-repeat;
+      background-size: 20px, 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .FixedMenuLinkBasket {
+    position: relative;
+    z-index: 4;
+    &::before {
+      content: "";
+      background-image: url("../../../logo/basket2.png");
+      background-repeat: no-repeat;
+      background-size: 20px, 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .FixedMenuLinkSelected {
+    position: relative;
+    z-index: 4;
+    &::before {
+      content: "";
+      background-image: url("../../../logo/pngwing.com (2).png");
+      background-repeat: no-repeat;
+      background-size: 20px, 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .FixedMenuLinkPersonalAccount {
+    position: relative;
+    z-index: 4;
+    &::before {
+      content: "";
+      background-image: url("../../../logo/user.png");
+      background-repeat: no-repeat;
+      background-size: 20px, 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .FixedMenuContainer {
+    display: none;
+  }
+}

@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Header.module.scss";
-import menu from "../../../logo/menu.png";
+import menuImg from "../../../logo/menu.png";
 import EL_KUTBI from "../../../logo/EL-KUTBI.jpg";
 import search from "../../../logo/search.png";
 import login from "../../../logo/user (2).png";
 import basket from "../../../logo/basket.png";
 import mappointer from "../../../logo/mappointer (1).png";
 import { Link } from "react-router-dom";
+import Menu from "../../Content/Menu/Menu";
+import { useDispatch } from "react-redux";
+
 
 const Header = () => {
+
+  const menu = React.createRef()
+  const dispatch = useDispatch()
+  
+    const menuUpdate = () => {
+   
+     menu.current.classList.toggle(styles.menuActive)
+     menu.current.classList.toggle(styles.menuNone)
+    }
+  
+    const menuСlose = () => {
+      menu.current.classList.add(styles.menuNone);
+      menu.current.classList.remove(styles.menuActive);
+    };  
+
   const stopForm = (e) => {
     e.preventDefault();
   };
-
   return (
     <header className={styles.header}>
       <div className={styles.upper_header_block}>
@@ -23,7 +40,10 @@ const Header = () => {
 
       <div className={styles.lower_header_block}>
         <div className={styles.header_functional_elements}>
-          <img className={styles.menuImg} src={menu} alt="menu" />
+          <img onClick={menuUpdate} className={styles.menuImg} src={menuImg} alt="menu" />
+          <div ref={menu} className={styles.menuNone}>
+          <Menu menuUpdate={menuUpdate} menuСlose={menuСlose}/>
+          </div>
           <h1 className={styles.storeName}>
             <Link className={styles.name_link} to={"/"}>
               EL-KUTBI
