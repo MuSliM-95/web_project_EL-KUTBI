@@ -3,7 +3,7 @@ import styles from "./Registration.module.scss";
 import userLogo from "../../../logo/630631-middle.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, userRegistration } from "../../../app/AsyncFetch/userFetch";
-import { Link,  useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { InputMask } from "primereact/inputmask";
 
 const Registration = () => {
@@ -15,7 +15,7 @@ const Registration = () => {
 
   useEffect(() => {
     dispatch(getUsers());
-  }, []);
+  });
 
   const stopForm = (e) => {
     e.preventDefault();
@@ -28,20 +28,6 @@ const Registration = () => {
   const registration = () => {
     dispatch(userRegistration({ phoneNumber }));
   };
-  // users?.map((user) => {
-  //   if (user?.code === "confirmation") {
-  //     console.log(1);
-  //     return useNavigate("login");
-  //   }
-  //   if (!user.phoneNumber !== "confirmation") {
-  //     console.log(2);
-  //     return useNavigate("signinUpCode");
-  //   }
-  //   if (user.phoneNumber !== phoneNumber) {
-  //     console.log(3);
-  //     return useNavigate("signinUp");
-  //   }
-  // });
   
   return (
     <div className={styles.signupContainer}>

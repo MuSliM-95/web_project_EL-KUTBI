@@ -4,15 +4,13 @@ import Menu from "../../Content/Menu/Menu";
 import styles from "./FixedMenu.module.scss";
 
 const FixedMenu = () => {
-  const menu = React.createRef();
-
-  // const match = useMatch()
+  const menu = React.useRef();
 
   const menuUpdate = () => {
     menu.current.classList.toggle(styles.menuActive);
     return menu.current.classList.toggle(styles.menuNone);
   };
-
+10.
   const menuСlose = () => {
     menu.current.classList.add(styles.menuNone);
     return menu.current.classList.remove(styles.menuActive);

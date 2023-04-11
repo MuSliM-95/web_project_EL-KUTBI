@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./RegistrationCode.module.scss"
 
 const RegistrationCode = () => {
   const [code, setCode] = useState("")
-
-  const dispatch = useDispatch()
 
   const stopForm = (e) => {
     e.preventDefault();
