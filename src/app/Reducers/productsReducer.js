@@ -3,8 +3,7 @@ import { getProducts } from "../AsyncFetch/productsFetch"
 
 const initialState = {
     products: [],
-    loading: Boolean,
-    error: null
+    status: "initial" || "loading" || "error" || "success",
 }
 
 
@@ -15,16 +14,15 @@ const productsReducer = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getProducts.pending, (state, action) => {
-                state.loading = true
-                state.error = null
+                state.status = "loading";
             })
             .addCase(getProducts.fulfilled, (state, action) => {
-                state.products = action.payload
-                state.loading = false
+                state.status = "success";
+                state.products = action.payload;
             })
             .addCase(getProducts.rejected, (state, action) => {
-                state.error = action.payload
-                state.loading = false
+                state.status = "error";
+                state.error = action.payload;
             })
 
     }

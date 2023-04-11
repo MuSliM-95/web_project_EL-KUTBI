@@ -16,10 +16,10 @@ const HygieneProductsList = () => {
 
     return (
         <div className={styles.productListСontainer}>
-        {products?.map(el => {
+        {products?.map((el, index) => {
             if(el._id === "hygiene") {
                 return (
-                    <div className={styles.productList}>
+                    <div key={index} className={styles.productList}>
                     <div className={styles.productImageContainer}>
                     <img className={styles.productImage} src={`http://localhost:6001/${el.imageSrc}`} alt="books" />
                     <button className={styles.favorites_book_button}></button>

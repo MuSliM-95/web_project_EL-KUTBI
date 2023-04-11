@@ -1,0 +1,10 @@
+.hygieneProductsPage {
+  background-color: #fff;
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 1024px) {
+  .hygieneProductsPage {
+    border-radius: 0;
+  }
+}

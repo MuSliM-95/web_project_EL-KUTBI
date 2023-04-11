@@ -3,6 +3,7 @@ import styles from "./HygieneProductsList.module.scss"
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductList/ProductButton/ProductButton";
+import {serverUrl} from "../../../serverUrl/serverUrl"
 
 const HygieneProductsList = () => {
 
@@ -15,12 +16,12 @@ const HygieneProductsList = () => {
 
     return (
         <div className={styles.productListСontainer}>
-        {products?.map(el => {
+        {products?.map((el, index) => {
             if(el.productType === "hygiene") {
                 return (
-                    <div className={styles.productList}>
+                    <div key={index} className={styles.productList}>
                     <div className={styles.productImageContainer}>
-                    <img className={styles.productImage} src={`http://localhost:6001/${el.imageSrc}`} alt="books" />
+                    <img className={styles.productImage} src={`${serverUrl}/${el.imageSrc}`} alt="books" />
                     <button className={styles.favorites_book_button}></button>
                     </div>
                     <div className={styles.productInfo}>

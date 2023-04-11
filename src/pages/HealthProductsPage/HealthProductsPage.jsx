@@ -1,12 +1,13 @@
 import React from "react";
 import HealthProductList from "../../components/Content/HealthProductList/HealthProductList";
+import styles from "./HealthProductsPage.module.scss"
 
 
 const HealthProductsPage = () => {
     return (
-        <main>
+        <div className={styles.healthProductsPage}>
             <HealthProductList/>
-        </main>
+        </div>
     )
 }
 

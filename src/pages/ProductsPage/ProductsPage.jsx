@@ -4,7 +4,7 @@ import styles from "./ProductsPage.module.scss"
 
 const MainPage = () => {
     return (
-        <div className={styles.MainPageContainer}>
+        <div className={styles.mainPage}>
             <ProductList/>
         </div>
     )

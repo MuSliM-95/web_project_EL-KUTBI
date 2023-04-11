@@ -1,0 +1,139 @@
+.signupContainer {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    width: 95%;
+    border-radius: 20px;
+    font-size: 1vw;
+  
+    .signUpBlock {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 35%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      .signUp_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 58%;
+        border-radius: 20px;
+  
+        .inputBlock {
+          display: flex;
+          align-items: center;
+          border-radius: 8px;
+          width: 80%;
+          padding: 6px;
+          border: solid 1px;
+          background-color: #fff;
+
+          .input {
+            width: 80%;
+            padding: 8px;
+            border: none;
+            outline: none;
+            -webkit-box-shadow: 0 0 0 30px white inset;
+          }
+     
+        }
+        .submit {
+          width: 80%;
+          padding: 8px;
+          border-radius: 8px;
+          cursor: pointer;
+          background-color: #164f48;
+          font-size: 1vw;
+        }
+      }
+      .inputCheckboxContainer {
+        display: flex;
+        justify-content: space-around;
+        width: 55%;
+        .linkAgreement {
+          display: flex;
+          justify-content: space-between;
+          text-decoration: none;
+          color: black;
+          font-size: 1.2vw;
+          &:hover {
+            color: #164f48;
+          }
+          &::before {
+            content: "";
+            background-image: url("../../../logo/Tick_Mark_icon-icons.com_69146.png");
+            background-repeat: no-repeat;
+            background-size: 15px 15px;
+            width: 25px;
+            height: 25px;
+          }
+        }
+        .linkHome {
+          font-size: 1.2vw;
+          text-decoration: none;
+          color: black;
+          &:hover {
+            color: #164f48;
+          }
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .signupContainer {
+      .signUpBlock {
+        .signUp_form {
+          .inputBlock {
+            padding: 3px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 850px) {
+    .signupContainer {
+      .signUpBlock {
+        .signUp_form {
+          .inputBlock {
+            padding: 2px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .signupContainer {
+      font-size: 2vw;
+      .signUpBlock {
+        width: 55%;
+        height: 40%;
+        .signUp_form {
+          .inputBlock {
+            .input {
+              padding: 0;
+            }
+            padding: 2px;
+          }
+          .submit {
+            font-size: 2.4vw;
+          }
+        }
+        .inputCheckboxContainer {
+          width: 78%;
+          .linkAgreement {
+            font-size: 2vw;
+          }
+          .linkHome {
+            font-size: 2vw;
+          }
+        }
+      }
+    }
+  }
+  

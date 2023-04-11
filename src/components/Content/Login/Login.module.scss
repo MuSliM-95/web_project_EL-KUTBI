@@ -1,0 +1,502 @@
+.loginContainer {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95%;
+  width: 95%;
+  border-radius: 20px;
+  font-size: 1vw;
+
+  .loginBlock {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 35%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .login_form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 58%;
+      border-radius: 20px;
+
+      .inputBlock {
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        width: 80%;
+        padding: 6px;
+        border: solid 1px;
+        background-color: #fff;
+        .inputImg {
+          opacity: 0.4;
+          width: 15%;
+        }
+        .input {
+          width: 80%;
+          padding: 8px;
+          border: none;
+          outline: none;
+          -webkit-box-shadow: 0 0 0 30px white inset;
+        }
+
+        .spanInputArrowImage {
+          display: block;
+          background-image: url("../../../logo/down_icon-icons.com_61209.png");
+          background-size: 20px 20px;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+        .loginMenu {
+          background-color: #fff;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          width: 27%;
+          height: 15%;
+          padding: 10px 0px 10px 0px;
+          position: absolute;
+          left: 36.5%;
+          top: 46%;
+          z-index: 1;
+          transition: 1s;
+          transform-origin: top center;
+          transform: scale(1);
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .loginMenuBlock {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            .inputMenuImg {
+              opacity: 0.4;
+              width: 15%;
+              margin-left: 9px;
+              cursor: pointer;
+            }
+          }
+          .menuLinkBlock {
+            width: 60%;
+            margin-left: 5%;
+            .linkSigninUp {
+              display: flex;
+              justify-content: space-around;
+              text-decoration: none;
+              align-items: center;
+              color: black;
+              &::before {
+                content: "";
+                display: block;
+                background-image: url("../../../logo/1485969929-12-plus_78898\ \(1\).png");
+                background-repeat: no-repeat;
+                background-size: 20px 20px;
+                width: 20px;
+                height: 20px;
+              }
+              &:hover {
+                color: #164f48;
+              }
+            }
+          }
+        }
+        .loginMenuNone {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background-color: #fff;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          width: 27%;
+          height: 14%;
+          position: absolute;
+          left: 36.5%;
+          top: 46%;
+          z-index: 1;
+          transition: 1s;
+          transform-origin: top center;
+          transform: scaleY(0);
+          border-radius: 8px;
+          .loginMenuBlock {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            .inputMenuImg {
+              opacity: 0.4;
+              width: 15%;
+              margin-left: 9px;
+              cursor: pointer;
+            }
+          }
+          .menuLinkBlock {
+            width: 60%;
+            margin-left: 5%;
+            .linkSigninUp {
+              display: flex;
+              justify-content: space-around;
+              text-decoration: none;
+              align-items: center;
+              color: black;
+              &::before {
+                content: "";
+                display: block;
+                background-image: url("../../../logo/1485969929-12-plus_78898\ \(1\).png");
+                background-repeat: no-repeat;
+                background-size: 25px 25px;
+                width: 25px;
+                height: 25px;
+              }
+              &:hover {
+                color: #164f48;
+              }
+            }
+          }
+        }
+        .inputSpanNoEye {
+          display: block;
+          background-image: url("../../../logo/symbol_icon-icons.com_57844.png");
+          background-size: 20px 20px;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+        .inputSpanEye {
+          display: block;
+          background-image: url("../../../logo/slash-on-it_icon-icons.com_57783.png");
+          background-size: 20px 20px;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+      }
+      .submit {
+        width: 80%;
+        padding: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: #164f48;
+        font-size: 1vw;
+      }
+    }
+    .inputCheckboxContainer {
+      display: flex;
+      justify-content: space-around;
+      width: 55%;
+      .linkAgreement {
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        color: black;
+        font-size: 1.2vw;
+        &:hover {
+          color: #164f48;
+        }
+        &::before {
+          content: "";
+          background-image: url("../../../logo/Tick_Mark_icon-icons.com_69146.png");
+          background-repeat: no-repeat;
+          background-size: 15px 15px;
+          width: 25px;
+          height: 25px;
+        }
+      }
+      .linkHome {
+        font-size: 1.2vw;
+        text-decoration: none;
+        color: black;
+        &:hover {
+          color: #164f48;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .loginContainer {
+    .loginBlock {
+      .login_form {
+        .inputBlock {
+          padding: 3px;
+
+          .loginMenu {
+            top: 45.5%;
+            .loginMenuBlock {
+              .inputMenuImg {
+                margin-left: 5px;
+              }
+            }
+            .menuLinkBlock{
+              margin-left: 8px;
+              .linkSigninUp {
+                font-size: 1vw;
+              }
+            }
+
+          }
+          .loginMenuNone {
+            top: 45.5%;
+            .loginMenuBlock {
+              .inputMenuImg {
+                margin-left: 5px;
+              }
+            }
+            .menuLinkBlock{
+              margin-left: 8px;
+              .linkSigninUp {
+                font-size: 1vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  .loginContainer {
+    .loginBlock {
+      .login_form {
+        .inputBlock {
+          padding: 2px;
+
+          .loginMenu {
+            top: 45%;
+
+            .menuLinkBlock{
+              margin-left: 9px;
+              .linkSigninUp {
+                font-size: 1.1vw;
+              }
+            }
+
+          }
+          .loginMenuNone {
+
+            top: 45%;
+            .menuLinkBlock{
+              margin-left: 9px;
+              .linkSigninUp {
+                font-size: 1.1vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .loginContainer {
+    font-size: 2vw;
+    .loginBlock {
+      width: 55%;
+      height: 40%;
+      .login_form {
+        .inputBlock {
+          .loginMenu {
+            top: 46.5%;
+            width: 43%;
+            margin-left: -8%;
+            .loginMenuBlock {
+              .inputMenuImg {
+                margin-left: 5px;
+              }
+            }
+            .menuLinkBlock{
+              margin-left: 8px;
+              .linkSigninUp {
+                font-size: 1.5vw;
+              }
+            }
+
+          }
+          .loginMenuNone {
+            width: 43%;
+            margin-left: -8%;
+            top: 46.5%;
+            .loginMenuBlock {
+              .inputMenuImg {
+                margin-left: 5px;
+              }
+            }
+            .menuLinkBlock{
+              margin-left: 8px;
+              .linkSigninUp {
+                font-size: 1.5vw;
+              }
+            }
+          }
+
+          .input {
+            padding: 0;
+          }
+          padding: 2px;
+        }
+        .submit {
+          font-size: 2.4vw;
+        }
+      }
+      .inputCheckboxContainer {
+        width: 78%;
+        .linkAgreement {
+          font-size: 2vw;
+        }
+        .linkHome {
+          font-size: 2vw;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .loginContainer {
+    .loginBlock {
+      .login_form {
+        .inputBlock {
+          .loginMenu {
+            top:46.2%;
+            .menuLinkBlock{
+              margin-left: 2.5%;
+              .linkSigninUp {
+                font-size: 1.5vw;
+              }
+            }
+
+          }
+          .loginMenuNone {
+            top:46.2%;
+ 
+            .menuLinkBlock{
+              margin-left: 2.5%;
+              .linkSigninUp {
+                font-size: 1.5vw;
+              }
+            }
+          }
+
+          .input {
+            padding: 0;
+          }
+          padding: 2px;
+        }
+        .submit {
+          font-size: 2.4vw;
+        }
+      }
+      .inputCheckboxContainer {
+        width: 78%;
+        .linkAgreement {
+          font-size: 2vw;
+        }
+        .linkHome {
+          font-size: 2vw;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .loginContainer {
+    .loginBlock {
+      .login_form {
+        .inputBlock {
+          .loginMenu {
+            top: 45.8%;
+            margin-left: -8%;
+     
+            .menuLinkBlock{
+              margin-left: 3.5%;
+              .linkSigninUp {
+                font-size: 1.6vw;
+              }
+            }
+
+          }
+          .loginMenuNone {
+            top: 45.8%;
+            .menuLinkBlock{
+              margin-left: 3.5%;
+              .linkSigninUp {
+                font-size: 1.6vw;
+              }
+            }
+          }
+
+        }
+
+      }
+
+    }
+  }
+}
+// @media screen and (max-width: 450px) {
+//   .loginContainer {
+//     .loginBlock {
+//       .login_form {
+//         .inputBlock {
+//           .loginMenu {
+//             top: 45.8%;
+//             margin-left: -8%;
+//             .loginMenuBlock {
+//               .inputMenuImg {
+//                 height: 15%;
+//                 margin-left: 5px;
+//               }
+//             }
+//             .menuLinkBlock{
+//               margin-left: 6px;
+//               .linkSigninUp {
+//                 font-size: 1.5vw;
+//               }
+//             }
+
+//           }
+//           .loginMenuNone {
+//             top: 45.8%;
+//             width: 43%;
+//             margin-left: -8%;
+//             .loginMenuBlock {
+//               .inputMenuImg {
+//                 // height: 75%;
+//                 margin-left: 5px;
+//               }
+//             }
+//             .menuLinkBlock{
+//               margin-left: 6px;
+//               .linkSigninUp {
+//                 font-size: 1.5vw;
+//               }
+//             }
+//           }
+
+//           .input {
+//             padding: 0;
+//           }
+//           padding: 2px;
+//         }
+//         .submit {
+//           font-size: 2.4vw;
+//         }
+//       }
+//       .inputCheckboxContainer {
+//         width: 78%;
+//         .linkAgreement {
+//           font-size: 2vw;
+//         }
+//         .linkHome {
+//           font-size: 2vw;
+//         }
+//       }
+//     }
+//   }
+// }

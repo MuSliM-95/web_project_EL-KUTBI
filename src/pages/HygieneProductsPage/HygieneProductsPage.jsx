@@ -1,12 +1,13 @@
 import React from "react";
 import HygieneProductsList from "../../components/Content/HygieneProducts/HygieneProductsList";
+import styles from "./HygieneProductsPage.module.scss"
 
 
 const HygieneProductsPage = () => {
     return (
-        <main>
+        <div className={styles.hygieneProductsPage}>
             <HygieneProductsList/>
-        </main>
+        </div>
     )
 }
 

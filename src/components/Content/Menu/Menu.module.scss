@@ -1,8 +1,8 @@
-
 .menuContainer {
   display: flex;
   height: 100%;
-
+ 
+  width: 100%;
   .sectionContainer {
     display: flex;
     flex-direction: column;
@@ -31,6 +31,11 @@
           width: 25px;
           height: 25px;
         }
+        &:hover {
+          background-color: #164f48;
+          border-radius: 7px;
+          padding: 3px 50px 3px 50px;
+        }
       }
       .categoriesLinkBooks {
         display: flex;
@@ -44,6 +49,11 @@
           background-size: 20px 20px;
           width: 25px;
           height: 25px;
+        }
+        &:hover {
+          background-color: #164f48;
+          border-radius: 7px;
+          padding: 3px 88px 3px 88px;
         }
       }
       .categoriesLinkCosmetics {
@@ -59,6 +69,12 @@
           background-size: 20px 20px;
           width: 25px;
           height: 25px;
+          mix-blend-mode: multiply;
+        }
+        &:hover {
+          background-color: #164f48;
+          border-radius: 7px;
+          padding: 3px 81px 3px 81px;
         }
       }
       .categoriesLinkHygiene {
@@ -67,14 +83,18 @@
         text-decoration: none;
         color: black;
         &::before {
-            content: "";
-            display: flex;
-            background-image: url("../../../logo/hygiene.webp");
-            background-color: #fff;
+          content: "";
+          display: flex;
+          background-image: url("../../../logo/hygiene.webp");
           background-repeat: no-repeat;
           background-size: 20px 20px;
           width: 25px;
           height: 25px;
+        }
+        &:hover {
+          background-color: #164f48;
+          border-radius: 7px;
+          padding: 3px 81px 3px 81px;
         }
       }
       .categoriesLinkHealth {
@@ -82,14 +102,18 @@
         text-decoration: none;
         color: black;
         &::before {
-            content: "";
-            display: flex;
-            background-image: url("../../../logo/health.png");
-            background-color: #fff;
+          content: "";
+          display: flex;
+          background-image: url("../../../logo/health.png");
           background-repeat: no-repeat;
           background-size: 20px 20px;
           width: 25px;
           height: 25px;
+        }
+        &:hover {
+          background-color: #164f48;
+          border-radius: 7px;
+          padding: 3px 78px 3px 78px;
         }
       }
       .categoriesLinkСhosen {
@@ -97,17 +121,20 @@
         text-decoration: none;
         color: black;
         &::before {
-            content: "";
-            display: flex;
-            background-image: url("../../../logo/pngwing.com (2).png");
-            background-color: #fff;
+          content: "";
+          display: flex;
+          background-image: url("../../../logo/pngwing.com (2).png");
           background-repeat: no-repeat;
           background-size: 20px 20px;
           width: 25px;
           height: 25px;
         }
+        &:hover {
+          background-color: #164f48;
+          border-radius: 7px;
+          padding: 3px 71px 3px 71px;
+        }
       }
-
     }
   }
 
@@ -121,9 +148,7 @@
   }
 }
 
-
 @media screen and (max-width: 1024px) {
-
   .menuContainer {
     .sectionContainer {
       height: 90%;
@@ -131,11 +156,47 @@
 
       section {
         justify-content: flex-start;
+
+        .categoriesLinkHome {
+          &:hover {
+            background-color: #fff;
+            padding: 0;
+          }
+        }
+        .categoriesLinkBooks {
+          &:hover {
+            background-color: #fff;
+            padding: 0;
+          }
+        }
+        .categoriesLinkCosmetics {
+          &:hover {
+            background-color: #fff;
+            padding: 0;
+          }
+        }
+        .categoriesLinkHygiene {
+          &:hover {
+            background-color: #fff;
+            padding: 0;
+          }
+        }
+        .categoriesLinkHealth {
+          &:hover {
+            background-color: #fff;
+            padding: 0;
+          }
+        }
+        .categoriesLinkСhosen {
+          &:hover {
+            background-color: #fff;
+            padding: 0;
+          }
+        }
       }
     }
     .buttonContainer {
       display: none;
     }
   }
-  
 }

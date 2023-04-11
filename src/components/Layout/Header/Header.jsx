@@ -8,24 +8,22 @@ import basket from "../../../logo/basket.png";
 import mappointer from "../../../logo/mappointer (1).png";
 import { Link } from "react-router-dom";
 import Menu from "../../Content/Menu/Menu";
-import { useDispatch } from "react-redux";
-
 
 const Header = () => {
+  const menu = React.useRef();
+  useEffect(() => {
+    document.addEventListener("click", console.log(menu));
+  });
 
-  const menu = React.createRef()
-  const dispatch = useDispatch()
-  
-    const menuUpdate = () => {
-   
-     menu.current.classList.toggle(styles.menuActive)
-     menu.current.classList.toggle(styles.menuNone)
-    }
-  
-    const menuСlose = () => {
-      menu.current.classList.add(styles.menuNone);
-      menu.current.classList.remove(styles.menuActive);
-    };  
+  const menuUpdate = () => {
+    menu.current.classList.toggle(styles.menuActive);
+    return menu.current.classList.toggle(styles.menuNone);
+  };
+
+  const menuСlose = () => {
+    menu.current.classList.add(styles.menuNone);
+    return menu.current.classList.remove(styles.menuActive);
+  };
 
   const stopForm = (e) => {
     e.preventDefault();
@@ -40,9 +38,14 @@ const Header = () => {
 
       <div className={styles.lower_header_block}>
         <div className={styles.header_functional_elements}>
-          <img onClick={menuUpdate} className={styles.menuImg} src={menuImg} alt="menu" />
+          <img
+            onClick={menuUpdate}
+            className={styles.menuImg}
+            src={menuImg}
+            alt="menu"
+          />
           <div ref={menu} className={styles.menuNone}>
-          <Menu menuUpdate={menuUpdate} menuСlose={menuСlose}/>
+            <Menu menuСlose={menuСlose} />
           </div>
           <h1 className={styles.storeName}>
             <Link className={styles.name_link} to={"/"}>
@@ -69,14 +72,14 @@ const Header = () => {
               />
               <p>Адрес</p>
             </div>
-            <div className={styles.login_basket}>
+            <Link to={"signinUp"} className={styles.login_basket}>
               <img
                 className={styles.login_basket_image}
                 src={login}
                 alt="login_logo"
               />
               <p className={styles.login_basket_text}>Войти</p>
-            </div>
+            </Link>
             <div className={styles.login_basket}>
               <img
                 className={styles.login_basket_image}

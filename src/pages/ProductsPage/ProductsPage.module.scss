@@ -1,3 +1,10 @@
-.MainPageContainer {
-    
+.mainPage {
+  background-color: #fff;
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 1024px) {
+  .mainPage {
+    border-radius: 0;
+  }
 }

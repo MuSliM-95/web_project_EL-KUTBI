@@ -24,6 +24,7 @@
   .menuNone {
     display: block;
     left: 0;
+    top: 0;
     position: fixed;
     overflow-x: hidden;
     height: 100%;
@@ -37,6 +38,20 @@
     &::before {
       content: "";
       background-image: url("../../../logo/pngwing.com (1).png");
+      background-repeat: no-repeat;
+      background-size: 20px, 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .FixedMenuLinkHomeActive {
+    position: relative;
+    z-index: 4;
+    
+    &::before {
+      content: "";
+      background-image: url("../../../logo/pngwing.com (1) (1).png");
       background-repeat: no-repeat;
       background-size: 20px, 20px;
       display: block;
@@ -60,6 +75,19 @@
     }
   }
   .FixedMenuLinkBasket {
+    position: relative;
+    z-index: 4;
+    &::before {
+      content: "";
+      background-image: url("../../../logo/basket2.png");
+      background-repeat: no-repeat;
+      background-size: 20px, 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .FixedMenuLinkBasketActive {
     position: relative;
     z-index: 4;
     &::before {

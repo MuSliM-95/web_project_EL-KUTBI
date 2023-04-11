@@ -3,6 +3,7 @@ import styles from "./BooksList.module.scss"
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductList/ProductButton/ProductButton";
+import {serverUrl} from "../../../serverUrl/serverUrl"
 
 const BooksList = () => {
 
@@ -15,12 +16,12 @@ const BooksList = () => {
 
     return (
         <div className={styles.booksListСontainer}>
-        {products?.map(el => {
+        {products?.map((el, index) => {
             if(el.productType === "books") {
                 return (
-                    <div className={styles.booksList}>
+                    <div key={index} className={styles.booksList}>
                         <div className={styles.booksImageContainer}>
-                        <img className={styles.bookImage} src={`http://localhost:6001/${el.imageSrc}`} alt="books" />
+                        <img className={styles.bookImage} src={`${serverUrl}/${el.imageSrc}`} alt="books" />
                         <button className={styles.favorites_book_button}></button>
                         </div>
                         <div className={styles.bookInfo}>

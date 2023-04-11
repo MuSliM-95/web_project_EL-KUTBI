@@ -170,6 +170,8 @@
 
         .login_basket_container {
           .login_basket {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.4);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -209,9 +211,10 @@
           left: 0;
           position: fixed;
           transform: translate(0%);
+          // background: linear-gradient(360deg, #1f1e1e36 0%, #ffffff77 100%);
           transition: 0.5s;
           height: 100%;
-          width: 38%;
+          width: 100%;
           background-color: white;
           top:0;
           z-index: 3;

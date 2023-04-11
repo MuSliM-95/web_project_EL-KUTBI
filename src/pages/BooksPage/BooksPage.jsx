@@ -1,12 +1,12 @@
 import React from "react";
 import BooksList from "../../components/Content/BooksList/BooksList";
-
+import styles from "./BooksPage.module.scss"
 
 const BooksPage = () => {
     return (
-        <main>
+        <div className={styles.booksPage}>
             <BooksList/>
-        </main>
+        </div>
     )
 }
 
