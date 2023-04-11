@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Registration.module.scss";
 import userLogo from "../../../logo/630631-middle.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUsers, userRegistration } from "../../../app/AsyncFetch/userFetch";
 import { Link } from "react-router-dom";
 import { InputMask } from "primereact/inputmask";
@@ -10,8 +10,8 @@ const Registration = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.usersReducer.users);
-  const error = useSelector((state) => state.usersReducer.status);
+  // const users = useSelector((state) => state.usersReducer.users);
+  // const error = useSelector((state) => state.usersReducer.status);
 
   useEffect(() => {
     dispatch(getUsers());
