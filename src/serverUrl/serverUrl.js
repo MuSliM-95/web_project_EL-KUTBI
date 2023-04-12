@@ -6,4 +6,4 @@ if(NODE_ENV === 'development') {
   serverUrl = 'http://localhost:10000'
 } else {
   serverUrl = "https://el-kutbi-backend.onrender.com"; 
-}
+} 
