@@ -12,7 +12,7 @@ const HealthProductList = () => {
  
     useEffect(() => {
         dispatch(getProducts())
-    })
+    },[])
 
     return (
         <div className={styles.productListСontainer}>

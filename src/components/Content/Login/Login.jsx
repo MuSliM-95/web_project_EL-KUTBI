@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import { InputMask } from "primereact/inputmask";
 
 const Login = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [show, setShow] = useState(false);
+  const [loginComponent, setLoginComponent] = useState({phoneNumber: "", password: "", show: false})
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [show, setShow] = useState(false);
 
   const inputMenu = React.useRef();
 
@@ -19,11 +20,11 @@ const Login = () => {
   };
 
   const addPhoneNumber = (e) => {
-    setPhoneNumber(e.target.value);
+    setLoginComponent({phoneNumber: e.target.value});
   };
 
   const addPassword = (e) => {
-    setPassword(e.target.value);
+    setLoginComponent({password: e.target.value});
   };
 
   const login = () => {
@@ -33,7 +34,7 @@ const Login = () => {
   const showPassword = (e) => {
     e.target.classList.toggle(styles.inputSpanEye);
     e.target.classList.toggle(styles.inputSpanNoEye);
-    setShow(!show);
+    setLoginComponent({show: !loginComponent.show});
   };
 
   const loginMenu = () => {
@@ -53,7 +54,7 @@ const Login = () => {
               id="phone"
               name="phone"
               placeholder="+7(999) 999-99-99"
-              value={phoneNumber}
+              value={loginComponent.phoneNumber}
               onChange={addPhoneNumber}
               mask="+7(999) 999-99-99"
             />
@@ -75,7 +76,7 @@ const Login = () => {
                   id="phone"
                   name="phone"
                   placeholder="+7(999) 999-99-99"
-                  value={phoneNumber}
+                  value={loginComponent.phoneNumber}
                   onChange={addPhoneNumber}
                   mask="+7(999) 999-99-99"
                   onClick={loginMenu}
@@ -90,10 +91,10 @@ const Login = () => {
             <img className={styles.inputImg} src={user} alt="inputImg" />
             <input
               className={styles.input}
-              type={show ? "text" : "password"}
+              type={loginComponent.show ? "text" : "password"}
               id="phone"
               name="phone"
-              value={password}
+              value={loginComponent.password}
               onChange={addPassword}
             />
             <span

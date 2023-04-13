@@ -12,7 +12,7 @@ const CosmeticsProductsList = () => {
  
     useEffect(() => {
         dispatch(getProducts())
-    })
+    },[])
 
     return (
         <div className={styles.productListСontainer}>

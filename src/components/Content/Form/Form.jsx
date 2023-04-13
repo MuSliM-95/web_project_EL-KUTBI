@@ -14,7 +14,7 @@ const Form = () => {
             text: "Отправить данные "
 
         }) 
-    })
+    },[])
 
     useEffect(() => {
         if (!name.name || !name.surname || !name.patronymic || !address.city || !address.subject || !address.postcode || !address.contact) {
@@ -22,7 +22,7 @@ const Form = () => {
         } else {
             tg?.MainButton.show()
         }
-    })
+    },[])
 
     const stopForm = (e) => {
         e.preventDefault()

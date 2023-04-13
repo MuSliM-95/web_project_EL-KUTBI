@@ -1,12 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit"
-import { getUsers, userRegistration } from "../AsyncFetch/userFetch"
+import { activationCode, getUsers, userRegistration } from "../AsyncFetch/userFetch"
 
 
 const initialState = {
-    userId: null,
+    user: null,
     status: "initial" || "loading" || "error" || "success",
     users: [],
-
 }
 
 
@@ -25,18 +24,29 @@ const usersReducer = createSlice({
         })
         .addCase(getUsers.rejected, (state, action) => {
             state.status = "error";
-        })
+        });
         builder
         .addCase(userRegistration.pending, (state, action) => {
             state.status = "loading";
         })
         .addCase(userRegistration.fulfilled, (state, action) => {
             state.status = "success";
-            state.users = action.payload;
+            state.user = action.payload;
         })
         .addCase(userRegistration.rejected, (state, action) => {
             state.status = "error";
+        });
+        builder
+        .addCase(activationCode.pending, (state, action) => {
+            state.status = "loading";
         })
+        .addCase(activationCode.fulfilled, (state, action) => {
+            state.status = "success";
+            state.user = action.payload;
+        })
+        .addCase(activationCode.rejected, (state, action) => {
+            state.status = "error";
+        });
     } 
 })
 

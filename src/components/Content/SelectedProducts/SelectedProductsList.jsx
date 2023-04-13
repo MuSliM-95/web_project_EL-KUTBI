@@ -12,7 +12,7 @@ const HygieneProductsList = () => {
  
     useEffect(() => {
         dispatch(getProducts())
-    })
+    },[])
 
     return (
         <div className={styles.productListСontainer}>

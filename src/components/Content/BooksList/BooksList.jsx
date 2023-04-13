@@ -12,7 +12,7 @@ const BooksList = () => {
  
     useEffect(() => {
         dispatch(getProducts())
-    })
+    },[])
 
     return (
         <div className={styles.booksListСontainer}>

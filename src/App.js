@@ -9,7 +9,6 @@ import HygieneProductsPage from "./pages/HygieneProductsPage/HygieneProductsPage
 import HealthProductsPage from "./pages/HealthProductsPage/HealthProductsPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import RegistrationCodePage from "./pages/RegistrationCodePage/RegistrationCodePage";
 import TestPage from "./pages/TestPage/TestPage";
 
 
@@ -28,7 +27,6 @@ function App() {
           <Route path={"signinUp"} element={<RegistrationPage/>}/>
           <Route path={"login"} element={<LoginPage/>}/>
           <Route path={"form"} element={<FormPage />} />
-          <Route path={"signinUpCode"} element={<RegistrationCodePage/>}/>
       </Routes>
     </div>
   );
