@@ -56,8 +56,12 @@ const FixedMenu = () => {
       ></Link>
       <Link
         onClick={menuСlose}
-        className={styles.FixedMenuLinkPersonalAccount}
-        to={"#"}
+        to={"signinUp"}
+        className={
+          useMatch("signinUp")
+            ? styles.FixedMenuLinkPersonalAccount
+            : styles.FixedMenuLinkPersonalAccountActive
+        }
       ></Link>
     </div>
   );

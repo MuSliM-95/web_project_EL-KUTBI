@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductList/ProductButton/ProductButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
+import { serverUrl } from "../../../serverUrl/serverUrl";
 
 const SelectedProductsList = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const SelectedProductsList = () => {
               <div className={styles.productImageContainer}>
                 <img
                   className={styles.productImage}
-                  src={`http://localhost:6001/${el.imageSrc}`}
+                  src={`${serverUrl}/${el.imageSrc}`}
                   alt="books"
                 />
                 <div className={styles.favorites_button_container}>
