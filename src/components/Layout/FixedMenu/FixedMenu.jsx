@@ -52,7 +52,7 @@ const FixedMenu = () => {
             ? styles.FixedMenuLinkSelectedActive
             : styles.FixedMenuLinkSelected
         }
-        to={"testPage"}
+        to={"favorites"}
       ></Link>
       <Link
         onClick={menuСlose}
