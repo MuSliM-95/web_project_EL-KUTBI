@@ -48,7 +48,7 @@ const FixedMenu = () => {
       <Link
         onClick={menuСlose}
         className={
-          useMatch("testPage")
+          useMatch("favorites")
             ? styles.FixedMenuLinkSelectedActive
             : styles.FixedMenuLinkSelected
         }
