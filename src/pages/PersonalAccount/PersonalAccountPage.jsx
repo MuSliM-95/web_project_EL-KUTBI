@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PersonalAccount.module.scss"
 import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 const PersonalAccount = () => {
     const token = useSelector((state) => state.usersReducer.token)
