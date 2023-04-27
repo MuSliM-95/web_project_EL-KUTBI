@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import styles from "./Header.module.scss";
 import menuImg from "../../../logo/menu.png";
 import EL_KUTBI from "../../../logo/EL-KUTBI.jpg";
@@ -11,16 +11,16 @@ import Menu from "../../Content/Menu/Menu";
 
 const Header = () => {
   const menu = React.useRef();
-  useEffect(() => {
-    document.addEventListener("click", console.log(menu));
-  });
 
   const menuUpdate = () => {
+    document.body.style.overflow = "hidden"
     menu.current.classList.toggle(styles.menuActive);
+    menu.current.classList.toggle(styles.modalOpen);
     return menu.current.classList.toggle(styles.menuNone);
   };
 
   const menuСlose = () => {
+    document.body.style.overflow = "auto"
     menu.current.classList.add(styles.menuNone);
     return menu.current.classList.remove(styles.menuActive);
   };
@@ -45,7 +45,7 @@ const Header = () => {
             alt="menu"
           />
           <div ref={menu} className={styles.menuNone}>
-            <Menu menuСlose={menuСlose} />
+            <Menu menuСlose={menuСlose} /> 
           </div>
           <h1 className={styles.storeName}>
             <Link className={styles.name_link} to={"/"}>

@@ -3,7 +3,7 @@ const { NODE_ENV } = process.env;
 export let serverUrl;
 
 if(NODE_ENV === 'development') {
-  serverUrl = "https://el-kutbi-backend.onrender.com"; 
+  serverUrl = 'http://localhost:6001'
 } else {
-  serverUrl = 'http://localhost:10000'
+  serverUrl = "https://el-kutbi-backend.onrender.com"; 
 } 

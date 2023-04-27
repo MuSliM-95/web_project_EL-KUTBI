@@ -20,7 +20,7 @@ export const userRegistration = createAsyncThunk(
 );
 
 export const activationCode = createAsyncThunk(
-  "post/users",
+  "patch/user/code",
   async ({ phoneNumber }, thunkAPI) => {
     try {
       const res = await fetch(`${serverUrl}/user/code`, {
@@ -30,17 +30,64 @@ export const activationCode = createAsyncThunk(
           "Content-type": "application/json",
         },
       });
+      return await res.json();
+    } catch (error) {
+      console.log(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const addPassword = createAsyncThunk(
+  "patch/user/password",
+  async ({ phoneNumber, password }, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/user/password`, {
+        method: "PATCH",
+        body: JSON.stringify({ phoneNumber, password }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
       const data = await res.json();
-      console.log(data);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("token", data.token);
       return data;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
+export const userLogin = createAsyncThunk(
+  "users/login",
+  async ({ phoneNumber, password }, thunkAPI) => {
+    try {
+      console.log(phoneNumber, password);
+      const res = await fetch(`${serverUrl}/users/login`, {
+        method: "POST",
+        body: JSON.stringify({ phoneNumber, password }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(9);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("token", data.token);
+      return data;
+    } catch (error) {
+      console.log(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 export const getUsers = createAsyncThunk("get/users", async (thunkAPI) => {
   try {
     const res = await fetch(`${serverUrl}/users`);
-    return await res.json();
+    const data = await res.json();
+    console.log(data);
+    return data
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

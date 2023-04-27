@@ -44,7 +44,17 @@
           outline: none;
           -webkit-box-shadow: 0 0 0 30px white inset;
         }
-    
+       .passwordError {
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        width: 80%;
+        padding: 6px;
+        background-color: #fff;
+        border: solid 1px red;
+        
+       }
+      
         // .spanPeephole {
         //   &::after {
         //     content: "";
@@ -63,6 +73,10 @@
         //   outline: none;
         //   -webkit-box-shadow: 0 0 0 30px white inset;
         // }
+      }
+
+      .inputBlockNone {
+        display: none;
       }
       .submit {
         width: 80%;

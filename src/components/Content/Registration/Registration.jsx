@@ -1,49 +1,86 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./Registration.module.scss";
 import userLogo from "../../../logo/630631-middle.png";
 import { useDispatch, useSelector } from "react-redux";
-import { activationCode, getUsers, userRegistration } from "../../../app/AsyncFetch/userFetch";
-import { Link } from "react-router-dom";
+import {
+  activationCode,
+  addPassword,
+  getUsers,
+  userRegistration,
+} from "../../../app/AsyncFetch/userFetch";
+import { Link, Navigate } from "react-router-dom";
 import { InputMask } from "primereact/inputmask";
+import {
+  validatorPassword,
+  validatorPhoneNumber,
+} from "../../../hooks/validatorIput";
 
 const Registration = () => {
-  // const [phoneNumber, setPhoneNumber] = useState("");
-  // const [code, setCode] = useState("");
-  const [registrationComponent, setRegistrationComponent] = useState({phoneNumber: "", code: ""})
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
   const users = useSelector((state) => state.usersReducer.users);
   const user = useSelector((state) => state.usersReducer.user);
-  const error = useSelector((state) => state.usersReducer.status);
+  // const userId = useSelector((state) => state.usersReducer.userId);
+  const token = useSelector((state) => state.usersReducer.token);
+  // const error = useSelector((state) => state.usersReducer.status);
+
+  const inputpassword = useRef();
 
   useEffect(() => {
     dispatch(getUsers());
   },[]);
 
-  console.log(user);
   const stopForm = (e) => {
     e.preventDefault();
   };
 
   const addPhoneNumber = (e) => {
-    setRegistrationComponent({phoneNumber: e.target.value});
+    setPhoneNumber(e.target.value);
   };
   const addCode = (e) => {
-    setRegistrationComponent({code: e.target.value});
+    setCode(e.target.value);
   };
+  const inputPassword = (e) => {
+    setPassword(e.target.value);
+  };
+
   const registration = () => {
-    dispatch(userRegistration(registrationComponent));
-  };
-  const activationUserProfile = () => {
-    if(user?.code === registrationComponent.code) {
-      dispatch(activationCode(registrationComponent));
+    if (validatorPhoneNumber(phoneNumber)) {
+      dispatch(userRegistration({ phoneNumber }));
     }
   };
 
+  const activationUserProfile = () => {
+    const { phoneNumber } = user;
+    if (user?.code === code) {
+      dispatch(activationCode(user));
+    }
+    if (user?.code === "verified") {
+      if (validatorPassword(password)) {
+        dispatch(addPassword({ phoneNumber, password }));
+        setPassword("");
+      }
+    }
+  };
+
+
+  const updatePage = users?.some((user) => user.phoneNumber === phoneNumber);
+
+
+  if (updatePage) {
+    return <Navigate to={"/login"} state={{phoneNumber: phoneNumber}} />;
+  }
+  if (token) {
+    console.log(7);
+    return <Navigate to={"/usersAccount"} />;
+  }
   return (
     <div className={styles.signupContainer}>
       <div className={styles.signUpBlock}>
-        <h1>Cоздать профиль</h1>
+        <h1>Введите номер</h1>
         <form onClick={stopForm} className={styles.signUp_form}>
           <div className={styles.inputBlock}>
             <img className={styles.inputImg} src={userLogo} alt="inputImg" />
@@ -53,37 +90,49 @@ const Registration = () => {
               id="phone"
               name="phone"
               placeholder="+7(999) 999-99-99"
-              value={user?.code ? user?.phoneNumber : registrationComponent.phoneNumber}
+              value={user?.code ? user?.phoneNumber : phoneNumber}
               onChange={addPhoneNumber}
               mask="+7(999) 999-99-99"
             />
           </div>
-
-          {user?.code && <div className={styles.inputBlock}>
+          <div
+            ref={inputpassword}
+            className={
+              user?.code && user?.code !== "verified"
+                ? styles.inputBlock
+                : styles.inputBlockNone
+            }
+          >
             <input
               className={styles.input}
-              type="text"
+              type="code"
               id="code"
               name="code"
-              value={registrationComponent.code}
+              value={code}
               onChange={addCode}
             />
-          </div>}
-          {/* {user?.code === "verified" && <div className={styles.inputBlock}>
+          </div>
+          <div
+            className={
+              user?.code && user?.code === "verified"
+                ? styles.inputBlock
+                : styles.inputBlockNone
+            }
+          >
             <input
               className={styles.input}
-              type="text"
-              id="code"
-              name="code"
-              value={registrationComponent.code}
-              onChange={addCode}
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={inputPassword}
+              placeholder="Пароль 8-20 символов"
             />
-          </div>} */}
-
+          </div>
           <input
             className={styles.submit}
             type="submit"
-            onClick={user?.code ?  activationCode : registration}
+            onClick={user?.code ? activationUserProfile : registration}
           />
         </form>
 

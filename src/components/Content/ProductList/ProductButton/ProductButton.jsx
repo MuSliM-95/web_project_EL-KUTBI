@@ -15,7 +15,7 @@ const ProductButton = ({el}) => {
 }
 
 ProductButton.propTypes = {
-  el: PropTypes.object
+  el: PropTypes.object.isRequired
 }
  
 export default ProductButton

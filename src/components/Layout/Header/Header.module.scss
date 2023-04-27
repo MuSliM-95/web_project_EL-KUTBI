@@ -211,11 +211,9 @@
           left: 0;
           position: fixed;
           transform: translate(0%);
-          // background: linear-gradient(360deg, #1f1e1e36 0%, #ffffff77 100%);
           transition: 0.5s;
           height: 100%;
           width: 100%;
-          background-color: white;
           top:0;
           z-index: 3;
       
@@ -223,6 +221,7 @@
         .menuNone {
           display: block;
           left: 0;
+          top: 0;
           position: fixed;
           overflow-x: hidden;
           height: 100%;
@@ -252,7 +251,7 @@
     .lower_header_block {
       .header_functional_elements {
         .menuActive {
-          width: 23%;
+          width: 100%;
       
         }
         .menuNone {
@@ -265,3 +264,4 @@
     }
   }
 }
+

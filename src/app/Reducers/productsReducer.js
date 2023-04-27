@@ -3,6 +3,7 @@ import { getProducts } from "../AsyncFetch/productsFetch"
 
 const initialState = {
     products: [],
+    productsCount: null,
     status: "initial" || "loading" || "error" || "success",
 }
 
@@ -18,11 +19,11 @@ const productsReducer = createSlice({
             })
             .addCase(getProducts.fulfilled, (state, action) => {
                 state.status = "success";
-                state.products = action.payload;
+                state.products = action.payload.products;
+                state.productsCount = action.payload.arrayLength
             })
             .addCase(getProducts.rejected, (state, action) => {
                 state.status = "error";
-                state.error = action.payload;
             })
 
     }

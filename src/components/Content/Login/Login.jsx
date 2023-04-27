@@ -1,46 +1,55 @@
 import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import user from "../../../logo/630631-middle.png";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { InputMask } from "primereact/inputmask";
+import { userLogin } from "../../../app/AsyncFetch/userFetch";
+import { validatorPassword } from "../../../hooks/validatorIput";
 
 const Login = () => {
-  const [loginComponent, setLoginComponent] = useState({phoneNumber: "", password: "", show: false})
-  // const [phoneNumber, setPhoneNumber] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [show, setShow] = useState(false);
-
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+  
   const inputMenu = React.useRef();
-
+  const locatin = useLocation()
+  const token = useSelector((state) => state.usersReducer.token)
   const dispatch = useDispatch();
+  
+  const {phoneNumber} = locatin.state
+
 
   const stopForm = (e) => {
     e.preventDefault();
   };
 
-  const addPhoneNumber = (e) => {
-    setLoginComponent({phoneNumber: e.target.value});
-  };
-
   const addPassword = (e) => {
-    setLoginComponent({password: e.target.value});
+    setPassword(e.target.value);
   };
 
   const login = () => {
-    // dispatch(userLogin({ phoneNumber }));
+    if(validatorPassword(password)) {
+      dispatch(userLogin({ phoneNumber, password }));
+      // setPassword("")
+    }
   };
 
   const showPassword = (e) => {
     e.target.classList.toggle(styles.inputSpanEye);
     e.target.classList.toggle(styles.inputSpanNoEye);
-    setLoginComponent({show: !loginComponent.show});
+    setShow(!show);
   };
 
   const loginMenu = () => {
     inputMenu.current.classList.toggle(styles.loginMenuNone);
     inputMenu.current.classList.toggle(styles.loginMenu);
   };
+
+  if(token) {
+    return <Navigate to={"usersAccount"} />
+  }
+
+  console.log("render");
   return (
     <div className={styles.loginContainer}>
       <div className={styles.loginBlock}>
@@ -53,9 +62,7 @@ const Login = () => {
               type="tel"
               id="phone"
               name="phone"
-              placeholder="+7(999) 999-99-99"
-              value={loginComponent.phoneNumber}
-              onChange={addPhoneNumber}
+              value={phoneNumber}
               mask="+7(999) 999-99-99"
             />
             <span
@@ -75,11 +82,8 @@ const Login = () => {
                   type="tel"
                   id="phone"
                   name="phone"
-                  placeholder="+7(999) 999-99-99"
-                  value={loginComponent.phoneNumber}
-                  onChange={addPhoneNumber}
+                  value={phoneNumber}
                   mask="+7(999) 999-99-99"
-                  onClick={loginMenu}
                 />
               </div>
               <div className={styles.menuLinkBlock}>
@@ -91,10 +95,10 @@ const Login = () => {
             <img className={styles.inputImg} src={user} alt="inputImg" />
             <input
               className={styles.input}
-              type={loginComponent.show ? "text" : "password"}
+              type={show ? "text" : "password"}
               id="phone"
               name="phone"
-              value={loginComponent.password}
+              value={password}
               onChange={addPassword}
             />
             <span

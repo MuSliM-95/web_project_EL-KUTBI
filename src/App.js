@@ -1,5 +1,5 @@
 import styles from "./App.module.scss"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Layout from "./components/Layout/Layout";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import FormPage from "./pages/FormPage/FormPage";
@@ -10,11 +10,14 @@ import HealthProductsPage from "./pages/HealthProductsPage/HealthProductsPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TestPage from "./pages/TestPage/TestPage";
+import PersonalAccountPage from "./pages/PersonalAccount/PersonalAccountPage";
+import SelectedProductsListPage from "./pages/SelectedProductsListPage/SelectedProductsListPage";
 
 
 function App() {
   return (
     <div className={styles.App}>
+      <BrowserRouter >
       <Routes>
           <Route path={"/*"}  element={<Layout/>}>
           <Route path={"/*"}  element={<ProductsPage/>}/>
@@ -23,13 +26,16 @@ function App() {
           <Route path={"hygiene"} element={<HygieneProductsPage/>}/>
           <Route path={"health"} element={<HealthProductsPage/>}/>
           <Route path={"testPage"} element={<TestPage/>}/>
+          <Route path={"usersAccount"} element={<PersonalAccountPage/>}/>
+          <Route path={"favorites"} element={<SelectedProductsListPage/>}/>
           </Route>
           <Route path={"signinUp"} element={<RegistrationPage/>}/>
           <Route path={"login"} element={<LoginPage/>}/>
           <Route path={"form"} element={<FormPage />} />
       </Routes>
-    </div>
+      </BrowserRouter>
+      </div> 
   );
 }
-
+ 
 export default App;

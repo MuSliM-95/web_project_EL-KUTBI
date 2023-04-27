@@ -1,11 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit"
-import { activationCode, getUsers, userRegistration } from "../AsyncFetch/userFetch"
+import { activationCode, addPassword, getUsers, userLogin, userRegistration } from "../AsyncFetch/userFetch"
 
 
 const initialState = {
     user: null,
     status: "initial" || "loading" || "error" || "success",
     users: [],
+    token: localStorage.getItem("token"),
+    userId: localStorage.getItem("userId")
 }
 
 
@@ -47,6 +49,32 @@ const usersReducer = createSlice({
         .addCase(activationCode.rejected, (state, action) => {
             state.status = "error";
         });
+        builder
+        .addCase(addPassword.pending, (state, action) => {
+            state.status = "loading";
+        })
+        .addCase(addPassword.fulfilled, (state, action) => {
+            state.status = "success";
+            state.token = action.payload.token;
+            state.userId = action.payload.userId;
+        })
+        .addCase(addPassword.rejected, (state, action) => {
+            state.status = "error";
+        });
+        builder 
+        .addCase(userLogin.pending, (state, action) => {
+            state.status = "loading";
+
+        })
+        .addCase(userLogin.fulfilled, (state, action) => {
+            state.status = "success";
+            state.token = action.payload.token;
+            state.userId = action.payload.userId;
+        })
+        .addCase(userLogin.rejected, (state, action) => {
+            state.status = "error";
+
+        })
     } 
 })
 

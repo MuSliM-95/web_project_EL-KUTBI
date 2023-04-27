@@ -1,0 +1,10 @@
+.selectedProductsListPage {
+    background-color: #fff;
+    border-radius: 25px;
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .selectedProductsListPage {
+      border-radius: 0;
+    }
+  }

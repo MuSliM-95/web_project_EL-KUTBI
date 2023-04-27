@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link, useMatch } from "react-router-dom";
 import Menu from "../../Content/Menu/Menu";
 import styles from "./FixedMenu.module.scss";
 
 const FixedMenu = () => {
-  const menu = React.createRef();
+  const menu = useRef();
 
   // const match = useMatch()
 
