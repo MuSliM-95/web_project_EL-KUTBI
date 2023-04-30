@@ -1,9 +1,29 @@
 .productListСontainer {
+  min-height: 80vh;
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 
+  .favoritesProductNone {
+    display: none;
+  }
+  .favoritesProductZero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 20vh;
+    font-size: 2vw;
+    p {
+      color: #868695;
+    }
+    .linkButton {
+      text-decoration: none;
+    }
+  }
   .productList {
     width: 45%;
     display: flex;
@@ -16,7 +36,7 @@
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
-    
+
     .productImageContainer {
       width: 80%;
       position: relative;
@@ -36,17 +56,13 @@
       justify-content: space-evenly;
       align-items: center;
       text-align: center;
+      .booksAuthor {
+        opacity: 70%;
+        font-size: 2.5vw;
+      }
     }
 
-    .booksAuthor {
-      opacity: 70%;
-      font-size: 2.5vw;
-    }
-    &:hover {
-      box-shadow: 0px 0px 5px 5px #ffffff66(255, 255, 255, 255);
-    }
   }
-  
 }
 
 @media screen and (min-width: 400px) {
@@ -54,8 +70,10 @@
     .productList {
       width: 40%;
       font-size: 2vw;
-      .booksAuthor {
-        font-size: 1.8vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1.8vw;
+        }
       }
     }
   }
@@ -65,8 +83,10 @@
     .productList {
       width: 25%;
       font-size: 2vw;
-      .booksAuthor {
-        font-size: 1.8vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1.8vw;
+        }
       }
     }
   }
@@ -74,8 +94,10 @@
 @media screen and (min-width: 650px) {
   .productListСontainer {
     .productList {
-      .booksAuthor {
-        font-size: 1.7vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1.7vw;
+        }
       }
     }
   }
@@ -85,18 +107,29 @@
     .productList {
       width: 18%;
       font-size: 1.1vw;
-      .booksAuthor {
-        font-size: 1vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1vw;
+        }
       }
     }
   }
 }
 @media screen and (min-width: 1000px) {
   .productListСontainer {
+    .favoritesProductNone {
+      display: none;
+    }
+    .favoritesProductZero {
+      display: flex;
+      font-size: 1.5vw;
+    }
     .productList {
       font-size: 1.1vw;
-      .booksAuthor {
-        font-size: 1vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1vw;
+        }
       }
     }
   }
@@ -111,15 +144,14 @@
           display: none;
         }
       }
-
-      .booksAuthor {
-        font-size: 0.9vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 0.9vw;
+        }
+        .productButtonContainer {
+          display: none;
+        }
       }
-
-      .productButtonContainer {
-        display: none;
-      }
-
       &:hover {
         .favorites_button_container {
           display: flex;

@@ -36,14 +36,10 @@
       justify-content: space-evenly;
       align-items: center;
       text-align: center;
-    }
-
-    .booksAuthor {
-      opacity: 70%;
-      font-size: 2.5vw;
-    }
-    &:hover {
-      box-shadow: 0px 0px 5px 5px #ffffff66(255, 255, 255, 255);
+      .booksAuthor {
+        opacity: 70%;
+        font-size: 2.5vw;
+      }
     }
   }
   .moreItemsButtonContainer {
@@ -59,8 +55,10 @@
     .booksList {
       width: 40%;
       font-size: 2vw;
-      .booksAuthor {
-        font-size: 1.8vw;
+      .bookInfo {
+        .booksAuthor {
+          font-size: 1.8vw;
+        }
       }
     }
   }
@@ -70,8 +68,10 @@
     .booksList {
       width: 25%;
       font-size: 2vw;
-      .booksAuthor {
-        font-size: 1.8vw;
+      .bookInfo {
+        .booksAuthor {
+          font-size: 1.8vw;
+        }
       }
     }
   }
@@ -79,8 +79,10 @@
 @media screen and (min-width: 650px) {
   .booksListСontainer {
     .booksList {
-      .booksAuthor {
-        font-size: 1.7vw;
+      .bookInfo {
+        .booksAuthor {
+          font-size: 1.7vw;
+        }
       }
     }
   }
@@ -90,8 +92,10 @@
     .booksList {
       width: 18%;
       font-size: 1.1vw;
-      .booksAuthor {
-        font-size: 1vw;
+      .bookInfo {
+        .booksAuthor {
+          font-size: 1vw;
+        }
       }
     }
   }
@@ -101,8 +105,10 @@
     .booksList {
       width: 15%;
       font-size: 1.1vw;
-      .booksAuthor {
-        font-size: 1vw;
+      .bookInfo {
+        .booksAuthor {
+          font-size: 1vw;
+        }
       }
     }
   }
@@ -117,13 +123,15 @@
           display: none;
         }
       }
+      .bookInfo {
+        .booksAuthor {
+          font-size: 0.9vw;
+        }
+  
+        .productButtonContainer {
+          display: none;
+        }
 
-      .booksAuthor {
-        font-size: 0.9vw;
-      }
-
-      .productButtonContainer {
-        display: none;
       }
 
       &:hover {

@@ -32,6 +32,7 @@
         padding: 6px;
         border: solid 1px;
         background-color: #fff;
+        cursor: pointer;
         .inputImg {
           opacity: 0.4;
           width: 15%;
@@ -41,7 +42,14 @@
           padding: 8px;
           border: none;
           outline: none;
+          color: #000000;
+          cursor: pointer;
           -webkit-box-shadow: 0 0 0 30px white inset;
+
+          &::-ms-reveal {
+            width: 0;
+            height: 0;
+          }
         }
 
         .spanInputArrowImage {
@@ -58,10 +66,10 @@
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
           width: 27%;
           height: 15%;
-          padding: 10px 0px 10px 0px;
+          padding-bottom: 1%;
           position: absolute;
           left: 36.5%;
-          top: 46%;
+          top: 48%;
           z-index: 1;
           transition: 1s;
           transform-origin: top center;
@@ -114,10 +122,10 @@
           background-color: #fff;
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
           width: 27%;
-          height: 14%;
+          height: 15%;
           position: absolute;
           left: 36.5%;
-          top: 46%;
+          top: 48%;
           z-index: 1;
           transition: 1s;
           transform-origin: top center;
@@ -225,37 +233,74 @@
   .loginContainer {
     .loginBlock {
       .login_form {
+        height: 50%;
         .inputBlock {
           padding: 3px;
-
+          .input {
+            width: 80%;
+          }
+          .spanInputArrowImage {
+            background-size: 15px 15px;
+            width: 15px;
+            height: 15px;
+          }
+          .inputSpanNoEye {
+            background-size: 15px 15px;
+            width: 15px;
+            height: 15px;
+          }
+          .inputSpanEye {
+            background-size: 15px 15px;
+            width: 15px;
+            height: 15px;
+          }
           .loginMenu {
-            top: 45.5%;
+            top: 47.8%;
+            height: 13%;
             .loginMenuBlock {
               .inputMenuImg {
-                margin-left: 5px;
+                margin-left: 1%;
               }
             }
-            .menuLinkBlock{
+            .menuLinkBlock {
               margin-left: 8px;
               .linkSigninUp {
                 font-size: 1vw;
               }
             }
-
           }
           .loginMenuNone {
-            top: 45.5%;
+            top: 47.8%;
             .loginMenuBlock {
               .inputMenuImg {
                 margin-left: 5px;
               }
             }
-            .menuLinkBlock{
+            .menuLinkBlock {
               margin-left: 8px;
               .linkSigninUp {
                 font-size: 1vw;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 938px) {
+  .loginContainer {
+    .loginBlock {
+      .login_form {
+        .inputBlock {
+          .input {
+          }
+          .loginMenu {
+            top: 47.4%;
+            height: 12%;
+          }
+          .loginMenuNone {
+            top: 47.4%;
           }
         }
       }
@@ -269,21 +314,35 @@
         .inputBlock {
           padding: 2px;
 
+          .spanInputArrowImage {
+            background-size: 10px 10px;
+            width: 10px;
+            height: 10px;
+          }
+          .inputSpanNoEye {
+            background-size: 10px 10px;
+            width: 10px;
+            height: 10px;
+          }
+          .inputSpanEye {
+            background-size: 10px 10px;
+            width: 10px;
+            height: 10px;
+          }
           .loginMenu {
-            top: 45%;
+            top: 47%;
+            height: 12%;
 
-            .menuLinkBlock{
+            .menuLinkBlock {
               margin-left: 9px;
               .linkSigninUp {
                 font-size: 1.1vw;
               }
             }
-
           }
           .loginMenuNone {
-
-            top: 45%;
-            .menuLinkBlock{
+            top: 47%;
+            .menuLinkBlock {
               margin-left: 9px;
               .linkSigninUp {
                 font-size: 1.1vw;
@@ -300,11 +359,12 @@
     font-size: 2vw;
     .loginBlock {
       width: 55%;
-      height: 40%;
+      height: 50%;
       .login_form {
         .inputBlock {
+          padding: 2px;
           .loginMenu {
-            top: 46.5%;
+            top: 48.8%;
             width: 43%;
             margin-left: -8%;
             .loginMenuBlock {
@@ -312,24 +372,23 @@
                 margin-left: 5px;
               }
             }
-            .menuLinkBlock{
+            .menuLinkBlock {
               margin-left: 8px;
               .linkSigninUp {
                 font-size: 1.5vw;
               }
             }
-
           }
           .loginMenuNone {
             width: 43%;
             margin-left: -8%;
-            top: 46.5%;
+            top: 48.8%;
             .loginMenuBlock {
               .inputMenuImg {
                 margin-left: 5px;
               }
             }
-            .menuLinkBlock{
+            .menuLinkBlock {
               margin-left: 8px;
               .linkSigninUp {
                 font-size: 1.5vw;
@@ -340,7 +399,6 @@
           .input {
             padding: 0;
           }
-          padding: 2px;
         }
         .submit {
           font-size: 2.4vw;
@@ -364,19 +422,18 @@
       .login_form {
         .inputBlock {
           .loginMenu {
-            top:46.2%;
-            .menuLinkBlock{
+            top: 48.5%;
+            .menuLinkBlock {
               margin-left: 2.5%;
               .linkSigninUp {
                 font-size: 1.5vw;
               }
             }
-
           }
           .loginMenuNone {
-            top:46.2%;
- 
-            .menuLinkBlock{
+            top: 48.5%;
+
+            .menuLinkBlock {
               margin-left: 2.5%;
               .linkSigninUp {
                 font-size: 1.5vw;
@@ -405,98 +462,81 @@
     }
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
   .loginContainer {
     .loginBlock {
       .login_form {
         .inputBlock {
           .loginMenu {
-            top: 45.8%;
-            margin-left: -8%;
-     
-            .menuLinkBlock{
-              margin-left: 3.5%;
-              .linkSigninUp {
-                font-size: 1.6vw;
-              }
-            }
-
+            top: 48%;
           }
           .loginMenuNone {
-            top: 45.8%;
-            .menuLinkBlock{
-              margin-left: 3.5%;
-              .linkSigninUp {
-                font-size: 1.6vw;
-              }
-            }
+            top: 48%;
           }
-
         }
-
       }
-
     }
   }
 }
-// @media screen and (max-width: 450px) {
-//   .loginContainer {
-//     .loginBlock {
-//       .login_form {
-//         .inputBlock {
-//           .loginMenu {
-//             top: 45.8%;
-//             margin-left: -8%;
-//             .loginMenuBlock {
-//               .inputMenuImg {
-//                 height: 15%;
-//                 margin-left: 5px;
-//               }
-//             }
-//             .menuLinkBlock{
-//               margin-left: 6px;
-//               .linkSigninUp {
-//                 font-size: 1.5vw;
-//               }
-//             }
-
-//           }
-//           .loginMenuNone {
-//             top: 45.8%;
-//             width: 43%;
-//             margin-left: -8%;
-//             .loginMenuBlock {
-//               .inputMenuImg {
-//                 // height: 75%;
-//                 margin-left: 5px;
-//               }
-//             }
-//             .menuLinkBlock{
-//               margin-left: 6px;
-//               .linkSigninUp {
-//                 font-size: 1.5vw;
-//               }
-//             }
-//           }
-
-//           .input {
-//             padding: 0;
-//           }
-//           padding: 2px;
-//         }
-//         .submit {
-//           font-size: 2.4vw;
-//         }
-//       }
-//       .inputCheckboxContainer {
-//         width: 78%;
-//         .linkAgreement {
-//           font-size: 2vw;
-//         }
-//         .linkHome {
-//           font-size: 2vw;
-//         }
-//       }
-//     }
-//   }
-// }
+@media screen and (max-width: 600px) {
+  .loginContainer {
+    .loginBlock {
+      .login_form {
+        .inputBlock {
+          .loginMenu {
+            top: 47.5%;
+          }
+          .loginMenuNone {
+            top: 47.5%;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .loginContainer {
+    .loginBlock {
+      .login_form {
+        .inputBlock {
+          .loginMenu {
+            top: 47%;
+          }
+          .loginMenuNone {
+            top: 47%;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .loginContainer {
+    .loginBlock {
+      height: 35%;
+      .login_form {
+        height: 50%;
+        .inputBlock {
+          .loginMenu {
+            margin-left: -8%;
+            height: 8%;
+            .menuLinkBlock {
+              margin-left: 3.5%;
+              .linkSigninUp {
+                font-size: 1.6vw;
+              }
+            }
+          }
+          .loginMenuNone {
+            .menuLinkBlock {
+              margin-left: 3.5%;
+              .linkSigninUp {
+                font-size: 1.6vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

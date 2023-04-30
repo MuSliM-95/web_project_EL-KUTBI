@@ -39,11 +39,11 @@ const FixedMenu = () => {
       <Link
         onClick={menuСlose}
         className={
-          useMatch("/")
+          useMatch("basket")
             ? styles.FixedMenuLinkBasketActive
             : styles.FixedMenuLinkBasket
         }
-        to={"#"}
+        to={"/basket"}
       ></Link>
       <Link
         onClick={menuСlose}
@@ -52,15 +52,15 @@ const FixedMenu = () => {
             ? styles.FixedMenuLinkSelectedActive
             : styles.FixedMenuLinkSelected
         }
-        to={"favorites"}
+        to={"/favorites"}
       ></Link>
       <Link
         onClick={menuСlose}
-        to={"usersAccount"}
+        to={"/usersAccount"}
         className={
           useMatch("usersAccount")
-            ? styles.FixedMenuLinkPersonalAccount
-            : styles.FixedMenuLinkPersonalAccountActive
+            ? styles.FixedMenuLinkPersonalAccountActive
+            : styles.FixedMenuLinkPersonalAccount
         }
       ></Link>
     </div>

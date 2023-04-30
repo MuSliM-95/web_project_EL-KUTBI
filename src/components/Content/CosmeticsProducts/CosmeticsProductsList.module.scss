@@ -16,7 +16,7 @@
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
-    
+
     .productImageContainer {
       width: 80%;
       position: relative;
@@ -25,8 +25,8 @@
       }
       display: flex;
       .favorites_button_container {
-       position: absolute;
-       right: 0;
+        position: absolute;
+        right: 0;
       }
     }
     .productInfo {
@@ -36,15 +36,12 @@
       justify-content: space-evenly;
       align-items: center;
       text-align: center;
+      .booksAuthor {
+        opacity: 70%;
+        font-size: 2.5vw;
+      }
     }
 
-    .booksAuthor {
-      opacity: 70%;
-      font-size: 2.5vw;
-    }
-    &:hover {
-      box-shadow: 0px 0px 5px 5px #ffffff66(255, 255, 255, 255);
-    }
   }
   .moreItemsButtonContainer {
     margin-bottom: 1%;
@@ -59,8 +56,10 @@
     .productList {
       width: 40%;
       font-size: 2vw;
-      .booksAuthor {
-        font-size: 1.8vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1.8vw;
+        }
       }
     }
   }
@@ -70,8 +69,10 @@
     .productList {
       width: 25%;
       font-size: 2vw;
-      .booksAuthor {
-        font-size: 1.8vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1.8vw;
+        }
       }
     }
   }
@@ -79,8 +80,10 @@
 @media screen and (min-width: 650px) {
   .productListСontainer {
     .productList {
-      .booksAuthor {
-        font-size: 1.7vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1.7vw;
+        }
       }
     }
   }
@@ -90,8 +93,10 @@
     .productList {
       width: 18%;
       font-size: 1.1vw;
-      .booksAuthor {
-        font-size: 1vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1vw;
+        }
       }
     }
   }
@@ -101,8 +106,10 @@
     .productList {
       width: 15%;
       font-size: 1.1vw;
-      .booksAuthor {
-        font-size: 1vw;
+      .productInfo {
+        .booksAuthor {
+          font-size: 1vw;
+        }
       }
     }
   }
@@ -117,13 +124,14 @@
           display: none;
         }
       }
+      .productInfo {
+        .booksAuthor {
+          font-size: 0.9vw;
+        }
 
-      .booksAuthor {
-        font-size: 0.9vw;
-      }
-
-      .productButtonContainer {
-        display: none;
+        .productButtonContainer {
+          display: none;
+        }
       }
 
       &:hover {

@@ -25,6 +25,7 @@ const Registration = () => {
   const user = useSelector((state) => state.usersReducer.user);
   // const userId = useSelector((state) => state.usersReducer.userId);
   const token = useSelector((state) => state.usersReducer.token);
+  const [show, setShow] = useState(false);
   // const error = useSelector((state) => state.usersReducer.status);
 
   const inputpassword = useRef();
@@ -36,14 +37,13 @@ const Registration = () => {
   const stopForm = (e) => {
     e.preventDefault();
   };
-
-  const addPhoneNumber = (e) => {
+  const handleInputsNumber = (e) => {
     setPhoneNumber(e.target.value);
   };
-  const addCode = (e) => {
+  const handleInputsCode = (e) => {
     setCode(e.target.value);
   };
-  const inputPassword = (e) => {
+  const handleInputsPassword = (e) => {
     setPassword(e.target.value);
   };
 
@@ -66,15 +66,20 @@ const Registration = () => {
     }
   };
 
+  const showPassword = (e) => {
+    e.target.classList.toggle(styles.inputSpanEye);
+    e.target.classList.toggle(styles.inputSpanNoEye);
+    setShow(!show);
+  };
+
 
   const updatePage = users?.some((user) => user.phoneNumber === phoneNumber);
 
 
   if (updatePage) {
-    return <Navigate to={"/login"} state={{phoneNumber: phoneNumber}} />;
+    return <Navigate to={"/login"} state={{phoneNumber}} />;
   }
   if (token) {
-    console.log(7);
     return <Navigate to={"/usersAccount"} />;
   }
   return (
@@ -91,7 +96,7 @@ const Registration = () => {
               name="phone"
               placeholder="+7(999) 999-99-99"
               value={user?.code ? user?.phoneNumber : phoneNumber}
-              onChange={addPhoneNumber}
+              onChange={handleInputsNumber}
               mask="+7(999) 999-99-99"
             />
           </div>
@@ -109,7 +114,7 @@ const Registration = () => {
               id="code"
               name="code"
               value={code}
-              onChange={addCode}
+              onChange={handleInputsCode}
             />
           </div>
           <div
@@ -121,13 +126,17 @@ const Registration = () => {
           >
             <input
               className={styles.input}
-              type="password"
+              type={show ? "text" : "password"}
               id="password"
               name="password"
               value={password}
-              onChange={inputPassword}
+              onChange={handleInputsPassword}
               placeholder="Пароль 8-20 символов"
             />
+            <span
+              onClick={showPassword}
+              className={styles.inputSpanNoEye}
+            ></span>
           </div>
           <input
             className={styles.submit}

@@ -12,6 +12,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import TestPage from "./pages/TestPage/TestPage";
 import PersonalAccountPage from "./pages/PersonalAccount/PersonalAccountPage";
 import SelectedProductsListPage from "./pages/SelectedProductsListPage/SelectedProductsListPage";
+import BasketPage from "./pages/BasketPage/BasketPage";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path={"testPage"} element={<TestPage/>}/>
           <Route path={"usersAccount"} element={<PersonalAccountPage/>}/>
           <Route path={"favorites"} element={<SelectedProductsListPage/>}/>
+          <Route path={"basket"} element={<BasketPage/>}/>
           </Route>
           <Route path={"signinUp"} element={<RegistrationPage/>}/>
           <Route path={"login"} element={<LoginPage/>}/>

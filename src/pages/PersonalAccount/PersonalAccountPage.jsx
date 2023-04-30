@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 const PersonalAccount = () => {
     const token = useSelector((state) => state.usersReducer.token)
     if(!token) {
-        return <Navigate to={"signinUp"} />
+        return <Navigate to={"/signinUp"} />
       }
     return (
         <div>

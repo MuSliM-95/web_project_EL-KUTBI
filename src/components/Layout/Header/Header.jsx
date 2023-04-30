@@ -72,7 +72,7 @@ const Header = () => {
               />
               <p>Адрес</p>
             </div>
-            <Link to={"signinUp"} className={styles.login_basket}>
+            <Link to={"/usersAccount"} className={styles.login_basket}>
               <img
                 className={styles.login_basket_image}
                 src={login}
@@ -80,14 +80,14 @@ const Header = () => {
               />
               <p className={styles.login_basket_text}>Войти</p>
             </Link>
-            <div className={styles.login_basket}>
+            <Link to={"/basket"} className={styles.login_basket}>
               <img
                 className={styles.login_basket_image}
                 src={basket}
                 alt="basket_logo"
               />
               <p className={styles.login_basket_text}>Корзина</p>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

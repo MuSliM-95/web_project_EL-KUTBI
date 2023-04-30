@@ -38,11 +38,15 @@
           width: 15%;
         }
         .input {
-          width: 80%;
+          // width: 95%;
           padding: 8px;
           border: none;
           outline: none;
           -webkit-box-shadow: 0 0 0 30px white inset;
+          &::-ms-reveal {
+            width: 0;
+            height: 0;
+          }
         }
        .passwordError {
         display: flex;
@@ -55,24 +59,24 @@
         
        }
       
-        // .spanPeephole {
-        //   &::after {
-        //     content: "";
-        //     display: block;
-        //     background-image: url("../../../logo/symbol_icon-icons.com_57844.png");
-        //     background-repeat: no-repeat;
-        //     background-size: 23px 23px;
-        //     width: 23px;
-        //     height: 23px;
-        //   }
-        // }
-        // .inputPassword {
-        //   width: 80%;
-        //   padding: 8px;
-        //   border: none;
-        //   outline: none;
-        //   -webkit-box-shadow: 0 0 0 30px white inset;
-        // }
+       .inputSpanNoEye {
+        display: block;
+        background-image: url("../../../logo/symbol_icon-icons.com_57844.png");
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+      .inputSpanEye {
+        display: block;
+        background-image: url("../../../logo/slash-on-it_icon-icons.com_57783.png");
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
       }
 
       .inputBlockNone {

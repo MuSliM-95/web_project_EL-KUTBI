@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./HygieneProductsList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
-import ProductButton from "../ProductList/ProductButton/ProductButton";
+import ProductButton from "../ProductButton/ProductButton";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
@@ -36,7 +36,7 @@ const HygieneProductsList = () => {
                 alt="books"
               />
               <div className={styles.favorites_button_container}>
-                <FavoritesButton el={el}/>
+                <FavoritesButton el={el} />
               </div>
             </div>
             <div className={styles.productInfo}>
@@ -44,7 +44,7 @@ const HygieneProductsList = () => {
               <p>{el.name}</p>
               <p className={styles.booksAuthor}>{el.Author}</p>
               <div className={styles.productButtonContainer}>
-                <ProductButton />
+                <ProductButton el={el} />
               </div>
             </div>
           </div>

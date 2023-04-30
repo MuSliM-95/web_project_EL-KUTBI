@@ -1,0 +1,10 @@
+.basketPage {
+    background-color: #fff;
+    border-radius: 25px;
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .basketPage {
+      border-radius: 0;
+    }
+  }

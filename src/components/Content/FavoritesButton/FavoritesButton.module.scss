@@ -1,4 +1,5 @@
-.favoritesNone {
+
+  .favoritesNone {
     display: flex;
     width: 23px;
     height: 23px;
@@ -7,7 +8,6 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-   
   }
 
   .favoritesActive {
@@ -20,6 +20,4 @@
     background-color: transparent;
     cursor: pointer;
     filter: sepia(2) hue-rotate(90deg) saturate(4);
-
-
   }

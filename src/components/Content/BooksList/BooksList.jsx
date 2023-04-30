@@ -2,23 +2,26 @@ import React, { useEffect } from "react";
 import styles from "./BooksList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
-import ProductButton from "../ProductList/ProductButton/ProductButton";
+import ProductButton from "../ProductButton/ProductButton";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 
-
 const BooksList = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productsReducer.products);
-  const productsCount = useSelector((state) => state.productsReducer.productsCount)
+  const productsCount = useSelector(
+    (state) => state.productsReducer.productsCount
+  );
 
   useEffect(() => {
     dispatch(getProducts({ productType: "books", count: 10 }));
   }, []);
 
   const getMoreProducts = () => {
-    dispatch(getProducts({ productType: "books", count: products?.length * 2 }));
+    dispatch(
+      getProducts({ productType: "books", count: products?.length * 2 })
+    );
   };
 
   return (
@@ -41,7 +44,7 @@ const BooksList = () => {
               <p>{el.name}</p>
               <p className={styles.booksAuthor}>{el.Author}</p>
               <div className={styles.productButtonContainer}>
-                <ProductButton />
+                <ProductButton el={el} />
               </div>
             </div>
           </div>
@@ -50,7 +53,7 @@ const BooksList = () => {
       {products?.length !== productsCount && (
         <div className={styles.moreItemsButtonContainer}>
           <MoreItemsButton getMoreProducts={getMoreProducts} />
-        </div> 
+        </div>
       )}
     </div>
   );

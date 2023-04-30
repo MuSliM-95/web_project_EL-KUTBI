@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
-import ProductButton from "../ProductList/ProductButton/ProductButton";
+import ProductButton from "../ProductButton/ProductButton";
 import styles from "./HealthProductList.module.scss";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
@@ -43,7 +43,7 @@ const HealthProductList = () => {
               <p>{el.name}</p>
               <p className={styles.booksAuthor}>{el.firm}</p>
               <div className={styles.productButtonContainer}>
-                <ProductButton />
+                <ProductButton el={el} />
               </div>
             </div>
           </div>

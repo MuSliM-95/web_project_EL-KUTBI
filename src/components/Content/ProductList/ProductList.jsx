@@ -1,29 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
-import ProductButton from "./ProductButton/ProductButton";
+import ProductButton from "../ProductButton/ProductButton";
 import styles from "./ProductList.module.scss";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 
-
 const ProductList = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productsReducer.products);
-  const favoritesProduct = useSelector(
-    (state) => state.favoritesReducer.productFavorites
-  );
 
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
   );
+  const ref = useRef(null);
 
   useEffect(() => {
     dispatch(getProducts({ productType: null, count: 20 }));
   }, []);
 
-  
   const getMoreProducts = () => {
     dispatch(getProducts({ productType: null, count: products?.length * 2 }));
   };

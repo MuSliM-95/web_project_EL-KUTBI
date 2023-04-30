@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
   };
 
-  const addPassword = (e) => {
+  const handleInputsPassword = (e) => {
     setPassword(e.target.value);
   };
 
@@ -46,7 +46,7 @@ const Login = () => {
   };
 
   if(token) {
-    return <Navigate to={"usersAccount"} />
+    return <Navigate to={"/usersAccount"} />
   }
 
   console.log("render");
@@ -55,7 +55,7 @@ const Login = () => {
       <div className={styles.loginBlock}>
         <h1>Войти под номером</h1>
         <form onClick={stopForm} className={styles.login_form}>
-          <div className={styles.inputBlock}>
+          <div  onClick={loginMenu} className={styles.inputBlock}>
             <img className={styles.inputImg} src={user} alt="inputImg" />
             <InputMask
               className={styles.input}
@@ -64,15 +64,14 @@ const Login = () => {
               name="phone"
               value={phoneNumber}
               mask="+7(999) 999-99-99"
+              disabled
             />
             <span
-              onClick={loginMenu}
               className={styles.spanInputArrowImage}
             ></span>
             <div ref={inputMenu} className={styles.loginMenuNone}>
-              <div className={styles.loginMenuBlock}>
+              <div  className={styles.loginMenuBlock}>
                 <img
-                  onClick={loginMenu}
                   className={styles.inputMenuImg}
                   src={user}
                   alt="inputImg"
@@ -84,10 +83,11 @@ const Login = () => {
                   name="phone"
                   value={phoneNumber}
                   mask="+7(999) 999-99-99"
+                  disabled
                 />
               </div>
               <div className={styles.menuLinkBlock}>
-                <Link className={styles.linkSigninUp}>Войти под другим номером</Link>
+                <Link to={"/signinUp"} className={styles.linkSigninUp}>Войти под другим номером</Link>
               </div>
             </div>
           </div>
@@ -96,10 +96,10 @@ const Login = () => {
             <input
               className={styles.input}
               type={show ? "text" : "password"}
-              id="phone"
-              name="phone"
+              id="password"
+              name="password"
               value={password}
-              onChange={addPassword}
+              onChange={handleInputsPassword}
             />
             <span
               onClick={showPassword}
