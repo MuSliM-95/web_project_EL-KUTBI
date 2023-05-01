@@ -63,7 +63,7 @@
         .itemInfoBloc {
           display: flex;
           flex-direction: column;
-          font-size: 1vw;
+          font-size: 1.5vw;
         }
         .itemButtonBlock {
           width: 10%;
@@ -79,7 +79,8 @@
 
         .productDeleteBlock {
           position: absolute;
-          right: -6%;
+          margin-top: -0.3%;
+          right: -5%;
 
           button {
             border: none;
@@ -109,131 +110,73 @@
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1054px) {
   .basketZeroWrapper {
     .basketWrapper {
       .basketProductsBlock {
+        width: 80%;
         .basketProductsList {
+          width: 90%;
+          .productImg {
+            width: 20%;
+          }
+          .itemInfoBloc {
+            font-size: 2vw;
+          }
+          .itemButtonBlock {
+            width: 25%;
+            font-size: 3vw;
+          }
+          
           .productDeleteBlock {
-            margin-top: 1%;
+            margin-top: -0.5%;
             button {
-              background-size: 60% 60%;
+              background-size: 100% 100%;
+              width: 20px;
+              height: 20px;
             }
           }
         }
       }
       .basketPayBlock {
+        display: none;
       }
     }
   }
 }
+
 @media screen and (max-width: 850px) {
   .basketZeroWrapper {
     .basketWrapper {
       .basketProductsBlock {
+        width: 90%;
         .basketProductsList {
+          .itemInfoBloc {
+            font-size: 2.5vw;
+          }
           .productDeleteBlock {
-          margin-top: 1.5%;
-            button {
-              background-size: 50% 50%;
-            }
+            margin-top: -1%;
           }
         }
-      }
-      .basketPayBlock {
       }
     }
   }
 }
+
 @media screen and (max-width: 750px) {
   .basketZeroWrapper {
     .basketWrapper {
       .basketProductsBlock {
         .basketProductsList {
           .productDeleteBlock {
-            margin-top: 2%;
+            margin-top: 0;
             button {
-              background-size: 40% 40%;
+              width: 18px;
+              height: 18px;
             }
           }
         }
       }
-      .basketPayBlock {
-      }
     }
   }
 }
-@media screen and (max-width: 650px) {
-  .basketZeroWrapper {
-    .basketWrapper {
-      .basketProductsBlock {
-        .basketProductsList {
-          .productDeleteBlock {
-            margin-top: 3%;
-            button {
-              background-size: 30% 30%;
-            }
-          }
-        }
-      }
-      .basketPayBlock {
-      }
-    }
-  }
-}
-@media screen and (max-width: 500px) {
-  .basketZeroWrapper {
-    .basketWrapper {
-      .basketProductsBlock {
-        .basketProductsList {
-          .productDeleteBlock {
-           margin-top: 3.3%;
-           right:-7%;
-   
-            button {
-              background-size: 20% 20%;
-            }
-          }
-        }
-      }
-      .basketPayBlock {
-      }
-    }
-  }
-}
-@media screen and (max-width: 450px) {
-  .basketZeroWrapper {
-    .basketWrapper {
-      .basketProductsBlock {
-        .basketProductsList {
-          .productDeleteBlock {
-           margin-top: 4%;
-           right:-8%;
-   
-            button {
-              background-size: 25% 25%;
-            }
-          }
-        }
-      }
-      .basketPayBlock {
-      }
-    }
-  }
-}
-@media screen and (max-width: 400px) {
-  .basketZeroWrapper {
-    .basketWrapper {
-      .basketProductsBlock {
-        .basketProductsList {
-          .productDeleteBlock {
-           margin-top: 4.8%;
-          }
-        }
-      }
-      .basketPayBlock {
-      }
-    }
-  }
-}
-
