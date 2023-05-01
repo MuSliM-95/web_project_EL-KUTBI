@@ -1,8 +1,8 @@
-.basketWrapper {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.basketZeroWrapper {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .basketNone {
     display: none;
   }
@@ -29,4 +29,211 @@
       color: #fff;
     }
   }
+
+  .basketWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: 50vh;
+    margin: 2%;
+    .basketProductsBlock {
+      background-color: #fff;
+      width: 70%;
+      border-radius: 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      padding: 2%;
+      text-align: center;
+
+      justify-content: center;
+      .basketProductsList {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        height: 30%;
+        margin: 1%;
+        position: relative;
+        .productImg {
+          width: 10%;
+          height: 100%;
+        }
+        .itemInfoBloc {
+          display: flex;
+          flex-direction: column;
+          font-size: 1vw;
+        }
+        .itemButtonBlock {
+          width: 10%;
+          display: flex;
+          justify-content: space-evenly;
+          font-size: 1.8vw;
+          button {
+            border: none;
+            background-color: #fff;
+            cursor: pointer;
+          }
+        }
+
+        .productDeleteBlock {
+          position: absolute;
+          right: -6%;
+
+          button {
+            border: none;
+            background-color: #fff;
+            background-image: url("../../../logo/basket_remove.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 15px;
+            height: 15px;
+            display: block;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .basketPayBlock {
+      display: flex;
+      position: sticky;
+      background-color: #fff;
+      width: 25%;
+      max-height: 50vh;
+      border-radius: 5%;
+    }
+  }
+  .basketWrapperNone {
+    display: none;
+  }
 }
+
+@media screen and (max-width: 1100px) {
+  .basketZeroWrapper {
+    .basketWrapper {
+      .basketProductsBlock {
+        .basketProductsList {
+          .productDeleteBlock {
+            margin-top: 1%;
+            button {
+              background-size: 60% 60%;
+            }
+          }
+        }
+      }
+      .basketPayBlock {
+      }
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  .basketZeroWrapper {
+    .basketWrapper {
+      .basketProductsBlock {
+        .basketProductsList {
+          .productDeleteBlock {
+          margin-top: 1.5%;
+            button {
+              background-size: 50% 50%;
+            }
+          }
+        }
+      }
+      .basketPayBlock {
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .basketZeroWrapper {
+    .basketWrapper {
+      .basketProductsBlock {
+        .basketProductsList {
+          .productDeleteBlock {
+            margin-top: 2%;
+            button {
+              background-size: 40% 40%;
+            }
+          }
+        }
+      }
+      .basketPayBlock {
+      }
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .basketZeroWrapper {
+    .basketWrapper {
+      .basketProductsBlock {
+        .basketProductsList {
+          .productDeleteBlock {
+            margin-top: 3%;
+            button {
+              background-size: 30% 30%;
+            }
+          }
+        }
+      }
+      .basketPayBlock {
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .basketZeroWrapper {
+    .basketWrapper {
+      .basketProductsBlock {
+        .basketProductsList {
+          .productDeleteBlock {
+           margin-top: 3.3%;
+           right:-7%;
+   
+            button {
+              background-size: 20% 20%;
+            }
+          }
+        }
+      }
+      .basketPayBlock {
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .basketZeroWrapper {
+    .basketWrapper {
+      .basketProductsBlock {
+        .basketProductsList {
+          .productDeleteBlock {
+           margin-top: 4%;
+           right:-8%;
+   
+            button {
+              background-size: 25% 25%;
+            }
+          }
+        }
+      }
+      .basketPayBlock {
+      }
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .basketZeroWrapper {
+    .basketWrapper {
+      .basketProductsBlock {
+        .basketProductsList {
+          .productDeleteBlock {
+           margin-top: 4.8%;
+          }
+        }
+      }
+      .basketPayBlock {
+      }
+    }
+  }
+}
+

@@ -28,7 +28,6 @@ const Registration = () => {
   const [show, setShow] = useState(false);
   // const error = useSelector((state) => state.usersReducer.status);
 
-  const inputpassword = useRef();
 
   useEffect(() => {
     dispatch(getUsers());
@@ -101,7 +100,6 @@ const Registration = () => {
             />
           </div>
           <div
-            ref={inputpassword}
             className={
               user?.code && user?.code !== "verified"
                 ? styles.inputBlock

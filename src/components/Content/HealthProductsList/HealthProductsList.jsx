@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductButton/ProductButton";
-import styles from "./HealthProductList.module.scss";
+import styles from "./HealthProductsList.module.scss";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 
-const HealthProductList = () => {
+const HealthProductsList = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productsReducer.products);
   const productsCount = useSelector(
@@ -58,4 +58,4 @@ const HealthProductList = () => {
   );
 };
 
-export default HealthProductList;
+export default HealthProductsList;

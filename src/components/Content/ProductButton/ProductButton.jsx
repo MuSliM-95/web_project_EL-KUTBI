@@ -9,17 +9,21 @@ const ProductButton = ({ el }) => {
 
   const basketProducts = useSelector((state) => state.basketReducer.basket);
   const filter = basketProducts?.some((item) => item._id === el._id);
- 
+
   const addProductBasket = () => {
     if (!filter) {
-     return dispatch(addItem(el));
+      return dispatch(addItem(el));
     }
-      dispatch(removeItem(el._id));
-    };
+    dispatch(removeItem(el._id));
+  };
 
   return (
-    <button onClick={addProductBasket} className={styles.productButton}>
-      В корзину
+    <button
+      type="button"
+      onClick={addProductBasket}
+      className={styles.productButton}
+    >
+      {filter ? "Удалить из корзины" :"В корзину"}
     </button>
   );
 };

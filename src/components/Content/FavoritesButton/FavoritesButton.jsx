@@ -22,6 +22,7 @@ const FavoritesButton = ({ el }) => {
   };
   return (
     <button
+    type="button"
       ref={favorites}
       onClick={addProductFavorites}
       className={filter ? styles.favoritesActive : styles.favoritesNone}

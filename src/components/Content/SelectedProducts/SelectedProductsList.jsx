@@ -26,11 +26,13 @@ const SelectedProductsList = () => {
             : styles.favoritesProductZero
         }
       >
+        <div>
         <h3>В избранном пока пусто</h3>
         <p>Сохраняйте товары, которые понравились, чтобы долго не искать</p>
         <Link className={styles.linkButton} to={"/"}>
           Выбрать любимый товар❤️
         </Link>
+        </div>
       </div>
       {favoritesProduct?.map((el, index) => {
         return (

@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductButton/ProductButton";
-import styles from "./ProductList.module.scss";
+import styles from "./ProductsList.module.scss";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 
-const ProductList = () => {
+const ProductsList = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productsReducer.products);
 
@@ -60,4 +60,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ProductsList;
