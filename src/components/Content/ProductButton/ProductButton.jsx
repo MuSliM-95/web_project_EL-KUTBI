@@ -12,7 +12,7 @@ const ProductButton = ({ el }) => {
 
   const addProductBasket = () => {
     if (!filter) {
-      return dispatch(addItem(el));
+      return dispatch(addItem({...el, quantity: 1}));
     }
     dispatch(removeItem(el._id));
   };
