@@ -1,19 +1,18 @@
 import React, { useRef } from "react";
-import { Link, useMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Menu from "../../Content/Menu/Menu";
 import styles from "./FixedMenu.module.scss";
 
 const FixedMenu = () => {
   const menu = useRef();
 
-  // const match = useMatch()
-
   const menuUpdate = () => {
     menu.current.classList.toggle(styles.menuActive);
     return menu.current.classList.toggle(styles.menuNone);
   };
 
-  const menuСlose = () => {
+  const menuСlose = (e) => {
+    console.log(e.target.classList.toggle("active"));
     menu.current.classList.add(styles.menuNone);
     return menu.current.classList.remove(styles.menuActive);
   };
@@ -26,42 +25,27 @@ const FixedMenu = () => {
       <Link
         onClick={menuСlose}
         to={"/"}
-        className={
-          useMatch("/")
-            ? styles.FixedMenuLinkHomeActive
-            : styles.FixedMenuLinkHome
-        }
+        className={styles.FixedMenuLinkHome}
       ></Link>
       <button
+        type="button"
         className={styles.FixedMenuButtonMenu}
         onClick={menuUpdate}
       ></button>
       <Link
         onClick={menuСlose}
-        className={
-          useMatch("basket")
-            ? styles.FixedMenuLinkBasketActive
-            : styles.FixedMenuLinkBasket
-        }
+        className={styles.FixedMenuLinkBasket}
         to={"/basket"}
       ></Link>
       <Link
         onClick={menuСlose}
-        className={
-          useMatch("favorites")
-            ? styles.FixedMenuLinkSelectedActive
-            : styles.FixedMenuLinkSelected
-        }
+        className={styles.FixedMenuLinkSelected}
         to={"/favorites"}
       ></Link>
       <Link
         onClick={menuСlose}
         to={"/usersAccount"}
-        className={
-          useMatch("usersAccount")
-            ? styles.FixedMenuLinkPersonalAccountActive
-            : styles.FixedMenuLinkPersonalAccount
-        }
+        className={styles.FixedMenuLinkPersonalAccount}
       ></Link>
     </div>
   );
