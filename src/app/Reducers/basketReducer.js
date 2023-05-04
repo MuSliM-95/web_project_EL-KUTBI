@@ -18,9 +18,29 @@ const basketReducer = createSlice({
       );
       localStorage.setItem("basket", JSON.stringify(state.basket));
     },
+    incrementItemQuantity: (state, action) => {
+      state.basket = state.basket.map(item => {
+        if(item._id === action.payload) {
+           item.quantity++
+           return item
+        }
+        return item
+      })
+      localStorage.setItem("basket", JSON.stringify(state.basket) )
+    },
+    decrementItemQuantity:(state, action) => {
+      state.basket = state.basket.map(item => {
+        if(item._id === action.payload && item.quantity > 1) {
+          item.quantity--
+          return item
+        }
+        return item
+      })
+      localStorage.setItem("basket", JSON.stringify(state.basket))
+    },
   },
 });
 
-export const { addItem, removeItem } = basketReducer.actions;
+export const { addItem, removeItem, incrementItemQuantity, decrementItemQuantity } = basketReducer.actions;
 
 export default basketReducer.reducer;
