@@ -13,8 +13,8 @@ const FixedMenu = () => {
     return menu.current.classList.toggle(styles.menuNone);
   };
 
-  const menuСlose = (e) => {
-    setMenuButton(!menuButton);
+  const menuСlose = () => {
+    setMenuButton(false);
     menu.current.classList.add(styles.menuNone);
     return menu.current.classList.remove(styles.menuActive);
   };
