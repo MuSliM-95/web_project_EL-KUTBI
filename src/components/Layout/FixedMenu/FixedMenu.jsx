@@ -17,7 +17,7 @@ const FixedMenu = () => {
     setMenuButton(false);
     menu.current.classList.add(styles.menuNone);
     return menu.current.classList.remove(styles.menuActive);
-  };
+  }; 
 
   return (
     <div className={styles.FixedMenuContainer}>
