@@ -1,106 +1,122 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTelegram } from "../../../hooks/useTelegram";
 import Button from "./Button/Button";
-import style from "./Form.module.scss"
- 
+import styles from "./Form.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { AddressSuggestions, FioSuggestions } from "react-dadata";
+import "react-dadata/dist/react-dadata.css";
+import { getUser, patchUser } from "../../../app/AsyncFetch/userFetch";
+import { Link } from "react-router-dom";
 
-const Form = () => { 
-    const { tg, user } = useTelegram()
-    const [name, setName] = useState({ name: "", surname: "", patronymic: "" })
-    const [address, setAddress] = useState({ city: "", subject: "", postcode: "", contact: "" })
+const Form = () => {
+  const dispatch = useDispatch();
+  const nameInput = useRef(null);
+  const userId = useSelector((state) => state.usersReducer.userId);
+  // const users = useSelector((state) => state.usersReducer.users)
+  const user = useSelector((state) => state.usersReducer.user);
 
-    useEffect(() => {
-        tg.MainButton?.setParams({
-            text: "Отправить данные "
+  useEffect(() => {
+    dispatch(getUser({ userId }));
+  }, []);
 
-        }) 
-    },[])
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [contact, setContact] = useState("");
 
-    useEffect(() => {
-        if (!name.name || !name.surname || !name.patronymic || !address.city || !address.subject || !address.postcode || !address.contact) {
-            tg?.MainButton.hide()
-        } else {
-            tg?.MainButton.show()
-        }
-    },[])
+  const { phoneNumber } = user;
 
-    const stopForm = (e) => {
-        e.preventDefault()
-    }
-    const onChangeName = (e) => {
-        setName({ name: e.target.value })
-    }
-    const onChangeSurname = (e) => {
-        setName({ surname: e.target.value })
-    }
-    const onChangePatronymic = (e) => {
-        setName({ patronymic: e.target.value })
-    }
-    const onChangeCity = (e) => {
-        setAddress({ city: e.target.value })
-    }
-    const onChangeSubject = (e) => {
-        setAddress({ subject: e.target.value })
-    }
-    const onChangePostcode = (e) => {
-        setAddress({ postcode: e.target.value })
-    }
-    const onChangeContact = (e) => {
-        setAddress({ contact: e.target.value })
-    }
+  const addUserData = () => {
+    dispatch(patchUser({ name, address, postcode, contact, userId }));
+  };
 
-    return (
-        <form onClick={stopForm} className={style.form} >
-            <div className={style.elKutbi}>EL-KUTBI</div>
-            <div className={style.formText}>Форма для оформления заказа</div>
-            <input
-                className={style.input}
-                type="text" value={name.surname}
-                placeholder="Фамилия"
-                onChange={onChangeSurname}
-            />
-            <input
-                className={style.input}
-                type="text" value={name.name}
-                placeholder="Имя"
-                onChange={onChangeName}
-            />
+  const stopForm = (e) => {
+    e.preventDefault();
+  };
+  const onChangeName = (e) => {
+    setName(e);
+  };
+  const onChangeAddress = (e) => {
+    setAddress(e);
+  };
+  const onChangePostcode = (e) => {
+    setPostcode(e.target.value);
+  };
+  const onChangeContact = (e) => {
+    setContact(e.target.value);
+  };
 
-            <input
-                className={style.input}
-                type="text" value={name.patronymic}
-                placeholder="Отчество"
-                onChange={onChangePatronymic}
-            />
-            <input
-                className={style.input}
-                type="text" value={address.city}
-                placeholder="Город"
-                onChange={onChangeCity}
-            />
-            <input
-                className={style.input}
-                type="text" value={address.subject}
-                placeholder="Улица_дом_квартира"
-                onChange={onChangeSubject}
-            />
-            <input
-                className={style.input}
-                type="number" value={address.postcode}
-                placeholder="Почтовый индекс"
-                onChange={onChangePostcode}
-            />
-            <input
-                className={style.input}
-                type="text" value={address.contact}
-                placeholder="Контакт для связи WhatsApp или Telegram"
-                onChange={onChangeContact}
-            />
+  const style = {
+    className: styles.input,
+  };
 
-            {user || <Button />}
-        </form>
-    )
-}
+  return (
+    <div className={styles.form_wrapper}>
+      <form onClick={stopForm} className={styles.form}>
+        <div className={styles.elKutbi}>EL-KUTBI</div>
+        <div className={styles.formText}>Форма для оформления заказа</div>
+        <div className={styles.inputContainer}>
+          <input
+            className={styles.input}
+            type="tel"
+            value={phoneNumber}
+            disabled
+          />
+          <FioSuggestions
+            inputProps={style}
+            ref={nameInput}
+            token="d48068d3df3e54cbd1bb9c0a6edf99b88a6adfe4"
+            className={styles.input}
+            type="text"
+            value={name}
+            placeholder="Отчество"
+            onChange={onChangeName}
+          />
+          <AddressSuggestions
+            inputProps={style}
+            token="d48068d3df3e54cbd1bb9c0a6edf99b88a6adfe4"
+            type="text"
+            value={address}
+            placeholder="Улица_дом_квартира"
+            onChange={onChangeAddress}
+          />
+          <input
+            className={styles.input}
+            type="text"
+            value={contact}
+            placeholder="Контакт для связи WhatsApp, Telegram или Instagram"
+            onChange={onChangeContact}
+          />
+        </div>
 
+        <Button addUserData={addUserData} />
+      </form>
+      <div className={styles.addressWrapper}>
+        <div className={styles.addressBlock}>
+          <p>
+            <strong>Получатель: </strong>
+            {user?.name}
+          </p>
+          <p>
+            <strong>Номер: </strong>
+            {user?.phoneNumber}
+          </p>
+          <p>
+            <strong>Адрес: </strong>
+            {user?.address}
+          </p>
+          <p>
+            <strong>Индекс: </strong>
+            {user?.postal_code}
+          </p>
+          <a href={user?.contact} target="_blank">
+            <strong>Мессенджер: </strong>
+            {user?.contact}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default Form
+export default Form;

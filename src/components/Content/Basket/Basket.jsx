@@ -81,8 +81,8 @@ const Basket = () => {
         </div>
         <div className={styles.basketPayBlock}>
           <div className={styles.itemPayInfoBlock}>
-            <Link className={styles.deliveryLink} to={"#"}>
-              Доставка курьером
+            <Link className={styles.deliveryLink} to={"/form"}>
+              Адрес
             </Link>
             <div className={styles.cityTextBlock}>
               <p>Город Грозный</p>

@@ -1,3 +1,5 @@
+import styles from "../components/Content/Form/Form.module.scss"
+
 export function itemInfo(arrItem) {
   return arrItem?.reduce(
     (acc, { quantity, price }) => {
@@ -10,3 +12,5 @@ export function itemInfo(arrItem) {
     { totalPrice: 0, totalQuantity: 0, totalDelivery: 0, totalAmount: 0 }
   );
 }
+
+

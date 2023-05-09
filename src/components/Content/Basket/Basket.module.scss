@@ -139,6 +139,9 @@
             width: 15px;
             height: 15px;
           }
+          &:hover {
+            filter: sepia(2) hue-rotate(79deg) saturate(4);
+          }
         }
         div {
           width: 100%;

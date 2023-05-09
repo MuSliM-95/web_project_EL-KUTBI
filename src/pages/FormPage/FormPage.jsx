@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "../../components/Content/Form/Form";
+import styles from "./FormPage.module.scss"
 
 
 
@@ -7,7 +8,7 @@ import Form from "../../components/Content/Form/Form";
 const FormPage = () => {
 
     return( 
-        <div>
+        <div className={styles.formPage}>
             <Form/>
         </div>
     )

@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit"
-import { activationCode, addPassword, getUsers, userLogin, userRegistration } from "../AsyncFetch/userFetch"
+import { activationCode, addPassword, getUser, getUsers, userLogin, userRegistration } from "../AsyncFetch/userFetch"
 
 
 const initialState = {
-    user: null,
+    user: "",
     status: "initial" || "loading" || "error" || "success",
     users: [],
     token: localStorage.getItem("token"),
@@ -74,6 +74,17 @@ const usersReducer = createSlice({
         .addCase(userLogin.rejected, (state, action) => {
             state.status = "error";
 
+        });
+        builder
+        .addCase(getUser.pending, (state, action) => {
+            state.status = "loading";
+        })
+        .addCase(getUser.fulfilled, (state, action) => {
+            state.status = "success";
+            state.user = action.payload
+        })
+        .addCase(getUser.rejected, (state, action) => {
+            state.status = "error";
         })
     } 
 })

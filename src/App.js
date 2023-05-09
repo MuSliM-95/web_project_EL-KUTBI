@@ -30,10 +30,10 @@ function App() {
           <Route path={"usersAccount"} element={<PersonalAccountPage/>}/>
           <Route path={"favorites"} element={<SelectedProductsListPage/>}/>
           <Route path={"basket"} element={<BasketPage/>}/>
+          <Route path={"form"} element={<FormPage />} />
           </Route>
           <Route path={"signinUp"} element={<RegistrationPage/>}/>
           <Route path={"login"} element={<LoginPage/>}/>
-          <Route path={"form"} element={<FormPage />} />
       </Routes>
       </BrowserRouter>
       </div> 

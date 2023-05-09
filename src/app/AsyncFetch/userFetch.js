@@ -72,7 +72,7 @@ export const userLogin = createAsyncThunk(
         },
       });
       const data = await res.json();
-      console.log(9);
+
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("token", data.token);
       return data;
@@ -86,9 +86,32 @@ export const getUsers = createAsyncThunk("get/users", async (thunkAPI) => {
   try {
     const res = await fetch(`${serverUrl}/users`);
     const data = await res.json();
-    console.log(data);
+    console.log(data, 1);
     return data
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const getUser = createAsyncThunk("get/user", async ({userId},thunkAPI) => {
+  try {
+    const res = await fetch(`${serverUrl}/user/${userId}`);
+    return await res.json()
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})
+export const patchUser = createAsyncThunk("patch/user", async ({name, address, postcode, contact, userId }, thunkAPI) => {
+  try {
+    const res = await fetch(`${serverUrl}/user/info/${userId}`, {
+      method: "PATCH",
+      body: JSON.stringify({name, address, postcode, contact}),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+    return await res.json()
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+} )

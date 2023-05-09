@@ -3,12 +3,15 @@
     background: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
     margin: 7px;
-    font-size: 1.3vw;
-    border-radius: 15px;
-    background-color: white;
+    font-size: 2vw;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
-   &:hover {
-    background-color: rgb(51, 207, 20);
-    color: white;
-   }
+    background-color: #164f48;
+}
+
+@media screen and (min-width: 800px) {
+    .button {
+        font-size: 1.3vw;
+    }
 }

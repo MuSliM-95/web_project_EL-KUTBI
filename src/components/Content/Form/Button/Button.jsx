@@ -1,12 +1,14 @@
 import React from "react";
-import style from "./Button.module.scss"
+import style from "./Button.module.scss";
 
-const Button = () => {
-    return(
-        <div>
-            <button className={style.button}>Отправить форму</button>
-        </div>
-    )
-}
+const Button = ({ addUserData }) => {
+  return (
+    <div>
+      <button onClick={addUserData} className={style.button}>
+        Отправить форму
+      </button>
+    </div>
+  );
+};
 
-export default Button
+export default Button;
