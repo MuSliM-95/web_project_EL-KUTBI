@@ -101,11 +101,11 @@ export const getUser = createAsyncThunk("get/user", async ({userId},thunkAPI) =>
     return thunkAPI.rejectWithValue(error.message);
   }
 })
-export const patchUser = createAsyncThunk("patch/user", async ({name, address, postcode, contact, userId }, thunkAPI) => {
+export const patchUser = createAsyncThunk("patch/user", async ({name, address, contact, userId }, thunkAPI) => {
   try {
     const res = await fetch(`${serverUrl}/user/info/${userId}`, {
       method: "PATCH",
-      body: JSON.stringify({name, address, postcode, contact}),
+      body: JSON.stringify({name, address, contact}),
       headers: {
         "Content-type": "application/json",
       },

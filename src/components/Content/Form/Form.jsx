@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddressSuggestions, FioSuggestions } from "react-dadata";
 import "react-dadata/dist/react-dadata.css";
 import { getUser, patchUser } from "../../../app/AsyncFetch/userFetch";
-import { Link } from "react-router-dom";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -21,13 +20,12 @@ const Form = () => {
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
-  const [postcode, setPostcode] = useState("");
   const [contact, setContact] = useState("");
 
   const { phoneNumber } = user;
 
   const addUserData = () => {
-    dispatch(patchUser({ name, address, postcode, contact, userId }));
+    dispatch(patchUser({ name, address,  contact, userId }));
   };
 
   const stopForm = (e) => {
@@ -38,9 +36,6 @@ const Form = () => {
   };
   const onChangeAddress = (e) => {
     setAddress(e);
-  };
-  const onChangePostcode = (e) => {
-    setPostcode(e.target.value);
   };
   const onChangeContact = (e) => {
     setContact(e.target.value);
@@ -56,12 +51,12 @@ const Form = () => {
         <div className={styles.elKutbi}>EL-KUTBI</div>
         <div className={styles.formText}>Форма для оформления заказа</div>
         <div className={styles.inputContainer}>
-          <input
+          {/* <input
             className={styles.input}
             type="tel"
             value={phoneNumber}
             disabled
-          />
+          /> */}
           <FioSuggestions
             inputProps={style}
             ref={nameInput}
