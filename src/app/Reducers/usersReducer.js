@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit"
 import { activationCode, addPassword, getUser, getUsers, patchUser, userLogin, userRegistration } from "../AsyncFetch/userFetch"
+import { useReducer } from "react"
 
 
 const initialState = {
@@ -14,7 +15,12 @@ const initialState = {
 const usersReducer = createSlice({
     name:"user",
     initialState,
-    reducers: {},
+    reducers: {
+        removeToken: (state, action) => {
+            state.token = localStorage.removeItem("token")
+            state.userId = localStorage.removeItem("userId")
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(getUsers.pending, (state, action) => {
@@ -100,4 +106,6 @@ const usersReducer = createSlice({
     } 
 })
 
+
+export const  {removeToken} = usersReducer.actions
 export default usersReducer.reducer
