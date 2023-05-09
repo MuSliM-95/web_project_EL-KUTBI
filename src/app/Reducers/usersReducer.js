@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import { activationCode, addPassword, getUser, getUsers, userLogin, userRegistration } from "../AsyncFetch/userFetch"
+import { activationCode, addPassword, getUser, getUsers, patchUser, userLogin, userRegistration } from "../AsyncFetch/userFetch"
 
 
 const initialState = {
@@ -75,6 +75,17 @@ const usersReducer = createSlice({
             state.status = "error";
 
         });
+        builder
+        .addCase(patchUser.pending, (state, action) => {
+            state.status = "loading";
+        })
+        .addCase(patchUser.fulfilled, (state, action) => {
+            state.status = "success";
+            state.user = action.payload
+        })
+        .addCase(patchUser.rejected, (state, action) => {
+            state.status = "error";
+        })
         builder
         .addCase(getUser.pending, (state, action) => {
             state.status = "loading";
