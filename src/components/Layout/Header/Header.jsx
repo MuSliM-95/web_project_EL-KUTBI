@@ -2,15 +2,16 @@ import React  from "react";
 import styles from "./Header.module.scss";
 import menuImg from "../../../logo/menu.png";
 import EL_KUTBI from "../../../logo/EL-KUTBI.jpg";
-import search from "../../../logo/search.png";
 import login from "../../../logo/user (2).png";
 import basket from "../../../logo/basket.png";
 import mappointer from "../../../logo/mappointer (1).png";
 import { Link } from "react-router-dom";
 import Menu from "../../Content/Menu/Menu";
+import SearchValue from "../../Content/SearchValue/SearchValue";
 
 const Header = () => {
   const menu = React.useRef();
+  
 
   const menuUpdate = () => {
     document.body.style.overflow = "hidden"
@@ -25,9 +26,6 @@ const Header = () => {
     return menu.current.classList.remove(styles.menuActive);
   };
 
-  const stopForm = (e) => {
-    e.preventDefault();
-  };
   return (
     <header className={styles.header}>
       <div className={styles.upper_header_block}>
@@ -52,26 +50,8 @@ const Header = () => {
               EL-KUTBI
             </Link>
           </h1>
-
-          <form onClick={stopForm}>
-            <input
-              className={styles.input}
-              placeholder="Найти книгу или товар"
-              type="text"
-            />
-            <button className={styles.search_button}>
-              <img className={styles.search} src={search} alt="search" />
-            </button>
-          </form>
+            <SearchValue/>
           <div className={styles.login_basket_container}>
-            <div className={styles.address_block}>
-              <img
-                className={styles.address_image}
-                src={mappointer}
-                alt="cursor_map_logo"
-              />
-              <p>Адрес</p>
-            </div>
             <Link to={"/usersAccount"} className={styles.login_basket}>
               <img
                 className={styles.login_basket_image}

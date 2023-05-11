@@ -4,7 +4,7 @@ import style from "./Button.module.scss";
 const Button = ({ addUserData }) => {
   return (
     <div>
-      <button onClick={addUserData} className={style.button}>
+      <button type="button" onClick={addUserData} className={style.button}>
         Отправить форму
       </button>
     </div>

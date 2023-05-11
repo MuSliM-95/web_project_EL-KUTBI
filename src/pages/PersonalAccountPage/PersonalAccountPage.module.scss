@@ -1,0 +1,10 @@
+.personalAccount {
+    background-color: #fff;
+    border-radius: 25px;
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .personalAccount {
+      border-radius: 0;
+    }
+  }

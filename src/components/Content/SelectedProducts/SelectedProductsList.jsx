@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const SelectedProductsList = () => {
   const dispatch = useDispatch();
+  const value = useSelector(state => state.productsReducer.searchValue)
   const favoritesProduct = useSelector(
     (state) => state.favoritesReducer.productFavorites
   );
@@ -17,6 +18,9 @@ const SelectedProductsList = () => {
     dispatch(getProducts());
   }, []);
 
+  const productsFilter = favoritesProduct?.filter((item) =>
+  item.name.toLowerCase().includes(value?.toLowerCase())
+);
   return (
     <div className={styles.productListСontainer}>
       <div
@@ -34,7 +38,7 @@ const SelectedProductsList = () => {
         </Link>
         </div>
       </div>
-      {favoritesProduct?.map((el, index) => {
+      {productsFilter?.map((el, index) => {
         return (
           <div key={index} className={styles.productList}>
             <div className={styles.productImageContainer}>

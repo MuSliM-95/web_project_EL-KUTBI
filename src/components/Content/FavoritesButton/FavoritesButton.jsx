@@ -10,6 +10,8 @@ const FavoritesButton = ({ el }) => {
     (state) => state.favoritesReducer.productFavorites
   );
   const token = useSelector((state) => state.usersReducer.token);
+  const value = useSelector(state => state.productsReducer.searchValue)
+  
   const dispatch = useDispatch();
   const favorites = useRef();
   const filter = favoritesProduct?.some((item) => item._id === el._id);

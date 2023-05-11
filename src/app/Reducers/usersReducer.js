@@ -1,6 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
 import { activationCode, addPassword, getUser, getUsers, patchUser, userLogin, userRegistration } from "../AsyncFetch/userFetch"
-import { useReducer } from "react"
 
 
 const initialState = {

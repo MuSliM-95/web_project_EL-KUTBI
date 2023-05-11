@@ -35,30 +35,6 @@
         }
       }
 
-      form {
-        width: 50%;
-        border: solid 1px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        background-color: white;
-
-        .search_button {
-          background-color: white;
-          border: none;
-          .search {
-            width: 40%;
-          }
-        }
-
-        .input {
-          display: flex;
-          padding: 2%;
-          border: none;
-          outline: none;
-          border-radius: 5px;
-        }
-      }
       .login_basket_container {
         display: flex;
         width: 15%;
@@ -78,19 +54,6 @@
             color: white;
           }
         }
-
-        .address_block {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-
-          .address_image {
-            width: 15%;
-          }
-          &:hover {
-            color: white;
-          }
-        }
       }
     }
   }
@@ -102,27 +65,6 @@
       .header_functional_elements {
         justify-content: space-around;
         margin: 0 0 1% 0;
-
-        .storeName {
-          .name_link {
-          }
-        }
-
-        form {
-          width: 40%;
-          padding: 2px;
-
-          .search_button {
-            width: 10%;
-            .search {
-              width: 65%;
-            }
-          }
-
-          .input {
-            width: 100%;
-          }
-        }
       }
     }
   }
@@ -146,28 +88,10 @@
       .header_functional_elements {
         justify-content: space-around;
         margin: 0 0 1% 0;
-
         .storeName {
           .name_link {
           }
         }
-
-        form {
-          width: 40%;
-          padding: 2px;
-
-          .search_button {
-            width: 10%;
-            .search {
-              width: 45%;
-            }
-          }
-
-          .input {
-            width: 100%;
-          }
-        }
-
         .login_basket_container {
           .login_basket {
             text-decoration: none;
@@ -180,22 +104,6 @@
               width: 30%;
             }
           }
-          .address_block {
-            .address_image {
-              width: 30%;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (min-width: 800px) {
-  .header {
-    .lower_header_block {
-      .header_functional_elements {
-        form {
-          padding: 5px;
         }
       }
     }
@@ -205,7 +113,6 @@
   .header {
     .lower_header_block {
       .header_functional_elements {
-        
         .menuActive {
           display: block;
           left: 0;
@@ -214,9 +121,8 @@
           transition: 0.5s;
           height: 100%;
           width: 100%;
-          top:0;
+          top: 0;
           z-index: 3;
-      
         }
         .menuNone {
           display: block;
@@ -238,27 +144,6 @@
           &:hover {
             border-color: white;
           }
-        }
-        form {
-          padding: 5px;
-        }
-      }
-    }
-  }
-}
-@media screen and (min-width: 1260px) {
-  .header {
-    .lower_header_block {
-      .header_functional_elements {
-        .menuActive {
-          width: 100%;
-      
-        }
-        .menuNone {
-        }
-        .menuImg {
-        }
-        form {
         }
       }
     }

@@ -10,6 +10,7 @@ import FavoritesButton from "../FavoritesButton/FavoritesButton";
 const CosmeticsProductsList = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productsReducer.products);
+  const value = useSelector((state) => state.productsReducer.searchValue);
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
   );
@@ -24,9 +25,13 @@ const CosmeticsProductsList = () => {
     );
   };
 
+  const productsFilter = products?.filter((item) =>
+    item.name.toLowerCase().includes(value?.toLowerCase())
+  );
+
   return (
     <div className={styles.productListСontainer}>
-      {products?.map((el, index) => {
+      {productsFilter?.map((el, index) => {
         return (
           <div key={index} className={styles.productList}>
             <div className={styles.productImageContainer}>

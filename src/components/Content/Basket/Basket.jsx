@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Basket.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,11 +9,17 @@ import {
   removeItem,
 } from "../../../app/Reducers/basketReducer";
 import { itemInfo } from "../../../hooks/item";
+import { getUser } from "../../../app/AsyncFetch/userFetch";
 
 const Basket = () => {
   const basketProducts = useSelector((state) => state.basketReducer.basket);
+  const user = useSelector((state) => state.usersReducer.user);
+  const userId = useSelector((state) => state.usersReducer.userId);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getUser({userId}))
+  }, [])
   const removeItemIsBasket = ({ _id }) => {
     dispatch(removeItem(_id));
   };
@@ -85,7 +91,7 @@ const Basket = () => {
               Адрес
             </Link>
             <div className={styles.cityTextBlock}>
-              <p>Город Грозный</p>
+              <p>Город {user?.address}</p>
             </div>
             <p>3-10 дней</p>
             <Link className={styles.paymentMethodLink}>
