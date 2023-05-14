@@ -10,24 +10,29 @@ import {
 } from "../../../app/Reducers/basketReducer";
 import { itemInfo } from "../../../hooks/item";
 import { getUser } from "../../../app/AsyncFetch/userFetch";
+import { addProductsBasket } from "../../../app/AsyncFetch/basketFetch";
 
 const Basket = () => {
   const basketProducts = useSelector((state) => state.basketReducer.basket);
   const user = useSelector((state) => state.usersReducer.user);
+  const token = useSelector((state) => state.usersReducer.token);
   const userId = useSelector((state) => state.usersReducer.userId);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser({userId}))
-  }, [])
+    dispatch(getUser({ userId }));
+    if (token) {
+      dispatch(addProductsBasket({ userId, basketArray: basketProducts }));
+    }
+  });
   const removeItemIsBasket = ({ _id }) => {
     dispatch(removeItem(_id));
   };
 
-  const incrementItem = ({_id}) => {
+  const incrementItem = ({ _id }) => {
     dispatch(incrementItemQuantity(_id));
   };
-  const decrementItem = ({_id}) => {
+  const decrementItem = ({ _id }) => {
     dispatch(decrementItemQuantity(_id));
   };
 
@@ -71,9 +76,13 @@ const Basket = () => {
                   <strong>Цена: {item.price} р</strong>
                 </div>
                 <div className={styles.itemButtonBlock}>
-                  <button onClick={() => decrementItem(item)} type="button">-</button>
+                  <button onClick={() => decrementItem(item)} type="button">
+                    -
+                  </button>
                   <p>{item.quantity}</p>
-                  <button onClick={() => incrementItem(item)} type="button">+</button>
+                  <button onClick={() => incrementItem(item)} type="button">
+                    +
+                  </button>
                 </div>
                 <div className={styles.productDeleteBlock}>
                   <button

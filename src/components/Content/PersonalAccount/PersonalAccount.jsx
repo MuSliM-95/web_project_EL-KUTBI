@@ -1,35 +1,46 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import styles from "./PersonalAccount.module.scss";
 import { removeToken } from "../../../app/Reducers/usersReducer";
 import { getUser } from "../../../app/AsyncFetch/userFetch";
+import { clearBasket } from "../../../app/Reducers/basketReducer";
+import { addProductsBasket, getBasket } from "../../../app/AsyncFetch/basketFetch";
 
 const PersonalAccount = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.usersReducer.token);
   const userId = useSelector((state) => state.usersReducer.userId);
   const user = useSelector((state) => state.usersReducer.user);
+  const basketProducts = useSelector((state) => state.basketReducer.basket);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUser({ userId }));
+    if (token) {
+      dispatch(getBasket({userId}));
+      // dispatch(addProductsBasket({userId, basketArray: basketProducts}))
+    }
   }, []);
 
-  console.log(user);
+
   if (!token) {
     return <Navigate to={"/signinUp"} />;
   }
 
   const exit = () => {
     dispatch(removeToken());
+    dispatch(clearBasket())
+    return navigate("/") 
   };
 
   return (
     <div className={styles.wrapperPersonalAccount}>
       <div className={styles.personalAccountBlock}>
         <div className={styles.personalAccountInfo}>
-          <div>
+          <div className={styles.infoHeaderBlock}>
             <h2>Личная информация</h2>
+            <Link to={"/form"}></Link>
           </div>
           <div>
             <p>

@@ -10,6 +10,7 @@ form {
     background-color: white;
     border: none;
     width: 10%;
+    opacity: 0.5;
     .search {
       width: 50%;
     }
@@ -22,6 +23,16 @@ form {
     border: none;
     outline: none;
     border-radius: 5px;
+  }
+  .clearInput {
+    background-image: url("../../../logo/x.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    width: 16px;
+    height: 15px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
   }
 }
 

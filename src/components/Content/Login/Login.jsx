@@ -7,6 +7,7 @@ import { InputMask } from "primereact/inputmask";
 import { userLogin } from "../../../app/AsyncFetch/userFetch";
 import { validatorPassword } from "../../../hooks/validatorIput";
 
+
 const Login = () => {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
@@ -14,6 +15,8 @@ const Login = () => {
   const inputMenu = React.useRef();
   const locatin = useLocation()
   const token = useSelector((state) => state.usersReducer.token)
+  const basketProducts = useSelector((state) => state.basketReducer.basket);
+  const userId = useSelector((state) => state.usersReducer.userId);
   const dispatch = useDispatch();
   
   const {phoneNumber} = locatin.state
@@ -32,6 +35,7 @@ const Login = () => {
       dispatch(userLogin({ phoneNumber, password }));
       // setPassword("")
     }
+
   };
 
   const showPassword = (e) => {

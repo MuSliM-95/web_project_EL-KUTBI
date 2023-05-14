@@ -20,9 +20,12 @@ const SearchValue = () => {
     setSearchValue(e.target.value);
   };
 
+  const handleClearInput = () => {
+    return setSearchValue("")
+  }
   return (
     <form onClick={stopForm}>
-      <button className={styles.search_button}>
+      <button type="button" className={styles.search_button}>
         <img className={styles.search} src={search} alt="search" />
       </button>
       <input
@@ -32,6 +35,7 @@ const SearchValue = () => {
         placeholder="Найти книгу или товар"
         type="text"
       />
+      <button onClick={handleClearInput} className={styles.clearInput} type="button"></button>
     </form>
   );
 };

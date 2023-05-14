@@ -64,7 +64,6 @@ export const userLogin = createAsyncThunk(
   "users/login",
   async ({ phoneNumber, password }, thunkAPI) => {
     try {
-      console.log(phoneNumber, password);
       const res = await fetch(`${serverUrl}/users/login`, {
         method: "POST",
         body: JSON.stringify({ phoneNumber, password }),
@@ -73,7 +72,6 @@ export const userLogin = createAsyncThunk(
         },
       });
       const data = await res.json();
-
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("token", data.token);
       return data;
@@ -88,7 +86,6 @@ export const getUsers = createAsyncThunk("get/users", async (thunkAPI) => {
   try {
     const res = await fetch(`${serverUrl}/users`);
     const data = await res.json();
-    console.log(data, 1);
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

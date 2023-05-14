@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductButton/ProductButton";
@@ -15,7 +15,6 @@ const ProductsList = () => {
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
   );
-  const ref = useRef(null);
 
   useEffect(() => {
     dispatch(getProducts({ productType: null, count: 20 }));
