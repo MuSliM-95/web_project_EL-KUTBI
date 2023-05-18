@@ -14,10 +14,10 @@ const SelectedProductsList = () => {
   const favoritesProduct = useSelector(
     (state) => state.favoritesReducer.productFavorites
   );
-  // const status = useSelector((state) => state.productsReducer.status)
+  const status = useSelector((state) => state.productsReducer.status)
 
   useEffect(() => { 
-    dispatch(getProducts());
+    // dispatch(getProducts());
   }, []);
 
   const productsFilter = favoritesProduct?.filter((item) =>
