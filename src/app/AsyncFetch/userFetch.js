@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { serverUrl } from "../../serverUrl/serverUrl";
+import { addProductsBasket } from "./basketFetch";
 
 export const userRegistration = createAsyncThunk(
   "post/users",
@@ -74,6 +75,9 @@ export const userLogin = createAsyncThunk(
       const data = await res.json();
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("token", data.token);
+      const basket = JSON.parse(localStorage.getItem("basket")) 
+      console.log(basket);
+      addProductsBasket({userId: data.userId, basketArray: basket })
       return data;
     } catch (error) {
       console.log(error.message);

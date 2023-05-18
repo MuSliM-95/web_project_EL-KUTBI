@@ -14,6 +14,7 @@ import {
   validatorPassword,
   validatorPhoneNumber,
 } from "../../../hooks/validatorIput";
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 
 const Registration = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -26,12 +27,11 @@ const Registration = () => {
   // const userId = useSelector((state) => state.usersReducer.userId);
   const token = useSelector((state) => state.usersReducer.token);
   const [show, setShow] = useState(false);
-  // const error = useSelector((state) => state.usersReducer.status);
-
+  const status = useSelector((state) => state.productsReducer.status);
 
   useEffect(() => {
     dispatch(getUsers());
-  },[]);
+  }, []);
 
   const stopForm = (e) => {
     e.preventDefault();
@@ -71,15 +71,24 @@ const Registration = () => {
     setShow(!show);
   };
 
-
   const updatePage = users?.some((user) => user.phoneNumber === phoneNumber);
 
-
   if (updatePage) {
-    return <Navigate to={"/login"} state={{phoneNumber}} />;
+    return <Navigate to={"/login"} state={{ phoneNumber }} />;
   }
   if (token) {
     return <Navigate to={"/usersAccount"} />;
+  }
+
+  if (status === "loading") {
+    return (
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    );
+  }
+  if (status === "error") {
+    return <Navigate to={"/error"} />;
   }
   return (
     <div className={styles.signupContainer}>

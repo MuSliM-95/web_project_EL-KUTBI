@@ -6,15 +6,17 @@ import ProductButton from "../ProductButton/ProductButton";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
+import { Link, Navigate } from "react-router-dom";
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 
 const BooksList = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productsReducer.products);
-  const value = useSelector(state => state.productsReducer.searchValue)
+  const value = useSelector((state) => state.productsReducer.searchValue);
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
   );
-
+  const status = useSelector((state) => state.productsReducer.status);
   useEffect(() => {
     dispatch(getProducts({ productType: "books", count: 10 }));
   }, []);
@@ -26,9 +28,19 @@ const BooksList = () => {
   };
 
   const productsFilter = products?.filter((item) =>
-  item.name.toLowerCase().includes(value?.toLowerCase())
-);
+    item.name.toLowerCase().includes(value?.toLowerCase())
+  );
 
+  if (status === "loading") {
+    return (
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    );
+  }
+  if (status === "error") {
+    return <Navigate to={"/error"} />;
+  }
   return (
     <div className={styles.booksListСontainer}>
       {productsFilter?.map((el, index) => {
@@ -37,12 +49,15 @@ const BooksList = () => {
             <div className={styles.booksImageContainer}>
               <img
                 className={styles.bookImage}
-                src={`${serverUrl}/${el.imageSrc}`}
+                src={`${serverUrl}/${el.image[0].imageSrc}`}
                 alt="books"
               />
               <div className={styles.favorites_button_container}>
                 <FavoritesButton el={el} />
               </div>
+              <Link state={el} to={"/item"} className={styles.itemInfo}>
+                <p>Быстрый просмотр</p>
+              </Link>
             </div>
             <div className={styles.bookInfo}>
               <strong>{el.price} р</strong>

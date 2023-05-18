@@ -1,0 +1,45 @@
+.errorWrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1vw;
+  div {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 50%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    a {
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+      border: solid 1px;
+      border-radius: 5px;
+      padding: 1%;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .errorWrapper {
+    font-size: 1.7vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .errorWrapper {
+    div {
+      height: 30vh;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .errorWrapper {
+    background-color: #fff;
+    font-size: 2vw;
+  }
+}

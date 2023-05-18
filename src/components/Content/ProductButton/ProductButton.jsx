@@ -18,7 +18,7 @@ const ProductButton = ({ el }) => {
     if (token) {
       dispatch(addProductsBasket({ userId, basketArray: basketProducts }));
     }
-  })
+  },[])
   const addProductBasket = () => {
     if (!filter) {
      return dispatch(addItem({ ...el, quantity: 1 }));

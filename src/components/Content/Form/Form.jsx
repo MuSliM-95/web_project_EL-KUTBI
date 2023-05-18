@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTelegram } from "../../../hooks/useTelegram";
 import Button from "./Button/Button";
 import styles from "./Form.module.scss";
@@ -7,11 +7,12 @@ import { AddressSuggestions, FioSuggestions } from "react-dadata";
 import "react-dadata/dist/react-dadata.css";
 import { getUser, patchUser } from "../../../app/AsyncFetch/userFetch";
 import { InputMask } from "primereact/inputmask";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { validatorName } from "../../../hooks/validatorIput";
 
 const Form = () => {
   const dispatch = useDispatch();
+  const location = useLocation()
 
   const userId = useSelector((state) => state.usersReducer.userId);
   const user = useSelector((state) => state.usersReducer.user);
@@ -26,6 +27,7 @@ const Form = () => {
   const [recipientNumber, setRecipientNumber] = useState("");
 
   const { phoneNumber } = user;
+  const {page} = location.state
 
   const addUserData = () => {
     console.log(validatorName(name));
@@ -133,7 +135,7 @@ const Form = () => {
           </a>
         </div>
         <div className={styles.buttonBlock}>
-          <Link to={"/basket"}>Выбрать✅</Link>
+          <Link to={page}>Выбрать✅</Link>
         </div>
       </div>
     </div>

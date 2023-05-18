@@ -6,6 +6,8 @@ import styles from "./HealthProductsList.module.scss";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
+import { Link, Navigate } from "react-router-dom";
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif"
 
 const HealthProductsList = () => {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ const HealthProductsList = () => {
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
   );
+  const status = useSelector((state) => state.productsReducer.status)
 
   useEffect(() => {
     dispatch(getProducts({ productType: "Health", count: 10 }));
@@ -27,6 +30,16 @@ const HealthProductsList = () => {
   const productsFilter = products?.filter((item) =>
     item.name.toLowerCase().includes(value?.toLowerCase())
   );
+  if(status === "loading") {
+    return(
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    )
+  }
+  if(status === "error") {
+    return <Navigate to={"/error"}/>
+  }
   return (
     <div className={styles.productListСontainer}>
       {productsFilter?.map((el, index) => {
@@ -35,12 +48,15 @@ const HealthProductsList = () => {
             <div className={styles.productImageContainer}>
               <img
                 className={styles.productImage}
-                src={`${serverUrl}/${el.imageSrc}`}
+                src={`${serverUrl}/${el.image[0].imageSrc}`}
                 alt="books"
               />
               <div className={styles.favorites_button_container}>
                 <FavoritesButton el={el} />
               </div>
+              <Link state={el} to={"/item"} className={styles.itemInfo}>
+                <p>Быстрый просмотр</p>
+              </Link>
             </div>
             <div className={styles.productInfo}>
               <strong>{el.price} р</strong>

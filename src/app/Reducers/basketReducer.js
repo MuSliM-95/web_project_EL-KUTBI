@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addProductsBasket, getBasket } from "../AsyncFetch/basketFetch";
+import { getBasket } from "../AsyncFetch/basketFetch";
 
 const initialState = {
-  userId: localStorage.getItem("userId") || null,
+  userId: localStorage.getItem("userId"),
   basket: JSON.parse(localStorage.getItem("basket")) || [],
   status: "initial" || "loading" || "error" || "success",
 };
@@ -14,13 +14,14 @@ const basketReducer = createSlice({
     addItem: (state, action) => {
       state.basket.push(action.payload);
       localStorage.setItem("basket", JSON.stringify(state.basket));
-      // addProductsBasket({ userId: state.userId });
+      // state.basket = JSON.parse(localStorage.getItem("basket"))
     },
     removeItem: (state, action) => {
       state.basket = state.basket.filter(
         (items) => items._id !== action.payload
       );
       localStorage.setItem("basket", JSON.stringify(state.basket));
+      // state.basket = JSON.parse(localStorage.getItem("basket"))
     },
     incrementItemQuantity: (state, action) => {
       state.basket = state.basket.map((item) => {
@@ -31,6 +32,7 @@ const basketReducer = createSlice({
         return item;
       });
       localStorage.setItem("basket", JSON.stringify(state.basket));
+      // state.basket = JSON.parse(localStorage.getItem("basket"))
     },
     decrementItemQuantity: (state, action) => {
       state.basket = state.basket.map((item) => {
@@ -41,6 +43,7 @@ const basketReducer = createSlice({
         return item;
       });
       localStorage.setItem("basket", JSON.stringify(state.basket));
+      // state.basket = JSON.parse(localStorage.getItem("basket"))
     },
     clearBasket: (state, action) => {
       localStorage.removeItem("basket")

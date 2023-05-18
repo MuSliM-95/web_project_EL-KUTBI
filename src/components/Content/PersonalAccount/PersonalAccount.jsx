@@ -5,7 +5,11 @@ import styles from "./PersonalAccount.module.scss";
 import { removeToken } from "../../../app/Reducers/usersReducer";
 import { getUser } from "../../../app/AsyncFetch/userFetch";
 import { clearBasket } from "../../../app/Reducers/basketReducer";
-import { addProductsBasket, getBasket } from "../../../app/AsyncFetch/basketFetch";
+import {
+  addProductsBasket,
+  getBasket,
+} from "../../../app/AsyncFetch/basketFetch";
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 
 const PersonalAccount = () => {
   const dispatch = useDispatch();
@@ -13,16 +17,12 @@ const PersonalAccount = () => {
   const userId = useSelector((state) => state.usersReducer.userId);
   const user = useSelector((state) => state.usersReducer.user);
   const basketProducts = useSelector((state) => state.basketReducer.basket);
+  const status = useSelector((state) => state.productsReducer.status);
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUser({ userId }));
-    if (token) {
-      dispatch(getBasket({userId}));
-      // dispatch(addProductsBasket({userId, basketArray: basketProducts}))
-    }
   }, []);
-
 
   if (!token) {
     return <Navigate to={"/signinUp"} />;
@@ -30,17 +30,32 @@ const PersonalAccount = () => {
 
   const exit = () => {
     dispatch(removeToken());
-    dispatch(clearBasket())
-    return navigate("/") 
+    dispatch(clearBasket());
+    return navigate("/");
   };
 
+  if (status === "loading") {
+    return (
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    );
+  }
+  if (status === "error") {
+    return <Navigate to={"/error"} />;
+  }
   return (
     <div className={styles.wrapperPersonalAccount}>
       <div className={styles.personalAccountBlock}>
         <div className={styles.personalAccountInfo}>
           <div className={styles.infoHeaderBlock}>
-            <h2>Личная информация</h2>
-            <Link to={"/form"}></Link>
+            <Link
+              className={styles.personalInfoLink}
+              to={"/form"}
+              state={{ page: "/usersAccount" }}
+            >
+              Личная информация
+            </Link>
           </div>
           <div>
             <p>

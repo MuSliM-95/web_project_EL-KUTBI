@@ -5,6 +5,7 @@ export const addProductsBasket = createAsyncThunk(
   "patch/basket",
   async ({ userId, basketArray }, thunkAPI) => {
     try {
+      console.log(userId, basketArray);
       const token = localStorage.getItem("token");
       const res = await fetch(`${serverUrl}/basket/${userId}`, {
         method: "PATCH",
@@ -28,7 +29,7 @@ export const getBasket = createAsyncThunk(
   async ({ userId }, thunkAPI) => {
     try {
       const token = localStorage.getItem("token");
-      const basket = JSON.parse(localStorage.getItem("basket"))
+      // const basket = JSON.parse(localStorage.getItem("basket"));
       const res = await fetch(`${serverUrl}/basket/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -36,14 +37,11 @@ export const getBasket = createAsyncThunk(
         },
       });
       const data = await res.json();
-      basket.map(item => {
-        data.basket.push(item)
-      })
-      
-      localStorage.setItem("basket", JSON.stringify(data.basket));
+      // addProductsBasket({userId: data.userId, basketArray: data.basket})
+      // localStorage.setItem("basket", JSON.stringify(data.basket));
       return data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

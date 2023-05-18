@@ -1,3 +1,13 @@
+.loadingBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 70vh;
+  img {
+    width: 20%;
+  }
+}
 .productListСontainer {
   display: flex;
   width: 100%;
@@ -27,6 +37,26 @@
       .favorites_button_container {
         position: absolute;
         right: 0;
+      }
+      .itemInfo {
+        display: none;
+        bottom: 0;
+      }
+      &:hover {
+        .itemInfo {
+          width: 100%;
+          padding: 4%;
+          opacity: 0.8;
+          text-align: center;
+          background-color: #fff;
+          position: absolute;
+          display: block;
+          text-decoration: none;
+          color: black;
+          &:hover {
+            opacity: 0.9;
+          }
+        }
       }
     }
     .productInfo {

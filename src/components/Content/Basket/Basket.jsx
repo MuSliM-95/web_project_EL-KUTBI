@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Basket.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import {
   decrementItemQuantity,
@@ -11,20 +11,22 @@ import {
 import { itemInfo } from "../../../hooks/item";
 import { getUser } from "../../../app/AsyncFetch/userFetch";
 import { addProductsBasket } from "../../../app/AsyncFetch/basketFetch";
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 
 const Basket = () => {
   const basketProducts = useSelector((state) => state.basketReducer.basket);
   const user = useSelector((state) => state.usersReducer.user);
   const token = useSelector((state) => state.usersReducer.token);
   const userId = useSelector((state) => state.usersReducer.userId);
+  const status = useSelector((state) => state.productsReducer.status);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getUser({ userId }));
     if (token) {
       dispatch(addProductsBasket({ userId, basketArray: basketProducts }));
     }
   });
+
   const removeItemIsBasket = ({ _id }) => {
     dispatch(removeItem(_id));
   };
@@ -38,6 +40,17 @@ const Basket = () => {
 
   const { totalPrice, totalQuantity, totalDelivery, totalAmount } =
     itemInfo(basketProducts);
+
+  if (status === "loading") {
+    return (
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    );
+  }
+  if (status === "error") {
+    return <Navigate to={"/error"} />;
+  }
 
   return (
     <div className={styles.basketZeroWrapper}>
@@ -68,7 +81,7 @@ const Basket = () => {
               <div key={index} className={styles.basketProductsList}>
                 <img
                   className={styles.productImg}
-                  src={`${serverUrl}/${item.imageSrc}`}
+                  src={`${serverUrl}/${item.image[0].imageSrc}`}
                   alt="productsImage"
                 />
                 <div className={styles.itemInfoBloc}>
@@ -96,7 +109,11 @@ const Basket = () => {
         </div>
         <div className={styles.basketPayBlock}>
           <div className={styles.itemPayInfoBlock}>
-            <Link className={styles.deliveryLink} to={"/form"}>
+            <Link
+              className={styles.deliveryLink}
+              to={"/form"}
+              state={{ page: "/basket" }}
+            >
               Адрес
             </Link>
             <div className={styles.cityTextBlock}>

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./ProductsPage.module.scss"
-import ProductsList from "../../components/Content/ProductsList/ProductsList";
+import Products from "../../components/Content/Products/ProductsList";
 
 const MainPage = () => {
     return (
         <div className={styles.mainPage}>
-            <ProductsList/>
+            <Products/>
         </div>
     )
 }

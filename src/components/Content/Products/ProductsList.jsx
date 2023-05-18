@@ -1,55 +1,49 @@
 import React, { useEffect } from "react";
-import styles from "./SelectedProductsList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductButton/ProductButton";
-import FavoritesButton from "../FavoritesButton/FavoritesButton";
+import styles from "./ProductsList.module.scss";
 import { serverUrl } from "../../../serverUrl/serverUrl";
+import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
+import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import { Link, Navigate } from "react-router-dom";
 import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif"
 
-const SelectedProductsList = () => {
+const Products = () => {
   const dispatch = useDispatch();
-  const value = useSelector(state => state.productsReducer.searchValue)
-  const favoritesProduct = useSelector(
-    (state) => state.favoritesReducer.productFavorites
+  const products = useSelector((state) => state.productsReducer.products);
+  const value = useSelector((state) => state.productsReducer.searchValue);
+  const status = useSelector((state) => state.productsReducer.status)
+
+  const productsCount = useSelector(
+    (state) => state.productsReducer.productsCount
   );
-  // const status = useSelector((state) => state.productsReducer.status)
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getProducts({ productType: null, count: 20 }));
   }, []);
 
-  const productsFilter = favoritesProduct?.filter((item) =>
-  item.name.toLowerCase().includes(value?.toLowerCase())
-);
-// if(status === "loading") {
-//   return(
-//     <div className={styles.loadingBlock}>
-//       <img src={loadingImage} alt="loadingImage" />
-//     </div>
-//   )
-// }
-// if(status === "error") {
-//   return <Navigate to={"/error"}/>
-// }
+  const getMoreProducts = () => {
+    dispatch(getProducts({ productType: null, count: products?.length * 2 }));
+  };
+
+  const productsFilter = products?.filter((item) =>
+    item.name.toLowerCase().includes(value?.toLowerCase())
+  );
+
+  if(status === "loading") {
+    return(
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    )
+  }
+  if(status === "error") {
+    return <Navigate to={"/error"}/>
+  }
+
   return (
     <div className={styles.productListСontainer}>
-      <div
-        className={
-          favoritesProduct?.length > 0
-            ? styles.favoritesProductNone
-            : styles.favoritesProductZero
-        }
-      >
-        <div>
-        <h3>В избранном пока пусто</h3>
-        <p>Сохраняйте товары, которые понравились, чтобы долго не искать</p>
-        <Link className={styles.linkButton} to={"/"}>
-          Выбрать любимый товар❤️
-        </Link>
-        </div>
-      </div>
       {productsFilter?.map((el, index) => {
         return (
           <div key={index} className={styles.productList}>
@@ -70,6 +64,7 @@ const SelectedProductsList = () => {
               <strong>{el.price} р</strong>
               <p>{el.name}</p>
               <p className={styles.booksAuthor}>{el.Author}</p>
+              <p className={styles.booksAuthor}>{el.firm}</p>
               <div className={styles.productButtonContainer}>
                 <ProductButton el={el} />
               </div>
@@ -77,8 +72,13 @@ const SelectedProductsList = () => {
           </div>
         );
       })}
+      {products?.length !== productsCount && (
+        <div className={styles.moreItemsButtonContainer}>
+          <MoreItemsButton getMoreProducts={getMoreProducts} />
+        </div>
+      )}
     </div>
   );
 };
 
-export default SelectedProductsList;
+export default Products;

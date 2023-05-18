@@ -6,6 +6,7 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 import { InputMask } from "primereact/inputmask";
 import { userLogin } from "../../../app/AsyncFetch/userFetch";
 import { validatorPassword } from "../../../hooks/validatorIput";
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 
 
 const Login = () => {
@@ -17,6 +18,7 @@ const Login = () => {
   const token = useSelector((state) => state.usersReducer.token)
   const basketProducts = useSelector((state) => state.basketReducer.basket);
   const userId = useSelector((state) => state.usersReducer.userId);
+  const status = useSelector((state) => state.productsReducer.status);
   const dispatch = useDispatch();
   
   const {phoneNumber} = locatin.state
@@ -53,7 +55,16 @@ const Login = () => {
     return <Navigate to={"/usersAccount"} />
   }
 
-  console.log("render");
+  if (status === "loading") {
+    return (
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    );
+  }
+  if (status === "error") {
+    return <Navigate to={"/error"} />;
+  }
   return (
     <div className={styles.loginContainer}>
       <div className={styles.loginBlock}>

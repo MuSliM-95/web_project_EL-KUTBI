@@ -1,3 +1,13 @@
+.loadingBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 70vh;
+  img {
+    width: 20%;
+  }
+}
 .wrapperPersonalAccount {
   min-height: 70vh;
   display: flex;
@@ -16,14 +26,35 @@
     width: 95%;
     .personalAccountInfo {
       display: flex;
-      align-items: center;
       flex-direction: column;
       justify-content: space-between;
       width: 20%;
       font-size: 1vw;
-      div {
-        width: 100%;
+      .infoHeaderBlock {
+        font-weight: bold;
         display: flex;
+        .personalInfoLink {
+          text-decoration: none;
+          color: black;
+          font-size: 1.5vw;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &::after {
+            content: "";
+            display: block;
+            background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fill-rule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
+            background-repeat: no-repeat;
+            background-size: 80% 80%;
+            width: 15px;
+            height: 15px;
+          }
+          &:hover {
+            color: #164f48;
+            filter: sepia(2) hue-rotate(79deg) saturate(4);
+          }
+        }
       }
     }
 
@@ -81,18 +112,12 @@
         width: 90%;
         font-size: 2vw;
         .infoHeaderBlock {
-          display: flex;
+          width: 30%;
           justify-content: space-between;
-          a {
-            background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%3E%3Cpath%20fill%3D%22%23BDBDCB%22%20fill-rule%3D%22evenodd%22%20d%3D%22M12.407.258a.89.89%200%200%201%201.253%200l2.08%202.08a.885.885%200%200%201%200%201.253l-1.627%201.626-3.332-3.333L12.407.258ZM0%2012.665l9.83-9.83%203.333%203.333-9.83%209.83H0v-3.333Z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
-            background-repeat: no-repeat;
-            background-size: 13px 13px;
-            width: 13px;
-            height: 13px;
-            &:hover{
-                filter: sepia(2) hue-rotate(79deg) saturate(4);
-            }
+          .personalInfoLink {
+            font-size: 1.7vw;
           }
+
         }
       }
       .orderBlock {
@@ -137,6 +162,19 @@
   .wrapperPersonalAccount {
     .personalAccountBlock {
       min-height: 60vh;
+      .personalAccountInfo {
+        .infoHeaderBlock {
+          .personalInfoLink {
+            font-size: 1.7vw;
+            &::after {
+              width: 13px;
+              height: 13px;
+
+            }
+          }
+
+        }
+      }
     }
   }
 }
@@ -152,7 +190,16 @@
     .personalAccountBlock {
       min-height: 40vh;
       .personalAccountInfo {
-        font-size: 3vw;
+        font-size: 2.5vw;
+        .infoHeaderBlock {
+          width: 50%;
+          .personalInfoLink {
+            font-size: 2.5vw;
+            &::after {
+            }
+          }
+
+        }
       }
       .orderBlock {
         font-size: 3vw;
