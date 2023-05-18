@@ -16,7 +16,7 @@ const SelectedProductsList = () => {
   );
   // const status = useSelector((state) => state.productsReducer.status)
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(getProducts());
   }, []);
 
