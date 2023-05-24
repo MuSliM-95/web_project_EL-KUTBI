@@ -8,6 +8,7 @@ import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import { Link, Navigate } from "react-router-dom";
 import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif"
+import { getFavorites } from "../../../app/AsyncFetch/favoritesFetch";
 
 const CosmeticsProductsList = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,11 @@ const CosmeticsProductsList = () => {
     (state) => state.productsReducer.productsCount
   );
   const status = useSelector((state) => state.productsReducer.status)
+  const userId = useSelector((state) => state.usersReducer.userId);
 
   useEffect(() => {
     dispatch(getProducts({ productType: "cosmetics", count: 10 }));
+    dispatch(getFavorites({userId}));
   }, []);
 
   const getMoreProducts = () => {

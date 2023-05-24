@@ -8,21 +8,19 @@ import { userLogin } from "../../../app/AsyncFetch/userFetch";
 import { validatorPassword } from "../../../hooks/validatorIput";
 import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 
-
 const Login = () => {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
-  
-  const inputMenu = React.useRef();
-  const locatin = useLocation()
-  const token = useSelector((state) => state.usersReducer.token)
-  const basketProducts = useSelector((state) => state.basketReducer.basket);
-  const userId = useSelector((state) => state.usersReducer.userId);
-  const status = useSelector((state) => state.productsReducer.status);
-  const dispatch = useDispatch();
-  
-  const {phoneNumber} = locatin.state
 
+  const inputMenu = React.useRef(null);
+  const inputBlock = React.useRef(null);
+  const locatin = useLocation();
+  const dispatch = useDispatch();
+
+  const token = useSelector((state) => state.usersReducer.token);
+  const status = useSelector((state) => state.productsReducer.status);
+  const errorCode = useSelector((state) => state.usersReducer.errorCode);
+  const { phoneNumber } = locatin.state;
 
   const stopForm = (e) => {
     e.preventDefault();
@@ -33,11 +31,10 @@ const Login = () => {
   };
 
   const login = () => {
-    if(validatorPassword(password)) {
+    if (validatorPassword(password)) {
       dispatch(userLogin({ phoneNumber, password }));
-      // setPassword("")
     }
-
+    setPassword("");
   };
 
   const showPassword = (e) => {
@@ -51,8 +48,8 @@ const Login = () => {
     inputMenu.current.classList.toggle(styles.loginMenu);
   };
 
-  if(token) {
-    return <Navigate to={"/usersAccount"} />
+  if (token) {
+    return <Navigate to={"/usersAccount"} />;
   }
 
   if (status === "loading") {
@@ -65,12 +62,15 @@ const Login = () => {
   if (status === "error") {
     return <Navigate to={"/error"} />;
   }
+
+  if (errorCode) inputBlock.current?.classList.add(styles.errorInput);
+  else inputBlock.current?.classList.remove(styles.errorInput);
   return (
     <div className={styles.loginContainer}>
       <div className={styles.loginBlock}>
         <h1>Войти под номером</h1>
         <form onClick={stopForm} className={styles.login_form}>
-          <div  onClick={loginMenu} className={styles.inputBlock}>
+          <div onClick={loginMenu} className={styles.inputBlock}>
             <img className={styles.inputImg} src={user} alt="inputImg" />
             <InputMask
               className={styles.input}
@@ -81,11 +81,9 @@ const Login = () => {
               mask="+7(999) 999-99-99"
               disabled
             />
-            <span
-              className={styles.spanInputArrowImage}
-            ></span>
+            <span className={styles.spanInputArrowImage}></span>
             <div ref={inputMenu} className={styles.loginMenuNone}>
-              <div  className={styles.loginMenuBlock}>
+              <div className={styles.loginMenuBlock}>
                 <img
                   className={styles.inputMenuImg}
                   src={user}
@@ -102,11 +100,13 @@ const Login = () => {
                 />
               </div>
               <div className={styles.menuLinkBlock}>
-                <Link to={"/signinUp"} className={styles.linkSigninUp}>Войти под другим номером</Link>
+                <Link to={"/signinUp"} className={styles.linkSigninUp}>
+                  Войти под другим номером
+                </Link>
               </div>
             </div>
           </div>
-          <div className={styles.inputBlock}>
+          <div ref={inputBlock} className={styles.inputBlock}>
             <img className={styles.inputImg} src={user} alt="inputImg" />
             <input
               className={styles.input}
@@ -114,6 +114,7 @@ const Login = () => {
               id="password"
               name="password"
               value={password}
+              placeholder="Введите пароль"
               onChange={handleInputsPassword}
             />
             <span
@@ -125,9 +126,6 @@ const Login = () => {
         </form>
 
         <div className={styles.inputCheckboxContainer}>
-          <Link className={styles.linkAgreement} to={"#"}>
-            Согласен с условиями
-          </Link>
           <Link className={styles.linkHome} to={"/"}>
             Гость
           </Link>

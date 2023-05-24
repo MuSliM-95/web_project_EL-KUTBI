@@ -7,42 +7,29 @@ import FavoritesButton from "../FavoritesButton/FavoritesButton";
 
 const ProductsList = () => {
   const locatin = useLocation();
+
   const el = locatin.state;
   const [element, setElement] = useState(0);
 
-  console.log(el);
   return (
     <div className={styles.productsListWrapper}>
       <div className={styles.itemWrapper}>
         <div className={styles.itemImagesContainer}>
-          <img
-            onMouseOver={() => setElement(0)}
-            className={styles.itemaImages}
-            src={`${serverUrl}/${el.image[0]?.imageSrc}`}
-            alt="Products_image"
-          />
-          <img
-            onMouseOver={() => setElement(1)}
-            className={styles.itemaImages}
-            src={`${serverUrl}/${el.image[1]?.imageSrc}`}
-            alt="Products_image"
-          />
-          <img
-            onMouseOver={() => setElement(2)}
-            className={styles.itemaImages}
-            src={`${serverUrl}/${el.image[2]?.imageSrc}`}
-            alt="Products_image"
-          />
-          <img
-            onMouseOver={() => setElement(3)}
-            className={styles.itemaImages}
-            src={`${serverUrl}/${el.image[3]?.imageSrc}`}
-            alt="Products_image"
-          />
+          {el.image?.map((image, index) => {
+            return (
+              <img
+              key={index}
+                onMouseOver={() => setElement(index)}
+                className={styles.itemaImages}
+                src={`${serverUrl}/${image?.imageSrc}`}
+                alt="Products_image"
+              />
+            );
+          })}
         </div>
         <figure>
           <div className={styles.favorites_button_container}>
-          <FavoritesButton el={el}/>
+            <FavoritesButton el={el} />
           </div>
           <img
             className={styles.itemImage}

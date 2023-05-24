@@ -12,3 +12,18 @@ export function itemInfo(arrItem) {
   );
 }
 
+export function codeActivation(users, phoneNumberValue, passwordValue) {
+  return users?.reduce(
+    (acc, { phoneNumber, code, password }) => {
+      if (phoneNumber === phoneNumberValue) {
+        acc.userCode = code;
+      }
+      if(password) {
+        acc.passwordTrue = true
+      }
+      return acc
+    },
+    { userCode: "", passwordTrue: false }
+  );
+}
+

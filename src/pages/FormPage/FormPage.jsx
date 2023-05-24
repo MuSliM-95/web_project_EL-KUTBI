@@ -1,17 +1,13 @@
 import React from "react";
 import Form from "../../components/Content/Form/Form";
-import styles from "./FormPage.module.scss"
-
-
-
+import styles from "./FormPage.module.scss";
 
 const FormPage = () => {
+  return (
+    <div className={styles.formPage}>
+      <Form />
+    </div>
+  );
+};
 
-    return( 
-        <div className={styles.formPage}>
-            <Form/>
-        </div>
-    )
-}
-
-export default FormPage
+export default FormPage;

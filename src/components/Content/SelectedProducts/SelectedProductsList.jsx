@@ -1,38 +1,41 @@
 import React, { useEffect } from "react";
 import styles from "./SelectedProductsList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../../app/AsyncFetch/productsFetch";
 import ProductButton from "../ProductButton/ProductButton";
-import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import { Link, Navigate } from "react-router-dom";
-import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif"
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
+import FavoritesRemoveButton from "../FavoritesRemoveButton/FavoritesRemoveButton";
+import { getFavorites } from "../../../app/AsyncFetch/favoritesFetch";
 
 const SelectedProductsList = () => {
   const dispatch = useDispatch();
-  const value = useSelector(state => state.productsReducer.searchValue)
+
+  const value = useSelector((state) => state.productsReducer.searchValue);
   const favoritesProduct = useSelector(
     (state) => state.favoritesReducer.productFavorites
   );
-  const status = useSelector((state) => state.productsReducer.status)
-
-  useEffect(() => { 
-    // dispatch(getProducts());
-  }, []);
+  const status = useSelector((state) => state.favoritesReducer.status);
+  const userId = useSelector((state) => state.usersReducer.userId);
 
   const productsFilter = favoritesProduct?.filter((item) =>
-  item.name.toLowerCase().includes(value?.toLowerCase())
-);
-// if(status === "loading") {
-//   return(
-//     <div className={styles.loadingBlock}>
-//       <img src={loadingImage} alt="loadingImage" />
-//     </div>
-//   )
-// }
-// if(status === "error") {
-//   return <Navigate to={"/error"}/>
-// }
+    item.name.toLowerCase().includes(value?.toLowerCase())
+  );
+  useEffect(() => {
+    dispatch(getFavorites({userId}))
+  },[])
+  
+  if (status === "loading") {
+    return (
+      <div className={styles.loadingBlock}>
+        <img src={loadingImage} alt="loadingImage" />
+      </div>
+    );
+  }
+  if (status === "error") {
+    return <Navigate to={"/error"} />;
+  }
+
   return (
     <div className={styles.productListСontainer}>
       <div
@@ -43,11 +46,11 @@ const SelectedProductsList = () => {
         }
       >
         <div>
-        <h3>В избранном пока пусто</h3>
-        <p>Сохраняйте товары, которые понравились, чтобы долго не искать</p>
-        <Link className={styles.linkButton} to={"/"}>
-          Выбрать любимый товар❤️
-        </Link>
+          <h3>В избранном пока пусто</h3>
+          <p>Сохраняйте товары, которые понравились, чтобы долго не искать</p>
+          <Link className={styles.linkButton} to={"/"}>
+            Выбрать любимый товар❤️
+          </Link>
         </div>
       </div>
       {productsFilter?.map((el, index) => {
@@ -60,7 +63,7 @@ const SelectedProductsList = () => {
                 alt="books"
               />
               <div className={styles.favorites_button_container}>
-                <FavoritesButton el={el} />
+                <FavoritesRemoveButton el={el} />
               </div>
               <Link state={el} to={"/item"} className={styles.itemInfo}>
                 <p>Быстрый просмотр</p>

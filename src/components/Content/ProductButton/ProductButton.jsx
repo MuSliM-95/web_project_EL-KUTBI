@@ -18,10 +18,11 @@ const ProductButton = ({ el }) => {
     if (token) {
       dispatch(addProductsBasket({ userId, basketArray: basketProducts }));
     }
-  },[])
+  }, []);
+
   const addProductBasket = () => {
     if (!filter) {
-     return dispatch(addItem({ ...el, quantity: 1 }));
+      return dispatch(addItem({ ...el, quantity: 1 }));
     }
     dispatch(removeItem(el._id));
   };

@@ -1,32 +1,28 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./FavoritesButton.module.scss";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "../../../app/Reducers/favoritesReducer";
-
+import { addItem } from "../../../app/AsyncFetch/favoritesFetch";
 
 const FavoritesButton = ({ el }) => {
+  const dispatch = useDispatch();
   const favoritesProduct = useSelector(
     (state) => state.favoritesReducer.productFavorites
   );
-  const token = useSelector((state) => state.usersReducer.token);
-  const value = useSelector(state => state.productsReducer.searchValue)
-  
-  const dispatch = useDispatch();
-  const favorites = useRef();
+  const userId = useSelector((state) => state.usersReducer.userId);
   const filter = favoritesProduct?.some((item) => item._id === el._id);
 
   const addProductFavorites = () => {
     if (!filter) {
-      return dispatch(addItem(el));
+      return dispatch(addItem({ userId, item: el }));
     }
-    return dispatch(removeItem(el._id));
   };
+
   return (
     <button
-    type="button"
-      ref={favorites}
+      type="button"
       onClick={addProductFavorites}
+      disabled={filter}
       className={filter ? styles.favoritesActive : styles.favoritesNone}
     ></button>
   );

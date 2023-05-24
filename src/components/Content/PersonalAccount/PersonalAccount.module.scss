@@ -87,13 +87,26 @@
         width: 32%;
 
         .buttonExit {
-          //   font-size: 1.5vw;
           background-color: #fff;
           border: none;
           cursor: pointer;
         }
       }
     }
+  }
+  .deleteUserWrapperNone {
+    display: none;
+  }
+  .deleteUserWrapperActive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100vh;
+    top: 0;
+    padding: 2%;
+    background: rgba(165, 164, 164, 0.5);
   }
 }
 
@@ -103,8 +116,9 @@
       box-shadow: none;
       flex-direction: column;
       align-items: center;
-      min-height: 90vh;
+      height: 100%;
       width: 90%;
+      margin-top: 2%;
       .personalAccountInfo {
         padding: 3%;
         box-shadow: 2px 2px 5px 5px rgba(148, 126, 126, 0.425);
@@ -117,7 +131,6 @@
           .personalInfoLink {
             font-size: 1.7vw;
           }
-
         }
       }
       .orderBlock {
@@ -169,10 +182,8 @@
             &::after {
               width: 13px;
               height: 13px;
-
             }
           }
-
         }
       }
     }
@@ -198,7 +209,6 @@
             &::after {
             }
           }
-
         }
       }
       .orderBlock {
@@ -207,6 +217,9 @@
       .settingsBlock {
         font-size: 3vw;
       }
+    }
+    .deleteUserWrapperActive {
+      background-color: #fff;
     }
   }
 }

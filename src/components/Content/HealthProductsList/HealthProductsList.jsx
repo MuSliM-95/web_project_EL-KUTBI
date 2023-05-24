@@ -8,11 +8,13 @@ import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import { Link, Navigate } from "react-router-dom";
 import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif"
+import { getFavorites } from "../../../app/AsyncFetch/favoritesFetch";
 
 const HealthProductsList = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productsReducer.products);
   const value = useSelector((state) => state.productsReducer.searchValue);
+  const userId = useSelector((state) => state.usersReducer.userId);
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
   );
@@ -20,6 +22,7 @@ const HealthProductsList = () => {
 
   useEffect(() => {
     dispatch(getProducts({ productType: "Health", count: 10 }));
+    dispatch(getFavorites({userId}));
   }, []);
 
   const getMoreProducts = () => {

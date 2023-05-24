@@ -18,24 +18,31 @@ const Basket = () => {
   const user = useSelector((state) => state.usersReducer.user);
   const token = useSelector((state) => state.usersReducer.token);
   const userId = useSelector((state) => state.usersReducer.userId);
-  const status = useSelector((state) => state.productsReducer.status);
+  const status = useSelector((state) => state.basketReducer.status);
+
+  const [render, setRender] = useState(false)
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getUser({ userId }));
     if (token) {
       dispatch(addProductsBasket({ userId, basketArray: basketProducts }));
     }
-  });
+  },[render]);
 
   const removeItemIsBasket = ({ _id }) => {
     dispatch(removeItem(_id));
+    setRender(!render)
   };
 
   const incrementItem = ({ _id }) => {
     dispatch(incrementItemQuantity(_id));
+    setRender(!render)
   };
   const decrementItem = ({ _id }) => {
     dispatch(decrementItemQuantity(_id));
+    setRender(!render)
   };
 
   const { totalPrice, totalQuantity, totalDelivery, totalAmount } =
@@ -120,7 +127,7 @@ const Basket = () => {
               <p>Город {user?.address}</p>
             </div>
             <p>3-10 дней</p>
-            <Link className={styles.paymentMethodLink}>
+            <Link to={"/inDeveloping"} className={styles.paymentMethodLink} state={{page: "/basket"}}>
               Выбрать способ оплаты
             </Link>
             <div>
@@ -137,7 +144,7 @@ const Basket = () => {
             </div>
             <button type="button">Заказать</button>
             <div className={styles.inputCheckboxContainer}>
-              <Link className={styles.linkAgreement} to={"#"}>
+              <Link className={styles.linkAgreement} to={"/inDeveloping"} state={{page: "/basket"}}>
                 Согласен с условиями
               </Link>
             </div>

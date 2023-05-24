@@ -8,17 +8,22 @@ import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import { Link, Navigate } from "react-router-dom";
 import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
+import { getFavorites } from "../../../app/AsyncFetch/favoritesFetch";
 
 const BooksList = () => {
   const dispatch = useDispatch();
+  
   const products = useSelector((state) => state.productsReducer.products);
   const value = useSelector((state) => state.productsReducer.searchValue);
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
   );
+  const userId = useSelector((state) => state.usersReducer.userId);
   const status = useSelector((state) => state.productsReducer.status);
+
   useEffect(() => {
     dispatch(getProducts({ productType: "books", count: 10 }));
+    dispatch(getFavorites({userId}));
   }, []);
 
   const getMoreProducts = () => {
@@ -26,7 +31,6 @@ const BooksList = () => {
       getProducts({ productType: "books", count: products?.length * 2 })
     );
   };
-
   const productsFilter = products?.filter((item) =>
     item.name.toLowerCase().includes(value?.toLowerCase())
   );

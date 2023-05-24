@@ -1,27 +1,25 @@
-import React  from "react";
+import React, { useRef } from "react";
 import styles from "./Header.module.scss";
 import menuImg from "../../../logo/menu.png";
 import EL_KUTBI from "../../../logo/EL-KUTBI.jpg";
 import login from "../../../logo/user (2).png";
 import basket from "../../../logo/basket.png";
-import mappointer from "../../../logo/mappointer (1).png";
 import { Link } from "react-router-dom";
 import Menu from "../../Content/Menu/Menu";
 import SearchValue from "../../Content/SearchValue/SearchValue";
 
 const Header = () => {
-  const menu = React.useRef();
-  
+  const menu = useRef(null);
 
   const menuUpdate = () => {
-    document.body.style.overflow = "hidden"
+    document.body.style.overflow = "hidden";
     menu.current.classList.toggle(styles.menuActive);
     menu.current.classList.toggle(styles.modalOpen);
     return menu.current.classList.toggle(styles.menuNone);
   };
 
   const menuСlose = () => {
-    document.body.style.overflow = "auto"
+    document.body.style.overflow = "auto";
     menu.current.classList.add(styles.menuNone);
     return menu.current.classList.remove(styles.menuActive);
   };
@@ -43,14 +41,14 @@ const Header = () => {
             alt="menu"
           />
           <div ref={menu} className={styles.menuNone}>
-            <Menu menuСlose={menuСlose} /> 
+            <Menu menuСlose={menuСlose} />
           </div>
           <h1 className={styles.storeName}>
             <Link className={styles.name_link} to={"/"}>
               EL-KUTBI
             </Link>
           </h1>
-            <SearchValue/>
+          <SearchValue />
           <div className={styles.login_basket_container}>
             <Link to={"/usersAccount"} className={styles.login_basket}>
               <img

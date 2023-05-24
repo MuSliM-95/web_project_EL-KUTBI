@@ -5,6 +5,7 @@ import styles from "./FixedMenu.module.scss";
 
 const FixedMenu = () => {
   const menu = useRef(null);
+
   const [menuButton, setMenuButton] = useState(false);
 
   const menuUpdate = () => {
@@ -17,7 +18,7 @@ const FixedMenu = () => {
     setMenuButton(false);
     menu.current.classList.add(styles.menuNone);
     return menu.current.classList.remove(styles.menuActive);
-  }; 
+  };
 
   return (
     <div className={styles.FixedMenuContainer}>

@@ -1,24 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import styles from "./PersonalAccount.module.scss";
 import { removeToken } from "../../../app/Reducers/usersReducer";
 import { getUser } from "../../../app/AsyncFetch/userFetch";
 import { clearBasket } from "../../../app/Reducers/basketReducer";
-import {
-  addProductsBasket,
-  getBasket,
-} from "../../../app/AsyncFetch/basketFetch";
 import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
+import ProfileDelete from "../ProfileDelete/ProfileDelete";
 
 const PersonalAccount = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const refDeleteBlock = useRef(null);
+
   const token = useSelector((state) => state.usersReducer.token);
   const userId = useSelector((state) => state.usersReducer.userId);
   const user = useSelector((state) => state.usersReducer.user);
-  const basketProducts = useSelector((state) => state.basketReducer.basket);
-  const status = useSelector((state) => state.productsReducer.status);
-  const navigate = useNavigate();
+  const status = useSelector((state) => state.usersReducer.status);
+
 
   useEffect(() => {
     dispatch(getUser({ userId }));
@@ -33,6 +32,19 @@ const PersonalAccount = () => {
     dispatch(clearBasket());
     return navigate("/");
   };
+
+  const removeProfileBlock = () => {
+    window.scrollTo(0,0)
+    document.body.style.overflow = "hidden";
+    refDeleteBlock.current.classList.toggle(styles.deleteUserWrapperNone);
+    refDeleteBlock.current.classList.toggle(styles.deleteUserWrapperActive);
+  };
+  const removeProfileBlockNone = () => {
+    document.body.style.overflow = "auto";
+    refDeleteBlock.current.classList.toggle(styles.deleteUserWrapperActive);
+    refDeleteBlock.current.classList.toggle(styles.deleteUserWrapperNone);
+  };
+
 
   if (status === "loading") {
     return (
@@ -90,14 +102,18 @@ const PersonalAccount = () => {
         </div>
         <div className={styles.orderBlock}>
           <h2>Мои заказы</h2>
-          <Link to={"#"}>Все заказы</Link>
-          <Link to={"#"}>Статус заказов</Link>
-          <Link to={"#"}>Только активные заказы</Link>
+          <Link to={"/inDeveloping"} state={{page: "/usersAccount"}}>Все заказы</Link>
+          <Link to={"/inDeveloping"} state={{page: "/usersAccount"}}>Только активные заказы</Link>
+          <Link to={"/inDeveloping"} state={{page: "/usersAccount"}}>Статус заказов</Link>
         </div>
         <div className={styles.settingsBlock}>
           <h2>Профиль</h2>
           <div className={styles.buttonExitContainer}>
-            <button className={styles.buttonExit} type="button" onClick={exit}>
+            <button
+              className={styles.buttonExit}
+              type="button"
+              onClick={removeProfileBlock}
+            >
               Удалить
             </button>
           </div>
@@ -107,6 +123,13 @@ const PersonalAccount = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div
+        onClick={removeProfileBlockNone}
+        ref={refDeleteBlock}
+        className={styles.deleteUserWrapperNone}
+       >
+       <ProfileDelete/>
       </div>
     </div>
   );

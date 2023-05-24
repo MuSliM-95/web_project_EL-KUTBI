@@ -7,6 +7,7 @@ import { inputValue } from "../../../app/Reducers/productsReducer";
 const SearchValue = () => {
   const dispatch = useDispatch("");
   const [searchValue, setSearchValue] = useState("");
+  const [render, setRender] = useState(false)
 
   const stopForm = (e) => {
     e.preventDefault();
@@ -14,10 +15,11 @@ const SearchValue = () => {
 
   useEffect(() => {
     dispatch(inputValue(searchValue));
-  });
+  },[render]);
 
   const handleSearchValue = (e) => {
     setSearchValue(e.target.value);
+    setRender(!render)
   };
 
   const handleClearInput = () => {

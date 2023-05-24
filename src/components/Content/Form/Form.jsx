@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+ import React, { useEffect, useState } from "react";
 import { useTelegram } from "../../../hooks/useTelegram";
 import Button from "./Button/Button";
 import styles from "./Form.module.scss";
@@ -66,13 +66,13 @@ const Form = () => {
         <div className={styles.inputContainer}>
           <input
             className={styles.input}
-            type="tel"
+            type="number"
             value={phoneNumber}
             disabled
           />
           <InputMask
             className={styles.input}
-            type="tel"
+            type="number"
             id="phone"
             name="phone"
             placeholder="+7(999) 999-99-99"

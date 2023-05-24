@@ -5,7 +5,6 @@ export const addProductsBasket = createAsyncThunk(
   "patch/basket",
   async ({ userId, basketArray }, thunkAPI) => {
     try {
-      console.log(userId, basketArray);
       const token = localStorage.getItem("token");
       const res = await fetch(`${serverUrl}/basket/${userId}`, {
         method: "PATCH",

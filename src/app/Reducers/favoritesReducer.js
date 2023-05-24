@@ -1,25 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getFavorites, addItem, removeItem } from "../AsyncFetch/favoritesFetch";
 
 const initialState = {
-  productFavorites: JSON.parse(localStorage.getItem("favorites")) || [],
+  productFavorites: [],
+  status: "initial" || "loading" || "error" || "success",
 };
 
 const favoritesReducer = createSlice({
   name: "favorites",
   initialState,
-  reducers: {
-    addItem: (state, action) => {
-      state.productFavorites.push(action.payload);
-      localStorage.setItem("favorites", JSON.stringify(state.productFavorites));
-    },
-    removeItem: (state, action) => {
-      state.productFavorites = state.productFavorites.filter(
-        (items) => items._id !== action.payload
-      );
-      localStorage.setItem("favorites", JSON.stringify(state.productFavorites));
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+    .addCase(addItem.pending, (state, action) => {
+      state.status = "loading";
+    })
+    .addCase(addItem.fulfilled, (state, action) => {
+      state.status = "success"
+      state.productFavorites = action.payload.favorites
+    })
+    .addCase(addItem.rejected, (state, action) => {
+      state.status = "error"
+    });
+    builder
+    .addCase(removeItem.pending, (state, action) => {
+    })
+    .addCase(removeItem.fulfilled, (state, action) => {
+      state.status = "success"
+      state.productFavorites = action.payload.favorites
+    })
+    .addCase(removeItem.rejected, (state, action) => {
+      state.status = "error"
+    });
+    builder
+      .addCase(getFavorites.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getFavorites.fulfilled, (state, action) => {
+        state.status = "success"
+        state.productFavorites = action.payload.favorites
+      })
+      .addCase(getFavorites.rejected, (state, action) => {
+        state.status = "error"
+      });
   },
 });
 
-export const { addItem, removeItem } = favoritesReducer.actions;
 export default favoritesReducer.reducer;

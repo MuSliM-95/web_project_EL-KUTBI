@@ -1,0 +1,27 @@
+.inputWrapper {
+  display: flex;
+  width: 81%;
+  .codeInputBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1%;
+    .input {
+      border-radius: 5px;
+      padding: 2%;
+      width: 100%;
+      font-size: 3vw;
+      text-align: center;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+}
+.errorInput {
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 1px red;
+  background-color: rgba(255, 0, 0, 0.363);
+}

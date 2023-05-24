@@ -7,13 +7,16 @@ import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import { Link, Navigate } from "react-router-dom";
-import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif"
+import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
+import { getFavorites } from "../../../app/AsyncFetch/favoritesFetch";
 
 const Products = () => {
   const dispatch = useDispatch();
+
   const products = useSelector((state) => state.productsReducer.products);
   const value = useSelector((state) => state.productsReducer.searchValue);
-  const status = useSelector((state) => state.productsReducer.status)
+  const status = useSelector((state) => state.productsReducer.status);
+  const userId = useSelector((state) => state.usersReducer.userId);
 
   const productsCount = useSelector(
     (state) => state.productsReducer.productsCount
@@ -21,6 +24,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts({ productType: null, count: 20 }));
+    dispatch(getFavorites({ userId }));
   }, []);
 
   const getMoreProducts = () => {
@@ -31,15 +35,15 @@ const Products = () => {
     item.name.toLowerCase().includes(value?.toLowerCase())
   );
 
-  if(status === "loading") {
-    return(
+  if (status === "loading") {
+    return (
       <div className={styles.loadingBlock}>
         <img src={loadingImage} alt="loadingImage" />
       </div>
-    )
+    );
   }
-  if(status === "error") {
-    return <Navigate to={"/error"}/>
+  if (status === "error") {
+    return <Navigate to={"/error"} />;
   }
 
   return (
