@@ -6,5 +6,5 @@ export let serverUrl;
 //   serverUrl = "http://localhost:6001";
   // serverUrl = "https://el-kutbi-backend.onrender.com";
 // } else {
-  serverUrl = "http://45.12.74.138:6001";
+  serverUrl = "http://45.12.74.138:5000";
 // }
