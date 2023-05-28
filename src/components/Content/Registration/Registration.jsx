@@ -45,7 +45,7 @@ const Registration = () => {
 
   useEffect(() => {
     dispatch(getUsers());
-  }, [userCode, render]);
+  }, [render]);
 
   const stopForm = (e) => {
     e.preventDefault();
@@ -62,22 +62,23 @@ const Registration = () => {
   const registration = () => {
     if (validatorPhoneNumber(phoneNumber)) {
       dispatch(userRegistration({ phoneNumber }));
-      setRender(!render);
       dispatch(getUsers());
+      setRender(!render);
     }
   };
 
   const activationUserProfile = () => {
     if (userCode !== "verified") {
       dispatch(activationCode({ codeInputValue, phoneNumber }));
+      setRender(!render);
     }
     if (userCode === "verified") {
       if (validatorPassword(password)) {
         dispatch(addPassword({ phoneNumber, password }));
         setPassword("");
+        setRender(!render);
       }
     }
-    setRender(!render);
     dispatch(getUsers());
   };
 
