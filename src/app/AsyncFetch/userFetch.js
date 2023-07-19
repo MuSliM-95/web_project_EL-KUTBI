@@ -122,6 +122,7 @@ export const getUser = createAsyncThunk(
 export const patchUser = createAsyncThunk(
   "patch/user",
   async ({ name, address, contact, recipientNumber, userId }, thunkAPI) => {
+    console.log(address);
     try {
       const res = await fetch(`${serverUrl}/users/info/${userId}`, {
         method: "PATCH",
@@ -130,6 +131,7 @@ export const patchUser = createAsyncThunk(
           "Content-type": "application/json",
         },
       });
+      localStorage.setItem("address" , address)
       return await res.json();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -26,8 +26,7 @@ const Form = () => {
   const [contact, setContact] = useState("");
   const [recipientNumber, setRecipientNumber] = useState("");
 
-  const { phoneNumber } = user;
-  const {page} = location.state
+  const {page} = location?.state
 
   const addUserData = () => {
     console.log(validatorName(name));
@@ -51,7 +50,7 @@ const Form = () => {
     setContact(e.target.value);
   };
   const handleRecipientNumber = (e) => {
-    setRecipientNumber(e.target.value);
+    setRecipientNumber(e.value);
   };
 
   const style = {
@@ -64,15 +63,9 @@ const Form = () => {
         <div className={styles.elKutbi}>EL-KUTBI</div>
         <div className={styles.formText}>Форма для оформления заказа</div>
         <div className={styles.inputContainer}>
-          <input
-            className={styles.input}
-            type="number"
-            value={phoneNumber}
-            disabled
-          />
           <InputMask
             className={styles.input}
-            type="number"
+            type="text"
             id="phone"
             name="phone"
             placeholder="+7(999) 999-99-99"
@@ -80,6 +73,7 @@ const Form = () => {
             onChange={handleRecipientNumber}
             mask="+7(999) 999-99-99"
           />
+          <p>Полное имя</p>
           <FioSuggestions
             inputProps={style}
             token="d48068d3df3e54cbd1bb9c0a6edf99b88a6adfe4"
@@ -89,6 +83,7 @@ const Form = () => {
             placeholder="Полное имя"
             onChange={handleName}
           />
+          <p>Адрес</p>
           <AddressSuggestions
             inputProps={style}
             token="d48068d3df3e54cbd1bb9c0a6edf99b88a6adfe4"
@@ -97,11 +92,12 @@ const Form = () => {
             placeholder="Улица_дом_квартира"
             onChange={handleAddress}
           />
+          <p>WhatsApp</p>
           <input
             className={styles.input}
             type="text"
             value={contact}
-            placeholder="Контакт для связи WhatsApp"
+            placeholder="+79289999999"
             onChange={handleContact}
           />
         </div>

@@ -28,8 +28,12 @@
       width: 90%;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       position: relative;
-
+      p {
+        margin-bottom: -2%;
+        margin-left: 2%;
+      }
       .input {
         box-sizing: border-box;
         padding: 5px;
