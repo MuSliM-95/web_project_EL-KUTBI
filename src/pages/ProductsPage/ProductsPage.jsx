@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./ProductsPage.module.scss";
 import Products from "../../components/Content/Products/ProductsList";
 
-const MainPage = () => {
+const ProductsPage = () => {
   return (
-    <div className={styles.mainPage}>
+    <div className={styles.productsPage}>
       <Products />
     </div>
   );
 };
 
-export default MainPage;
+export default ProductsPage;

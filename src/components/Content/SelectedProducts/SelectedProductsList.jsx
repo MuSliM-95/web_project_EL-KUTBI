@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductButton from "../ProductButton/ProductButton";
 import { serverUrl } from "../../../serverUrl/serverUrl";
 import { Link, Navigate } from "react-router-dom";
-import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 import FavoritesRemoveButton from "../FavoritesRemoveButton/FavoritesRemoveButton";
 import { getFavorites } from "../../../app/AsyncFetch/favoritesFetch";
+import Loading from "../Loading/Loading";
 
 const SelectedProductsList = () => {
   const dispatch = useDispatch();
@@ -22,19 +22,11 @@ const SelectedProductsList = () => {
     item.name.toLowerCase().includes(value?.toLowerCase())
   );
   useEffect(() => {
-    dispatch(getFavorites({userId}))
-  },[])
-  
-  if (status === "loading") {
-    return (
-      <div className={styles.loadingBlock}>
-        <img src={loadingImage} alt="loadingImage" />
-      </div>
-    );
-  }
-  if (status === "error") {
-    return <Navigate to={"/error"} />;
-  }
+    dispatch(getFavorites({ userId }));
+  }, []);
+
+  if (status === "loading") return <Loading />;
+  if (status === "error") return <Navigate to={"/error"} />;
 
   return (
     <div className={styles.productListСontainer}>

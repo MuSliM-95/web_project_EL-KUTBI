@@ -7,8 +7,8 @@ import { serverUrl } from "../../../serverUrl/serverUrl";
 import MoreItemsButton from "../MoreItemsButton/MoreItemsButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import { Link, Navigate } from "react-router-dom";
-import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 import { getFavorites } from "../../../app/AsyncFetch/favoritesFetch";
+import Loading from "../Loading/Loading";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -23,28 +23,20 @@ const Products = () => {
   );
 
   useEffect(() => {
-    dispatch(getProducts({ productType: null, count: 20 }));
+    dispatch(getProducts({ count: 20 }));
     dispatch(getFavorites({ userId }));
   }, []);
 
   const getMoreProducts = () => {
-    dispatch(getProducts({ productType: null, count: products?.length * 2 }));
+    dispatch(getProducts({ count: products?.length * 2 }));
   };
 
   const productsFilter = products?.filter((item) =>
     item.name.toLowerCase().includes(value?.toLowerCase())
   );
 
-  if (status === "loading") {
-    return (
-      <div className={styles.loadingBlock}>
-        <img src={loadingImage} alt="loadingImage" />
-      </div>
-    );
-  }
-  if (status === "error") {
-    return <Navigate to={"/error"} />;
-  }
+  if (status === "loading") return <Loading />;
+  if (status === "error") return <Navigate to={"/error"} />;
 
   return (
     <div className={styles.productListСontainer}>
@@ -60,7 +52,11 @@ const Products = () => {
               <div className={styles.favorites_button_container}>
                 <FavoritesButton el={el} />
               </div>
-              <Link state={el} to={"/item"} className={styles.itemInfo}>
+              <Link
+                state={el}
+                to={`/item/${el._id}`}
+                className={styles.itemInfo}
+              >
                 <p>Быстрый просмотр</p>
               </Link>
             </div>

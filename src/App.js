@@ -1,20 +1,17 @@
 import styles from "./App.module.scss";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
+import InDeveloping from "./pages/InDeveloping/ui/InDeveloping";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
-import FormPage from "./pages/FormPage/FormPage";
-import BooksPage from "./pages/BooksPage/BooksPage";
-import CosmeticsProductsPage from "./pages/CosmeticsProductsPage/CosmeticsProductsPage";
-import HygieneProductsPage from "./pages/HygieneProductsPage/HygieneProductsPage";
-import HealthProductsPage from "./pages/HealthProductsPage/HealthProductsPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import PersonalAccountPage from "./pages/PersonalAccountPage/PersonalAccountPage";
-import SelectedProductsListPage from "./pages/SelectedProductsListPage/SelectedProductsListPage";
-import BasketPage from "./pages/BasketPage/BasketPage";
-import ProductListPage from "./pages/ProductListPage/ProductListPage";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import InDeveloping from "./pages/InDeveloping/InDeveloping";
+import SuspenseLayout from "./components/Suspense/SuspenseLayout";
+import { ProductsListPageAsync } from "./pages/ProductListPage/ProductsListAsync";
+import { BasketPageAsync } from "./pages/BasketPage/BasketPageAsync";
+import { ErrorPageAsync } from "./pages/ErrorPage/ErrorPageAsync";
+import { RegistrationPageAsync } from "./pages/RegistrationPage/RegistrationPageAsync";
+import { SelectedProductsListPageAsync } from "./pages/SelectedProductsListPage/SelectedProductsListPageAsync";
+import { PersonalAccountPageAsync } from "./pages/PersonalAccountPage/PersonalAccountPageAsync";
+import { FormPageAsync } from "./pages/FormPage/FormPageAsync";
+import { LoginPageAsync } from "./pages/LoginPage/LoginPageAsync";
 
 function App() {
   return (
@@ -23,20 +20,24 @@ function App() {
         <Routes>
           <Route path={"/*"} element={<Layout />}>
             <Route path={"/*"} element={<ProductsPage />} />
-            <Route path={"books"} element={<BooksPage />} />
-            <Route path={"cosmetics"} element={<CosmeticsProductsPage />} />
-            <Route path={"hygiene"} element={<HygieneProductsPage />} />
-            <Route path={"health"} element={<HealthProductsPage />} />
-            <Route path={"usersAccount"} element={<PersonalAccountPage />} />
-            <Route path={"favorites"} element={<SelectedProductsListPage />} />
-            <Route path={"basket"} element={<BasketPage />} />
-            <Route path={"form"} element={<FormPage />} />
+            <Route
+              path={"usersAccount"}
+              element={<PersonalAccountPageAsync />}
+            />
+            <Route
+              path={"favorites"}
+              element={<SelectedProductsListPageAsync />}
+            />
+            <Route path={"basket"} element={<BasketPageAsync />} />
+            <Route path={"form"} element={<FormPageAsync />} />
             <Route path={"inDeveloping"} element={<InDeveloping />} />
-            <Route path={"item"} element={<ProductListPage />} />
+            <Route path={"item/*"} element={<ProductsListPageAsync />} />
           </Route>
-          <Route path={"signinUp"} element={<RegistrationPage />} />
-          <Route path={"login"} element={<LoginPage />} />
-          <Route path={"error"} element={<ErrorPage />} />
+          <Route path={"/*"} element={<SuspenseLayout />}>
+            <Route path={"signinUp"} element={<RegistrationPageAsync />} />
+            <Route path={"login"} element={<LoginPageAsync />} />
+            <Route path={"error"} element={<ErrorPageAsync />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

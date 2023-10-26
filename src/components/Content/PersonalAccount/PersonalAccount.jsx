@@ -5,8 +5,8 @@ import styles from "./PersonalAccount.module.scss";
 import { removeToken } from "../../../app/Reducers/usersReducer";
 import { getUser } from "../../../app/AsyncFetch/userFetch";
 import { clearBasket } from "../../../app/Reducers/basketReducer";
-import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
 import ProfileDelete from "../ProfileDelete/ProfileDelete";
+import Loading from "../Loading/Loading";
 
 const PersonalAccount = () => {
   const dispatch = useDispatch();
@@ -23,10 +23,8 @@ const PersonalAccount = () => {
     dispatch(getUser({ userId }));
   }, []);
 
-  if (!token) {
-    return <Navigate to={"/signinUp"} />;
-  }
-
+  if (!token) return <Navigate to={"/signinUp"} />;
+  
   const exit = () => {
     dispatch(removeToken());
     dispatch(clearBasket());
@@ -46,16 +44,9 @@ const PersonalAccount = () => {
   };
 
 
-  if (status === "loading") {
-    return (
-      <div className={styles.loadingBlock}>
-        <img src={loadingImage} alt="loadingImage" />
-      </div>
-    );
-  }
-  if (status === "error") {
-    return <Navigate to={"/error"} />;
-  }
+  if (status === "loading") return <Loading />;
+  if (status === "error") return <Navigate to={"/error"} />;
+
   return (
     <div className={styles.wrapperPersonalAccount}>
       <div className={styles.personalAccountBlock}>
@@ -64,7 +55,7 @@ const PersonalAccount = () => {
             <Link
               className={styles.personalInfoLink}
               to={"/form"}
-              state={{ page: "/usersAccount" }}
+              state={{user, userId, status, page: "/usersAccount" }}
             >
               Личная информация
             </Link>

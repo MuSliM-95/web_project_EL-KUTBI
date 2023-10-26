@@ -116,7 +116,8 @@
 @media screen and (min-width: 500px) {
   .productListСontainer {
     .productList {
-      max-height: 20vh;
+      min-height: -1.5%;
+      max-height: -1.5%;
       width: 25%;
       font-size: 2vw;
       .productInfo {
@@ -130,7 +131,6 @@
 @media screen and (min-width: 650px) {
   .productListСontainer {
     .productList {
-      max-height: 30vh;
       .productInfo {
         .booksAuthor {
           font-size: 1.7vw;
@@ -142,7 +142,6 @@
 @media screen and (min-width: 800px) {
   .productListСontainer {
     .productList {
-      max-height: 26vh;
       width: 18%;
       font-size: 1.1vw;
       .productInfo {
@@ -163,7 +162,6 @@
       font-size: 1.5vw;
     }
     .productList {
-      max-height: 31vh;
       font-size: 1.1vw;
       .productInfo {
         .booksAuthor {
@@ -176,7 +174,6 @@
 @media screen and (min-width: 1280px) {
   .productListСontainer {
     .productList {
-      max-height: 47vh;
       width: 15%;
       font-size: 0.9vw;
       .productImageContainer {

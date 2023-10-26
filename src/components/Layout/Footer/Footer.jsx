@@ -37,9 +37,7 @@ const Footer = () => {
       <div className={styles.aboutus}>
         <div>
           <a href="#/">Доставка и оплата</a>
-        </div>
-        <div>
-          <a href="#/">Обратная связь</a>
+          <a href="#/">О нас</a>
         </div>
       </div>
       <hr />

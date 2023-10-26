@@ -2,151 +2,126 @@
   width: 100%;
   background-color: #164f48;
 
-  .upper_header_block {
+  .header_store_logo_wrapper {
     display: none;
   }
 
   .lower_header_block {
     display: flex;
     padding-bottom: 1%;
+  }
 
-    .header_functional_elements {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 1%;
+  .header_functional_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-      .menuImg {
-        display: none;
-      }
-      .menuActive {
-        display: none;
-      }
-      .menuNone {
-        display: none;
-      }
-      .storeName {
-        font-size: 2.8vw;
-        cursor: pointer;
+  .header_functional_block {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1%;
+  }
 
-        .name_link {
-          text-decoration: none;
-          color: white;
-        }
-      }
+  .storeName {
+    font-size: 2.8vw;
+    cursor: pointer;
+  }
 
-      .login_basket_container {
-        display: flex;
-        width: 15%;
-        cursor: pointer;
-        color: rgba(255, 255, 255, 0.4);
-        font-size: 1.2vw;
-        align-items: center;
+  .name_link {
+    text-decoration: none;
+    color: white;
+  }
 
-        .login_basket {
-          display: none;
+  .login_basket_container {
+    display: none;
+  }
 
-          .login_basket_image {
-            width: 10%;
-          }
 
-          &:hover {
-            color: white;
-          }
-        }
-      }
+  .login_basket {
+    display: none;
+
+    &:hover {
+      color: white;
     }
+  }
+
+  .login_basket_image {
+    width: 10%;
   }
 }
 
-@media screen and (min-width: 375px) {
-  .header {
-    .lower_header_block {
-      .header_functional_elements {
-        justify-content: space-around;
-        margin: 0 0 1% 0;
-      }
-    }
-  }
-}
+
 @media screen and (min-width: 500px) {
   .header {
-    .upper_header_block {
+    .lower_header_block {
       display: flex;
-      .header_store_logo {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        .store_logo {
-          display: flex;
-          width: 8%;
-        }
-      }
+      padding-bottom: 0;
     }
 
-    .lower_header_block {
-      .header_functional_elements {
-        justify-content: space-around;
-        margin: 0 0 1% 0;
-        .storeName {
-          .name_link {
-          }
-        }
-        .login_basket_container {
-          .login_basket {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+    .store_logo {
+      width: 8%;
+    }
 
-            .login_basket_image {
-              width: 30%;
-            }
-          }
-        }
-      }
+    .login_basket_image {
+      width: 25%;
+    }
+
+    .header_store_logo_wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .login_basket_container {
+      display: flex;
+      width: 15%;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.4);
+      align-items: center;
+      background-color: red;
+      font-size: 1.2vw;
+      padding: 32px;
+
+    }
+
+    .login_basket {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    .header_functional_block {
+      margin: 0;
+      justify-content: space-around;
+      align-items: center;
+      // background-color: red;
     }
   }
 }
-@media screen and (min-width: 1024px) {
+
+@media screen and (max-width: 1023px) {
+
   .header {
-    .lower_header_block {
-      .header_functional_elements {
-        .menuActive {
-          display: block;
-          left: 0;
-          position: fixed;
-          transform: translate(0%);
-          transition: 0.5s;
-          height: 100%;
-          width: 100%;
-          top: 0;
-          z-index: 3;
-        }
-        .menuNone {
-          display: block;
-          left: 0;
-          top: 0;
-          position: fixed;
-          overflow-x: hidden;
-          height: 100%;
-          transform: translate(-100%);
-          transition: 0.5s;
-        }
-        .menuImg {
-          display: flex;
-          width: 4%;
-          border: solid 1px #ffffff66;
-          padding: 0.1%;
-          border-radius: 8px;
-          cursor: pointer;
-          &:hover {
-            border-color: white;
-          }
-        }
-      }
-    }
-  }
-}
 
+    .login_basket_container {
+      display: none;
+    }
+
+    .header_functional_block {
+      width: 90%;
+      justify-content: space-between;
+
+    }
+
+    .header_functional_wrapper {
+      width: 100%;
+    }
+
+  }
+
+}

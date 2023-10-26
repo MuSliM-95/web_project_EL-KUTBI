@@ -5,14 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../../../app/Reducers/basketReducer";
 import { addProductsBasket } from "../../../app/AsyncFetch/basketFetch";
 
-const ProductButton = ({ el }) => {
+const ProductButton = (props) => {
+  
+  const productObj = props.product || props.el
+  
   const dispatch = useDispatch();
 
   const basketProducts = useSelector((state) => state.basketReducer.basket);
   const userId = useSelector((state) => state.usersReducer.userId);
   const token = useSelector((state) => state.usersReducer.token);
 
-  const filter = basketProducts?.some((item) => item._id === el._id);
+  const filter = basketProducts?.some((item) => item?._id === productObj?._id);
 
   useEffect(() => {
     if (token) {
@@ -22,9 +25,9 @@ const ProductButton = ({ el }) => {
 
   const addProductBasket = () => {
     if (!filter) {
-      return dispatch(addItem({ ...el, quantity: 1 }));
+      return dispatch(addItem({ ...productObj, quantity: 1 }));
     }
-    dispatch(removeItem(el._id));
+    dispatch(removeItem(productObj?._id));
   };
 
   return (
@@ -39,7 +42,7 @@ const ProductButton = ({ el }) => {
 };
 
 ProductButton.propTypes = {
-  el: PropTypes.object.isRequired,
+  props: PropTypes.object,
 };
 
 export default ProductButton;

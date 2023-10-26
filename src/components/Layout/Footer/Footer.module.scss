@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: 35vh;
-  
+
 
   .footerBlock {
     display: flex;
@@ -27,20 +27,23 @@
 
   .aboutus {
     display: flex;
-    justify-content: space-around;
-
+    justify-content: center;
+    text-align: center;
     div {
       display: flex;
       flex-direction: column;
-      margin-top: 3%;
-
       a {
         text-decoration: none;
         color: rgba(24, 12, 12, 0.808);
         font-size: 2.5vw;
+        &:hover {
+          color: #fff
+        }
       }
     }
+
   }
+ 
 
   hr {
     display: flex;
@@ -69,6 +72,7 @@
     hr {
       margin-top: 1%;
     }
+
     .date {
       text-align: center;
       font-size: 2vw;
@@ -89,8 +93,6 @@
 
     .aboutus {
       div {
-        margin-top: 2%;
-
         a {
           font-size: 2vw;
         }

@@ -1,0 +1,82 @@
+.FixedMenuLinkSelected {
+    position: relative;
+    z-index: 4;
+    width: 13px;
+    height: 13px;
+    background-color: black;
+    transform: rotate(45deg);
+    position: relative;
+    cursor: pointer;
+
+}
+
+.FixedMenuLinkSelected::before {
+    content: "";
+    display: block;
+    width: 13px;
+    height: 13px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.FixedMenuLinkSelected::after {
+    content: "";
+    display: block;
+    width: 13px;
+    height: 13px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.FixedMenuLinkSelected::after {
+    top: 0;
+    left: -6px;
+}
+
+.FixedMenuLinkSelected::before {
+    top: -6px;
+    left: 0;
+}
+
+.FixedMenuLinkSelectedActive {
+    position: relative;
+    z-index: 4;
+    width: 13px;
+    height: 13px;
+    background-color: #164f48;
+    transform: rotate(45deg);
+    position: relative;
+    cursor: pointer;
+}
+
+.FixedMenuLinkSelectedActive::after {
+    content: '';
+    display: block;
+    width: 13px;
+    height: 13px;
+    background-color: #164f48;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.FixedMenuLinkSelectedActive::before {
+    content: '';
+    display: block;
+    width: 13px;
+    height: 13px;
+    background-color: #164f48;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.FixedMenuLinkSelectedActive::after {
+    top: 0;
+    left: -6px;
+}
+
+.FixedMenuLinkSelectedActive::before {
+    top: -6px;
+    left: 0;
+}

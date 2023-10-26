@@ -70,7 +70,7 @@ export const userLogin = createAsyncThunk(
   "users/login",
   async ({ phoneNumber, password }, thunkAPI) => {
     try {
-      console.log(1)
+      console.log(1);
       const res = await fetch(`${serverUrl}/users/login`, {
         method: "POST",
         body: JSON.stringify({ phoneNumber, password }),
@@ -82,10 +82,10 @@ export const userLogin = createAsyncThunk(
       const basket = JSON.parse(localStorage.getItem("basket"));
       addProductsBasket({ userId: data.userId, basketArray: basket });
       console.log(data);
-      if(data.error) {
+      if (data.error) {
         return thunkAPI.rejectWithValue(data);
-      } 
-      if(data.token) {
+      }
+      if (data.token) {
         localStorage.setItem("userId", data.userId);
         localStorage.setItem("token", data.token);
         return data;
@@ -131,7 +131,7 @@ export const patchUser = createAsyncThunk(
           "Content-type": "application/json",
         },
       });
-      localStorage.setItem("address" , address)
+      localStorage.setItem("address", address);
       return await res.json();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -153,10 +153,10 @@ export const removeProfile = createAsyncThunk(
         body: JSON.stringify({ userId, phoneNumber, password }),
       });
       const data = await res.json();
-      if(data.error) {
+      if (data.error) {
         return thunkAPI.rejectWithValue(data);
       }
-      return data
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

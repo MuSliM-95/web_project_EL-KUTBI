@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProducts } from "../AsyncFetch/productsFetch";
+import { getProducts, getProductId } from "../AsyncFetch/productsFetch";
 
 const initialState = {
   products: [],
   productsCount: null,
   status: "initial" || "loading" || "error" || "success",
   searchValue: "",
+  product: null,
 };
 
 const productsReducer = createSlice({
@@ -29,6 +30,17 @@ const productsReducer = createSlice({
       .addCase(getProducts.rejected, (state, action) => {
         state.status = "error";
       });
+      builder
+      .addCase(getProductId.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getProductId.fulfilled, (state, action) => {
+        state.status = "success";
+        state.product = action.payload
+      })
+      .addCase(getProductId.rejected, (state, action) => {
+        state.status = "error";
+      })
   },
 });
 

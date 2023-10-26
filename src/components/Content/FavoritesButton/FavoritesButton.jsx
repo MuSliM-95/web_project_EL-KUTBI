@@ -5,35 +5,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../../app/AsyncFetch/favoritesFetch";
 import { useNavigate } from "react-router-dom";
 
-const FavoritesButton = ({ el }) => {
+
+const FavoritesButton = (props) => { 
+
+  const productObj = props.el || props.product
+ 
   const dispatch = useDispatch();
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const favoritesProduct = useSelector(
     (state) => state.favoritesReducer.productFavorites
   );
   const userId = useSelector((state) => state.usersReducer.userId);
   const token = useSelector((state) => state.usersReducer.token);
-
-  const filter = favoritesProduct?.some((item) => item._id === el._id);
+  const filter = favoritesProduct?.some((item) => item?._id === productObj?._id);
 
   const addProductFavorites = () => {
-    if(!token) navigate("signinUp")
-    if (!filter) dispatch(addItem({ userId, item: el }));
+    if (!token) return navigate("signinUp");
+    if (!filter) return dispatch(addItem({ userId, item: productObj }));
   };
 
   return (
-    <button
-      type="button"
-      onClick={addProductFavorites}
-      disabled={filter}
-      className={filter ? styles.favoritesActive : styles.favoritesNone}
-    ></button>
+    <div className="button_wrapper">
+      <button
+        type="button"
+        onClick={addProductFavorites}
+        disabled={filter}
+        className={filter ? styles.favoritesActive : styles.favoritesNone}
+      ></button>
+    </div>
   );
 };
 
 FavoritesButton.propTypes = {
-  el: PropTypes.object.isRequired,
+  props: PropTypes.object,
 };
 
 export default FavoritesButton;

@@ -1,27 +1,66 @@
+.button_wrapper {
+  border: solid 1px black;
+}
+
 .favoritesNone {
-  display: flex;
-  background-image: url("../../../logo/image (7) (6).png");
-  background-repeat: no-repeat;
-  background-size: 40px 20px;
-  width: 22px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  position: relative;
   border: none;
   outline: none;
-  background-color: transparent;
-  background-position-x: 108%;
-  
   cursor: pointer;
 }
 
 .favoritesActive {
-  display: flex;
-  background-image: url("../../../logo/image (7) (6).png");
-  background-repeat: no-repeat;
-  background-size: 40px 22px;
-  width: 21.5px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  transform: rotate(45deg);
+  position: relative;
   border: none;
   outline: none;
-  background-color: transparent;
-  background-position-x: -5%;
+  cursor: pointer;
+
+}
+
+.favoritesActive::before,
+.favoritesActive::after {
+    content : ''; 
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%; 
+    position: absolute;
+}
+.favoritesNone::before,
+.favoritesNone::after {
+    content : ''; 
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 50%; 
+    position: absolute;
+}
+
+.favoritesActive::before {
+  top: -8px;
+  left: 0;
+}
+
+.favoritesActive::after {
+  top: 0;
+  left: -8px;
+}
+.favoritesNone::before {
+  top: -8px;
+  left: 0;
+}
+
+.favoritesNone::after {
+  top: 0;
+  left: -8px;
 }

@@ -1,24 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ProductsList.module.scss";
 import { serverUrl } from "../../../serverUrl/serverUrl";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 import ProductButton from "../ProductButton/ProductButton";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductId } from "../../../app/AsyncFetch/productsFetch";
+import Loading from "../Loading/Loading";
 
 const ProductsList = () => {
   const locatin = useLocation();
+  const params = useParams();
+  const dispatch = useDispatch();
 
-  const el = locatin.state;
+  const el = locatin?.state;
   const [element, setElement] = useState(0);
+  const product = useSelector((state) => state.productsReducer.product);
+  const status = useSelector((state) => state.productsReducer.status);
+
+  useEffect(() => {
+    if (!el) {
+      dispatch(getProductId({ _id: params["*"] }));
+    }
+  }, []);
+
+  const productObj = el || product;
+
+  if (status === "loading") return <Loading/>
+  if (status === "error" ) return <Navigate to={"/error"} />;
 
   return (
     <div className={styles.productsListWrapper}>
       <div className={styles.itemWrapper}>
         <div className={styles.itemImagesContainer}>
-          {el.image?.map((image, index) => {
+          {productObj?.image?.map((image, index) => {
             return (
               <img
-              key={index}
+                key={index}
                 onMouseOver={() => setElement(index)}
                 className={styles.itemaImages}
                 src={`${serverUrl}/${image?.imageSrc}`}
@@ -29,11 +47,11 @@ const ProductsList = () => {
         </div>
         <figure>
           <div className={styles.favorites_button_container}>
-            <FavoritesButton el={el} />
+            <FavoritesButton productObj={productObj} />
           </div>
           <img
             className={styles.itemImage}
-            src={`${serverUrl}/${el.image[element]?.imageSrc}`}
+            src={`${serverUrl}/${productObj?.image[element]?.imageSrc}`}
             alt="Products_image"
           />
           <figcaption>
@@ -44,11 +62,11 @@ const ProductsList = () => {
           </figcaption>
         </figure>
         <div className={styles.itemInfoBlock}>
-          <strong>{el?.price}Р</strong>
+          <strong>{productObj?.price}Р</strong>
           <p>{el?.name}</p>
-          <p className={styles.booksAuthor}>{el?.Author}</p>
-          <p className={styles.booksAuthor}>{el?.firm}</p>
-          <ProductButton el={el} />
+          <p className={styles.booksAuthor}>{productObj?.Author}</p>
+          <p className={styles.booksAuthor}>{productObj?.firm}</p>
+          <ProductButton productObj={productObj} />
         </div>
       </div>
     </div>

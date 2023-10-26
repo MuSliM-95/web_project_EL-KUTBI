@@ -1,0 +1,35 @@
+.icon_chat{
+    display:inline-block;
+    width:18px;
+    height:18px;
+    background-color: black;
+    border-radius:30px;
+    position:relative;
+  }
+  .icon_chat:after{
+    position:absolute;
+    top:10px;left:0px;
+    content:'';
+    width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 16px 6px 0 6px;
+  border-color: black transparent transparent transparent;
+    transform:rotate(35deg);
+  
+  }
+  .icon_chat.icon2{
+    top:3px;
+    left:10px;
+    width:15px;
+    height:13px;
+    z-index:1;
+    background-color: #164f48;
+  }
+  .icon_chat.icon2:after{
+    border-top-color: #164f48;
+    left:auto; 
+    top:5px;
+    right:0;
+    transform:rotate(-35deg);
+  }

@@ -11,19 +11,22 @@ form {
     border: none;
     width: 10%;
     opacity: 0.5;
-    .search {
-      width: 50%;
-    }
+
+  }
+
+  .search {
+    width: 50%;
   }
 
   .input {
     width: 90%;
     display: flex;
-    padding: 2%;
+    padding: 1%;
     border: none;
     outline: none;
     border-radius: 5px;
   }
+
   .clearInput {
     background-image: url("../../../logo/x.png");
     background-repeat: no-repeat;
@@ -39,12 +42,13 @@ form {
 @media screen and (min-width: 375px) {
   form {
     width: 60%;
-    padding: 2px;
+
     .search_button {
       width: 10%;
-      .search {
-        width: 65%;
-      }
+    }
+
+    .search {
+      width: 65%;
     }
 
     .input {
@@ -55,28 +59,23 @@ form {
 
 @media screen and (min-width: 500px) {
   form {
-    width: 40%;
-    padding: 2px;
+    width: 50%;
 
-    .search_button {
-      width: 10%;
-      .search {
-        width: 45%;
-      }
+    .search {
+      width: 45%;
     }
 
     .input {
+      padding: 2%;
       width: 100%;
     }
   }
 }
-@media screen and (min-width: 800px) {
-  form {
-    padding: 5px;
-  }
-}
-@media screen and (min-width: 1024px) {
-  form {
-    padding: 5px;
-  }
+
+@media screen and (max-width: 1023px ) {
+
+ form {
+  width: 80%;
+ }
+  
 }

@@ -1,0 +1,89 @@
+.FixedMenuLinkPersonalAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+
+
+}
+
+.userNone {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userNone::before {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+}
+
+.userNone::after {
+    content: '';
+    display: block;
+    width: 11px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -4px;
+}
+
+
+.FixedMenuLinkPersonalAccountActive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+
+}
+
+.userActive {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #164f48;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background-color: #164f48;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userActive::before {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+}
+
+.userActive::after {
+    content: '';
+    display: block;
+    width: 11px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -4px;
+}

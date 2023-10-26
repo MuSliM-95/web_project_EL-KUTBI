@@ -6,7 +6,7 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 import { InputMask } from "primereact/inputmask";
 import { userLogin } from "../../../app/AsyncFetch/userFetch";
 import { validatorPassword } from "../../../hooks/validatorIput";
-import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
+import Loading from "../Loading/Loading";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -20,7 +20,7 @@ const Login = () => {
   const token = useSelector((state) => state.usersReducer.token);
   const status = useSelector((state) => state.productsReducer.status);
   const errorCode = useSelector((state) => state.usersReducer.errorCode);
-  const { phoneNumber } = locatin.state;
+  const phoneNumber  = locatin?.state?.phoneNumber;
 
   const stopForm = (e) => {
     e.preventDefault();
@@ -48,20 +48,10 @@ const Login = () => {
     inputMenu.current.classList.toggle(styles.loginMenu);
   };
 
-  if (token) {
-    return <Navigate to={"/usersAccount"} />;
-  }
-
-  if (status === "loading") {
-    return (
-      <div className={styles.loadingBlock}>
-        <img src={loadingImage} alt="loadingImage" />
-      </div>
-    );
-  }
-  if (status === "error") {
-    return <Navigate to={"/error"} />;
-  }
+  if(!phoneNumber) return <Navigate to={"/signinUp"} />;
+  if (token) return <Navigate to={"/usersAccount"} />;
+  if (status === "loading") return <Loading />;
+  if (status === "error") return <Navigate to={"/error"} />;
 
   if (errorCode) inputBlock.current?.classList.add(styles.errorInput);
   else inputBlock.current?.classList.remove(styles.errorInput);

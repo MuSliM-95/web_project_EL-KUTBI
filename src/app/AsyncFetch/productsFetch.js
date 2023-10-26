@@ -3,10 +3,23 @@ import { serverUrl } from "../../serverUrl/serverUrl";
 
 export const getProducts = createAsyncThunk(
   "get/products",
-  async ({productType, count},thunkAPI) => {
+  async ({ count }, thunkAPI) => {
     try {
-      const res = await fetch(`${serverUrl}/products/${productType}/${count}`);
+      const res = await fetch(`${serverUrl}/products/${count}`);
       return await res.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProductId = createAsyncThunk(
+  "get/product/id",
+  async ({ _id }, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/product/${_id}`);
+      const data = await res.json();
+      return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

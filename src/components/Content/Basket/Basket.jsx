@@ -11,7 +11,7 @@ import {
 import { itemInfo } from "../../../hooks/item";
 import { getUser } from "../../../app/AsyncFetch/userFetch";
 import { addProductsBasket } from "../../../app/AsyncFetch/basketFetch";
-import loadingImage from "../../../logo/free-animated-icon-book-10164261.gif";
+import Loading from "../Loading/Loading";
 
 const Basket = () => {
   const basketProducts = useSelector((state) => state.basketReducer.basket);
@@ -20,7 +20,7 @@ const Basket = () => {
   const userId = useSelector((state) => state.usersReducer.userId);
   const status = useSelector((state) => state.basketReducer.status);
 
-  const [render, setRender] = useState(false)
+  const [render, setRender] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -29,36 +29,28 @@ const Basket = () => {
     if (token) {
       dispatch(addProductsBasket({ userId, basketArray: basketProducts }));
     }
-  },[render]);
+  }, [render]);
 
   const removeItemIsBasket = ({ _id }) => {
     dispatch(removeItem(_id));
-    setRender(!render)
+    setRender(!render);
   };
 
   const incrementItem = ({ _id }) => {
     dispatch(incrementItemQuantity(_id));
-    setRender(!render)
+    setRender(!render);
   };
   const decrementItem = ({ _id }) => {
     dispatch(decrementItemQuantity(_id));
-    setRender(!render)
+    setRender(!render);
   };
 
   const { totalPrice, totalQuantity, totalDelivery, totalAmount } =
     itemInfo(basketProducts);
-
-  if (status === "loading") {
-    return (
-      <div className={styles.loadingBlock}>
-        <img src={loadingImage} alt="loadingImage" />
-      </div>
-    );
-  }
-  if (status === "error") {
-    return <Navigate to={"/error"} />;
-  }
-
+  
+  if (status === "loading") return <Loading />;
+  if (status === "error") return <Navigate to={"/error"} />;
+  
   return (
     <div className={styles.basketZeroWrapper}>
       <div
@@ -119,7 +111,7 @@ const Basket = () => {
             <Link
               className={styles.deliveryLink}
               to={"/form"}
-              state={{ page: "/basket" }}
+              state={{ user, userId, status, page: "/basket" }}
             >
               Адрес
             </Link>
@@ -127,7 +119,11 @@ const Basket = () => {
               <p>Город {user?.address}</p>
             </div>
             <p>3-10 дней</p>
-            <Link to={"/inDeveloping"} className={styles.paymentMethodLink} state={{page: "/basket"}}>
+            <Link
+              to={"/inDeveloping"}
+              className={styles.paymentMethodLink}
+              state={{ page: "/basket" }}
+            >
               Выбрать способ оплаты
             </Link>
             <div>
@@ -144,7 +140,11 @@ const Basket = () => {
             </div>
             <button type="button">Заказать</button>
             <div className={styles.inputCheckboxContainer}>
-              <Link className={styles.linkAgreement} to={"/inDeveloping"} state={{page: "/basket"}}>
+              <Link
+                className={styles.linkAgreement}
+                to={"/inDeveloping"}
+                state={{ page: "/basket" }}
+              >
                 Согласен с условиями
               </Link>
             </div>

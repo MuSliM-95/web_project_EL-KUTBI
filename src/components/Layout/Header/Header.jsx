@@ -1,54 +1,27 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./Header.module.scss";
-import menuImg from "../../../logo/menu.png";
 import EL_KUTBI from "../../../logo/EL-KUTBI.jpg";
 import login from "../../../logo/user (2).png";
 import basket from "../../../logo/basket.png";
 import { Link } from "react-router-dom";
-import Menu from "../../Content/Menu/Menu";
 import SearchValue from "../../Content/SearchValue/SearchValue";
 
 const Header = () => {
-  const menu = useRef(null);
-
-  const menuUpdate = () => {
-    document.body.style.overflow = "hidden";
-    menu.current.classList.toggle(styles.menuActive);
-    menu.current.classList.toggle(styles.modalOpen);
-    return menu.current.classList.toggle(styles.menuNone);
-  };
-
-  const menuСlose = () => {
-    document.body.style.overflow = "auto";
-    menu.current.classList.add(styles.menuNone);
-    return menu.current.classList.remove(styles.menuActive);
-  };
-
   return (
     <header className={styles.header}>
-      <div className={styles.upper_header_block}>
-        <div className={styles.header_store_logo}>
-          <img className={styles.store_logo} src={EL_KUTBI} alt="store_logo" />
-        </div>
+      <div className={styles.header_store_logo_wrapper}>
+        <img className={styles.store_logo} src={EL_KUTBI} alt="store_logo" />
       </div>
-
       <div className={styles.lower_header_block}>
-        <div className={styles.header_functional_elements}>
-          <img
-            onClick={menuUpdate}
-            className={styles.menuImg}
-            src={menuImg}
-            alt="menu"
-          />
-          <div ref={menu} className={styles.menuNone}>
-            <Menu menuСlose={menuСlose} />
+        <div className={styles.header_functional_wrapper}>
+          <div className={styles.header_functional_block}>
+            <h1 className={styles.storeName}>
+              <Link className={styles.name_link} to={"/"}>
+                EL-KUTBI
+              </Link>
+            </h1>
+            <SearchValue />
           </div>
-          <h1 className={styles.storeName}>
-            <Link className={styles.name_link} to={"/"}>
-              EL-KUTBI
-            </Link>
-          </h1>
-          <SearchValue />
           <div className={styles.login_basket_container}>
             <Link to={"/usersAccount"} className={styles.login_basket}>
               <img

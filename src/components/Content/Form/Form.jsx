@@ -1,4 +1,4 @@
- import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTelegram } from "../../../hooks/useTelegram";
 import Button from "./Button/Button";
 import styles from "./Form.module.scss";
@@ -7,34 +7,26 @@ import { AddressSuggestions, FioSuggestions } from "react-dadata";
 import "react-dadata/dist/react-dadata.css";
 import { getUser, patchUser } from "../../../app/AsyncFetch/userFetch";
 import { InputMask } from "primereact/inputmask";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { validatorName } from "../../../hooks/validatorIput";
+import Loading from "../Loading/Loading";
 
 const Form = () => {
   const dispatch = useDispatch();
-  const location = useLocation()
-
-  const userId = useSelector((state) => state.usersReducer.userId);
-  const user = useSelector((state) => state.usersReducer.user);
-
-  useEffect(() => {
-    dispatch(getUser({ userId }));
-  }, []);
+  const location = useLocation();
+  const page = location?.state?.page;
+  const user = location?.state?.user
+  const userId = location?.state?.userId
+  const status = location?.state?.status
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [contact, setContact] = useState("");
   const [recipientNumber, setRecipientNumber] = useState("");
 
-  const {page} = location?.state
 
   const addUserData = () => {
-    console.log(validatorName(name));
-    if (validatorName(name)) {
-      return dispatch(
-        patchUser({ name, address, contact, recipientNumber, userId })
-      );
-    }
+    if (validatorName(name)) return dispatch(patchUser({ name, address, contact, recipientNumber, userId }));
   };
 
   const handleStopForm = (e) => {
@@ -56,6 +48,13 @@ const Form = () => {
   const style = {
     className: styles.input,
   };
+
+  if (status === "loading") {
+    console.log(1);
+     return <Loading />
+    };
+  if (status === "error") return <Navigate to={"/error"} />;
+  if(!user) return <Navigate to={"/signinUp"} />
 
   return (
     <div className={styles.form_wrapper}>
