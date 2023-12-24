@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../../serverUrl/serverUrl";
-import { addProductsBasket } from "./basketFetch";
+import { serverUrl } from "../../shared/lib/serverUrl/serverUrl";
+import { addProductsBasket } from "../../entities/api/async/basketFetch";
 
 export const userRegistration = createAsyncThunk(
   "post/users",

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../../serverUrl/serverUrl";
+import { serverUrl } from "../../shared/lib/serverUrl/serverUrl";
 
 export const getProducts = createAsyncThunk(
   "get/products",
