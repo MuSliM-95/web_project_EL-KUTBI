@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+
   .form {
     position: relative;
     display: flex;
@@ -10,8 +11,17 @@
     justify-content: center;
     padding-bottom: 10px;
     width: 50%;
-    box-shadow: 2px 2px 5px 5px rgba(148, 126, 126, 0.425);
-    border-radius: 20px;
+    box-shadow: 1px 1px 2px 2px rgba(148, 126, 126, 0.425);
+    border-radius: 5px;
+    border: none;
+
+    .input_block {
+      margin-top: 15px;
+
+      p {
+        margin-left: 15px;
+      }
+    }
 
     .elKutbi {
       font-size: 5vw;
@@ -30,15 +40,11 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      p {
-        margin-bottom: -2%;
-        margin-left: 2%;
-      }
+
       .input {
         box-sizing: border-box;
-        padding: 5px;
+        padding: 10px;
         width: 100%;
-        margin-top: 2%;
         border-radius: 5px;
         background-color: white;
         outline: none;
@@ -51,33 +57,43 @@
       }
     }
   }
+
   .addressWrapper {
-    box-shadow: 2px 2px 5px 5px rgba(148, 126, 126, 0.425);
-    border-radius: 20px;
+    box-shadow: 1px 1px 2px 2px rgba(148, 126, 126, 0.425);
+    border-radius: 5px;
     min-width: 30%;
     width: 30%;
-    display: flex;
+ 
+   display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1%;
+    // padding: 10px;
+
     .addressBlock {
       width: 100%;
-      height: 90%;
-      font-size: 1vw;
+      // height: 90%;
+      // font-size: 1vw;
+
+      .user_info {
+        margin-top: 5px;
+      }
+
       a {
         text-decoration: none;
       }
     }
+
     .buttonBlock {
-      height: 90%;
-      display: flex;
+      // height: 90%;
+      // display: flex;
       align-items: flex-start;
-      justify-content: space-between;
+      // justify-content: space-between;
+
       a {
         background-color: #fff;
         text-decoration: none;
         cursor: pointer;
-        font-size: 1vw;
+        // font-size: 1vw;
       }
 
     }
@@ -87,24 +103,29 @@
 @media screen and (max-width: 740px) {
   .form_wrapper {
     width: 100%;
+
     .form {
       width: 70%;
       box-shadow: none;
       border: none;
+
       .formText {
         margin: 10px;
         font-size: 3vw;
         color: black;
       }
+
       .input {
         width: 60%;
         padding: 5px;
         font-size: 2.5vw;
       }
+
       .addressSuggestions {
         width: 100%;
       }
     }
+
     .addressWrapper {
       box-shadow: none;
       width: 50%;
@@ -112,12 +133,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       .addressBlock {
         width: 90%;
-        height: 40%;
-        font-size: 2vw;
+        // height: 40%;
+        // font-size: 2vw;
 
       }
+
       .buttonBlock {
         height: 40%;
         display: flex;
@@ -127,9 +150,9 @@
           background-color: #fff;
           text-decoration: none;
           cursor: pointer;
-          font-size: 2vw;
+          // font-size: 2vw;
         }
-  
+
       }
     }
   }

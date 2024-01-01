@@ -1,15 +1,13 @@
-import {
-  BasketPage,
-  ErrorPage,
-  FormPage,
-  InDeveloping,
-  LoginPage,
-  MainPage,
-  ProductListPage,
-  RegistrationPage,
-  SelectedProductsPage,
-  UserPage,
-} from "../../../pages";
+import { ErrorPage } from "../../../pages/ErrorPage";
+import { FormPage } from "../../../pages/FormPage";
+import { BasketPage } from "../../../pages/BasketPage";
+import { MainPage } from "../../../pages/MainPage";
+import { UserPage } from "../../../pages/UserPage";
+import { RegistrationPage } from "../../../pages/RegistrationPage";
+import { ProductListPage } from "../../../pages/ProductListPage";
+import { SelectedProductsPage } from "../../../pages/SelectedProductsPage";
+import { InDeveloping } from "../../../pages/InDeveloping";
+import { LoginPage } from "../../../pages/LoginPage";
 
 export const routePath = {
   MAIN: "/*",

@@ -1,4 +1,4 @@
-import styles from "./App.module.scss";
+import styles from "./App.scss";
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./providers/router/AppRouter";
 
